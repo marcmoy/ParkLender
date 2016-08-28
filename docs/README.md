@@ -1,16 +1,16 @@
 ### Heroku Link
 
-> At the end of the first day of full-stack projects, you should have a link to the
+> *At the end of the first day of full-stack projects, you should have a link to the
 live version of your site. It doesn't have to be pretty, but it has to be
-there. Push to Heroku ASAP!
+there. Push to Heroku ASAP!*
 
 Future link to Heroku:
-[https://parklender.com][https://www.heroku.com/]
+[https://parklender.com](https://www.heroku.com/)
 
 ### Minimum Viable Product
 
-> Write a one-sentence summary of the project and a list of the features that
-would be absolutely necessary for the app to be marketable. Your MVP section must follow the format outlined [here][https://github.com/appacademy/curriculum/blob/master/full-stack-project/readings/mvp-list.md].
+> *Write a one-sentence summary of the project and a list of the features that
+would be absolutely necessary for the app to be marketable. Your MVP section must follow the format outlined [here](https://github.com/appacademy/curriculum/blob/master/full-stack-project/readings/mvp-list.md).*
 
 ####Project: ParkLender
 
@@ -31,17 +31,17 @@ would be absolutely necessary for the app to be marketable. Your MVP section mus
 
 ### Wireframes
 
-> - `/wireframes`
+> *- `/wireframes`*
 
-> Links to wireframes of your application's UI views. Each wireframe should be a
+> *Links to wireframes of your application's UI views. Each wireframe should be a
 basic representation of the layout and information presented in a view. If you
 plan to use nested React components, clearly indicate the hierarchy in your
 wireframes. We should be able to see every view of your website using your
-wireframes, and how each view is reached.
+wireframes, and how each view is reached.*
 
-> **NB**: You can use any tool you like to create your wireframes (pen and paper are
+> _**NB**: You can use any tool you like to create your wireframes (pen and paper are
 completely acceptable). If your writing looks like chicken scratches, try
-[draw.io][https://www.draw.io/].
+[draw.io](https://www.draw.io/)._
 
 See [wireframes][/wireframes] folder
 
