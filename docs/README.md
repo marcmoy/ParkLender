@@ -4,7 +4,8 @@ Production link: [https://parklender.com](https://www.heroku.com/).
 
 ## Minimum Viable Product
 
-**Summary:** ParkLender is a parking space sharing app inspired by AirBnB.
+**Summary:**
+ParkLender is a parking space sharing app inspired by AirBnB.
 
 **Key Feature Set:**
 - [ ] Users can search for parking spots.
@@ -12,7 +13,8 @@ Production link: [https://parklender.com](https://www.heroku.com/).
 - [ ] Parking spot searches can be filtered by location and availability.
 - [ ] Google Maps will support the spot search feature.
 - [ ] Parking spots have reviews.
-- **BONUS FEATURES**
+
+**Bonus Feature Set:**
 - [ ] User/host profiles
 - [ ] Users and hosts can message each other.
 - [ ] Users can list a parking spot.
@@ -31,7 +33,7 @@ Production link: [https://parklender.com](https://www.heroku.com/).
 
 ## Project Timeline
 
-**Due Date:** Friday, Sept 9 at 1pm
+**Due Date:** Friday, Sept 9 at 1:00pm
 
 ###Phases###
 - [ ] Phase 1: Backend Setup & Front End User Auth (2 days)
@@ -39,7 +41,8 @@ Production link: [https://parklender.com](https://www.heroku.com/).
 - [ ] Phase 3: Search Component, Filters & Google Maps API Integration (2 days)
 - [ ] Phase 4: Bookings Model, API, and Components (2 days)
 - [ ] Phase 5: Reviews Model, API, and Components (2 days)
-- **BONUS**
+
+**Bonus Phases**
 - [ ] Phase 6: User/Host profiles (1 day)
 - [ ] Phase 7: New Spot Form (2 days)
 - [ ] Phase 8: User Dashboard & Settings (2 days)
