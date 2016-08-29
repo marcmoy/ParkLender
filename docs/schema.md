@@ -29,8 +29,10 @@ state         | string    | not null
 country       | string    | not null
 width         | integer   | not null
 length        | integer   | not null
-_availability ( how to deal with date ranges and time ranges? )_
-_vehicles allowed ( should this info be stored as an array? )_
+
+**Notes:**
++ For availability, how do I deal with date ranges and time ranges?
++ How do I store the types of vehicles that are allowed?
 
 ## reviews
 column name   | data type | details
