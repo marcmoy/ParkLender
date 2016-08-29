@@ -44,10 +44,10 @@
       - MessageSubmitButton
 - BookingFormContainer
   - BookingForm
-  - BookingFormDates
-  - BookingFormTimes
-  - BookingFormButton
-  - CountDown
+    - BookingFormDates
+    - BookingFormTimes
+    - BookingFormButton
+    - CountDown
 - ReviewsIndexContainer _(infinite scroll)_
   - ReviewsIndex
   - ReviewsIndexItem
