@@ -40,5 +40,5 @@
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/webpack"
-  },
+  }
 }
