@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { withRouter } from 'react-router';
 
 class SessionForm extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {
-			username: "",
-			password: ""
-		};
+		this.state = { username: "", password: "" };
+
 		this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDemo = this.handleDemo.bind(this);
@@ -20,19 +18,15 @@ class SessionForm extends React.Component {
 	}
 
 	redirectIfLoggedIn() {
-		if (this.props.loggedIn){
-			this.goHome();
-		}
+		if (this.props.loggedIn) this.goHome();
 	}
 
 	goHome() {
-		hashHistory.push("/");
+		this.props.router.push("/");
 	}
 
 	closeModal(e) {
-		if (e.target === e.currentTarget) {
-			this.goHome();
-		}
+		if (e.target === e.currentTarget) this.goHome();
 	}
 
 	update(field) {
@@ -60,29 +54,17 @@ class SessionForm extends React.Component {
 	animate() {
 		if (this.username.length > 0){
 			this.currentUsername = this.currentUsername + this.username.shift();
+			this.setState({ username: this.currentUsername });
 
-			this.setState({
-				username: this.currentUsername
-			});
 		} else if (this.password.length > 0) {
 			this.currentPass = this.currentPass + this.password.shift();
+			this.setState({ password: this.currentPass });
 
-			this.setState({
-				password: this.currentPass
-			});
 		} else {
-
 			let user = this.state;
 			this.props.processForm({ user });
-			window.clearInterval(this.interval);
-		}
-	}
 
-	navLink() {
-		if (this.props.formType === "login") {
-			return <Link to="/signup">sign up instead</Link>;
-		} else {
-			return <Link to="/login">log in instead</Link>;
+			window.clearInterval(this.interval);
 		}
 	}
 
@@ -104,7 +86,7 @@ class SessionForm extends React.Component {
 				<div className="login-signup-div">
 					Welcome to ParkLender!
 					<br/>
-					Please { this.props.formType } or { this.navLink() }
+					{ this.props.formType }
 					{ this.renderErrors() }
 					<div className="login-form">
 						<br />
@@ -134,4 +116,4 @@ class SessionForm extends React.Component {
 
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
