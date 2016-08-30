@@ -8,32 +8,44 @@ class SessionForm extends React.Component {
 			username: "",
 			password: ""
 		};
+		this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDemo = this.handleDemo.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 		this.animate = this.animate.bind(this);
 	}
 
-	componentDidUpdate(){
+	componentDidUpdate() {
 		this.redirectIfLoggedIn();
 	}
 
-	redirectIfLoggedIn(){
+	redirectIfLoggedIn() {
 		if (this.props.loggedIn){
-			hashHistory.push("/");
+			this.goHome();
 		}
 	}
 
-	update(field){
+	goHome() {
+		hashHistory.push("/");
+	}
+
+	closeModal(e) {
+		if (e.target === e.currentTarget) {
+			this.goHome();
+		}
+	}
+
+	update(field) {
 		return e => { this.setState({[field]: e.currentTarget.value }); };
 	}
 
-	handleSubmit(e){
+	handleSubmit(e) {
 		e.preventDefault(e);
 		const user = this.state;
 		this.props.processForm({ user });
 	}
 
-	handleDemo(e){
+	handleDemo(e) {
 		e.preventDefault();
 		this.setState({ username: "", password: "" });
 
@@ -42,7 +54,7 @@ class SessionForm extends React.Component {
 		this.currentUsername = "";
 		this.currentPass = "";
 
-		this.interval = window.setInterval(this.animate, 100);
+		this.interval = window.setInterval(this.animate, 50);
 	}
 
 	animate() {
@@ -66,7 +78,7 @@ class SessionForm extends React.Component {
 		}
 	}
 
-	navLink(){
+	navLink() {
 		if (this.props.formType === "login") {
 			return <Link to="/signup">sign up instead</Link>;
 		} else {
@@ -74,7 +86,7 @@ class SessionForm extends React.Component {
 		}
 	}
 
-	renderErrors(){
+	renderErrors() {
 		return(
 			<ul>
 				{this.props.errors.map( (error, i) => (
@@ -88,8 +100,8 @@ class SessionForm extends React.Component {
 
 	render() {
 		return (
-			<div className="login-form-container">
-				<form className="login-form-box">
+			<div className="login-signup-modal" onClick={this.closeModal}>
+				<div className="login-signup-div">
 					Welcome to ParkLender!
 					<br/>
 					Please { this.props.formType } or { this.navLink() }
@@ -115,7 +127,7 @@ class SessionForm extends React.Component {
 						<button onClick={this.handleSubmit}>SUBMIT</button>
 						<button onClick={this.handleDemo}>DEMO</button>
 					</div>
-				</form>
+				</div>
 			</div>
 		);
 	}
