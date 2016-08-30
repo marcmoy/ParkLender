@@ -28,6 +28,7 @@
     1: {
       spotId: 1,
       hostId: 1,
+      host: { "USER OBJECT" }
       title: "Driveway near AT&T park",
       description: "10 minute walk from AT&T park...",
       coords: {

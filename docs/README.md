@@ -87,15 +87,15 @@ ParkLender is a parking space sharing app inspired by AirBnB.
 
 **Objective** Search page can show search results, provide a filter feature, and update markers on Google maps component.
 
-- [ ] `Search` component
+- [x] `Search` component
 - Integrate Google Maps API and related components/util
-  - [ ] `SpotsMap`
+  - [x] `SpotsMap`
   - [ ] Style Google Map markers
-- [ ] `SearchContainer` connection
+- [x] `SearchContainer` connection
 - [ ] `FilterForm` component
 - Complete the full redux pattern for "Search Cycles"
-  - [ ] `updateFilter`
-  - [ ] `updateMarkers`
+  - [x] `updateFilter`
+  - [x] `updateMarkers`
 - [ ] Complete the full redux pattern for "Spot Cycles"
 - [ ] Style filter form, map, and markers
 - [ ] Complete styling for Search page
