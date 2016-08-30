@@ -13,3 +13,129 @@
  *= require_tree .
  *= require_self
  */
+
+ /* RESET BEGIN */
+
+ html, head, body, header,
+ nav, h1, a, ul, li, main,
+ section, p, footer, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font-weight: normal;
+   vertical-align: baseline;
+   background: transparent;
+   font-family: -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+      "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+ }
+
+ article, aside, figure, footer,header,
+ nav, section, details, summary {
+   display: block;
+ }
+
+ html {
+ 	box-sizing: border-box;
+   overflow-y: scroll; /* forcing a vertical scrollbar */
+ }
+
+ *,
+ *:before,
+ *:after {
+ 	box-sizing: inherit;
+ }
+
+ img, object, embed {
+   max-width: 100%;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ /* Clearfix */
+ .group:after {
+   content: "";
+   display: block;
+   clear: both;
+ }
+
+/* RESET END */
+
+
+/* NAV STYLE BEGIN */
+
+html, body, main {margin:0;padding:0;height:100%;}
+
+.nav {
+  position: relative;
+  z-index: 2;
+  background: #FF5A5F;
+  height: 61px;
+ }
+
+.nav button {
+  position: relative;
+  padding-left: 19px;
+  opacity: 1;
+  padding-right: 19px;
+  font-size: 14px;
+  border-style: none;
+  color: inherit;
+  background: transparent;
+  height: 61px;
+  padding: 19px;
+  margin: auto;
+}
+
+.nav .left button {
+  float: left;
+}
+
+.nav .right button {
+  float: right;
+}
+
+.nav button:focus {
+  outline:0;
+}
+
+.nav button:hover {
+  cursor: pointer;
+}
+
+.nav-logo {
+  float: left;
+  width: 110px;
+  margin-left: 20px;
+  margin-top: 15px;
+  height: auto;
+  cursor: pointer;
+}
+
+.fixed {
+  position: fixed;
+  background: white;
+  width: 100%;
+  color: black;
+  border-bottom: solid 1px #C4C4C4;
+}
+
+/* NAV STYLE END */
+
+/* SIGN UP */
+
+.signup-form input {
+  width: 100%;
+  height: 40px;
+  padding-top: 10px;
+  padding-right: 35px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
