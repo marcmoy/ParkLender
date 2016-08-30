@@ -33,8 +33,8 @@
   - Hosts can post their parking spot
 - `GET /api/spots/:id` (show)
   - Users can view a spot
-- `PATCH /api/spots/:id` (edit)
-  - Host can edit spot
+- `PATCH /api/spots/:id` (update)
+  - Host can update spot
 - `DELETE /api/users/:id/spots` (destroy)
   - Host can delete spot
 
