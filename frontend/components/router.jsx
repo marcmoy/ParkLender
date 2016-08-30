@@ -2,7 +2,7 @@ import React from 'react';
 //Router
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 //Components
-import App from './app';
+import App from './App';
 // import SearchContainer from './search/search_container';
 import SessionFormContainer from './session_form/session_form_container';
 
