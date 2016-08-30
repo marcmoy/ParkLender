@@ -1,8 +1,11 @@
 ```json
 {
-  currentUser: {
-    id: 1,
-    username: "demo-user"
+  session: {
+    currentUser: {
+      id: 1,
+      username: "demo-user"
+    },
+    errors: []
   },
 
   user: {

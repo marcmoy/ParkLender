@@ -5,7 +5,7 @@ const _defaultFilters = Object.freeze({
   bounds: {}
 });
 
-const FiltersReducer = function(state = _defaultFilters, action){
+const FilterReducer = function(state = _defaultFilters, action){
   if (action.type === FilterConstants.UPDATE_FILTER){
     const newFilter = {[action.filter]: action.value};
     return merge({}, state, newFilter);
@@ -13,3 +13,5 @@ const FiltersReducer = function(state = _defaultFilters, action){
     return state;
   }
 };
+
+export default FilterReducer;
