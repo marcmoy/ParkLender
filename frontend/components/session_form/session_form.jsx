@@ -9,6 +9,8 @@ class SessionForm extends React.Component {
 			password: ""
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleDemo = this.handleDemo.bind(this);
+		this.animate = this.animate.bind(this);
 	}
 
 	componentDidUpdate(){
@@ -26,9 +28,42 @@ class SessionForm extends React.Component {
 	}
 
 	handleSubmit(e){
-		e.preventDefault();
+		e.preventDefault(e);
 		const user = this.state;
-		this.props.processForm({user});
+		this.props.processForm({ user });
+	}
+
+	handleDemo(e){
+		e.preventDefault();
+		this.setState({ username: "", password: "" });
+
+		this.username = ['d','e','m','o','-','u','s','e','r'];
+		this.password = ['p','a','s','s','w','o','r','d'];
+		this.currentUsername = "";
+		this.currentPass = "";
+
+		this.interval = window.setInterval(this.animate, 100);
+	}
+
+	animate() {
+		if (this.username.length > 0){
+			this.currentUsername = this.currentUsername + this.username.shift();
+
+			this.setState({
+				username: this.currentUsername
+			});
+		} else if (this.password.length > 0) {
+			this.currentPass = this.currentPass + this.password.shift();
+
+			this.setState({
+				password: this.currentPass
+			});
+		} else {
+
+			let user = this.state;
+			this.props.processForm({ user });
+			window.clearInterval(this.interval);
+		}
 	}
 
 	navLink(){
@@ -54,7 +89,7 @@ class SessionForm extends React.Component {
 	render() {
 		return (
 			<div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
+				<form className="login-form-box">
 					Welcome to ParkLender!
 					<br/>
 					Please { this.props.formType } or { this.navLink() }
@@ -77,7 +112,8 @@ class SessionForm extends React.Component {
 						</label>
 
 						<br />
-						<input type="submit" value="Submit" />
+						<button onClick={this.handleSubmit}>SUBMIT</button>
+						<button onClick={this.handleDemo}>DEMO</button>
 					</div>
 				</form>
 			</div>
