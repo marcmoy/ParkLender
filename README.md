@@ -1,3 +1,3 @@
 # ParkLender
 
-## Currently in development...
+Currently in development. See [production README](/docs/README.md)
