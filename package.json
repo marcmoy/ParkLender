@@ -33,5 +33,12 @@
     "react-router": "^2.7.0",
     "redux": "^3.5.2",
     "webpack": "^1.13.2"
-  }
+  },
+  "engines": {
+    "node": "6.3.1",
+    "npm": "3.10.3"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/webpack"
+  },
 }
