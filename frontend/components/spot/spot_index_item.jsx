@@ -2,7 +2,7 @@ import React from 'react';
 import {
   MainPhoto, Price, HostPhoto,
   Title, Reviews, Rating
-} from 'spot_index_item_details';
+} from './spot_index_item_details';
 
 const SpotIndexItem = ({ spot }) => (
   <div className='spot-index-item'>

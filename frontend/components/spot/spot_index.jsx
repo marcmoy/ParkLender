@@ -1,5 +1,5 @@
 import React from 'react';
-import SpotIndexItem from './spots_index_item';
+import SpotIndexItem from './spot_index_item';
 
 const SpotIndex = ({ spots }) => {
 
@@ -13,4 +13,5 @@ const SpotIndex = ({ spots }) => {
     </div>
   );
 };
+
 export default SpotIndex;

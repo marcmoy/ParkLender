@@ -23,12 +23,12 @@ export const Price = ({ spot }) => {
 };
 
 export const HostPhoto = ({ spot }) => (
-  <img src='' />
+  <div/>
 );
 
-export const Title = ({ title }) => {
-
-};
+export const Title = ({ title }) => (
+  <div/>
+);
 
 export const Reviews = ({ numReviews }) => (
   <span className='number-reviews'>{numReviews} Reviews</span>

@@ -3,8 +3,9 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 //Components
 import App from './App';
-// import SearchContainer from './search/search_container';
+// import HomePageContainer from './home/home_page_container';
 import SessionContainer from './session_form/view_container';
+import SearchContainer from './search/search_container';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -37,6 +38,7 @@ class AppRouter extends React.Component{
             onEnter={this._redirectIfLoggedIn} />
           <Route path="/signup" component={ SessionContainer }
             onEnter={this._redirectIfLoggedIn} />
+          <Route path="/search" component={ SearchContainer } />
         </Route>
       </Router>
     );
