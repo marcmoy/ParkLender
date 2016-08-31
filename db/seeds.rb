@@ -37,7 +37,7 @@ min_lng = -122.37876892089844
 
 100.times do |i|
   spot = Spot.create(
-    host_id: i,
+    host_id: i + 1,
     title: Faker::Company.buzzword,
     description: Faker::Hipster.sentence(5),
     lat: randomCoord(min_lat, max_lat),
@@ -58,8 +58,8 @@ min_lng = -122.37876892089844
   )
 
   Photo.create(
-      spot_id: spot.id,
-      url: Faker::Placeholdit.image,
-      thumbnail: Faker::Placeholdit.image("50x50")
-    )
+    spot_id: spot.id,
+    url: Faker::Placeholdit.image,
+    thumbnail: Faker::Placeholdit.image("50x50")
+  )
 end
