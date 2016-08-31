@@ -10,6 +10,7 @@ const SpotIndexItem = ({ spot }) => {
       <figure className='spot-photo-container'>
         <SpotPhoto spot={spot} />
         <HostPhoto host={spot.host} />
+        <Price prices={spot.prices} />
       </figure>
 
       <figcaption className='spot-caption-container'>

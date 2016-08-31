@@ -16,6 +16,7 @@
  /* RESET BEGIN */
 
 
+
  html, head, body, header,
  nav, h1, a, ul, li, main,
  section, p, footer, small {
@@ -272,7 +273,7 @@ ul.login-signup-form-error {
 
 aside.spot-index-container {
   overflow: scroll;
-  height: 700px;
+  height: 500px;
 }
 
 .spot-index-item {
@@ -281,5 +282,32 @@ aside.spot-index-container {
 }
 
 .filter-form-container {
-  height: 200px;
+  height: 100px;
+}
+
+
+.spot-index-item {
+    display: block;
+    position: relative;
+}
+
+figure.spot-photo-container {
+    height: auto;
+    width: auto;
+    position: relative;
+}
+
+img.spot-item-host-photo {
+    position: absolute;
+    bottom: calc(100% - 160px);
+    right: 4px;
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+.spot-prices {
+    position: absolute;
+    top: 0;
+    color: red;
 }

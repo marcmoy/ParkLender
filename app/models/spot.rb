@@ -49,9 +49,9 @@ class Spot < ApplicationRecord
 
   def prices
     @prices ||= {
-      hourlyRate: self.hourly_rate,
-      dailyRate: self.daily_rate,
-      monthlyRate: self.monthly_rate
+      hourly: self.hourly_rate,
+      daily: self.daily_rate,
+      monthly: self.monthly_rate
     }
   end
 

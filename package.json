@@ -28,6 +28,7 @@
     "babel-preset-react": "^6.11.1",
     "lodash": "^4.15.0",
     "react": "^15.3.1",
+    "react-date-range": "^0.2.4",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",

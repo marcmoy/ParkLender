@@ -4,27 +4,31 @@ export const SpotPhoto = ({ spot }) => (
   <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
 );
 
-export const Price = ({ spot }) => {
+export const Price = ({ prices }) => {
 
-  const prices = [];
-  if (spot.price.hourly > 0) {
-    prices.push( <li className='hourly'>{spot.price.hourly}/hour</li>);
-  } else if (spot.price.daily > 0) {
-    prices.push( <li className='daily'>{spot.price.daily}/day</li>);
-  } else if (spot.price.monthly > 0) {
-    prices.push( <li className='monthly'>{spot.price.monthly}/month</li>);
+  const priceBlocks = [];
+
+  for (let price in prices) {
+    if (prices[price] > 0) {
+      let cost = prices[price];
+      let text = `$${cost} / ${price}`;
+      let priceBlock = <div className={price} key={price}>{text}</div>;
+      priceBlocks.push(priceBlock);
+    }
   }
 
   return(
     <div className='spot-prices'>
-      {prices}
+      {priceBlocks}
     </div>
   );
 };
 
 export const HostPhoto = ({ host }) => {
   return (
-    <img src={host.thumbnail} className='main-photo' alt={host.username}/>
+    <img src={host.thumbnail}
+      className='spot-item-host-photo'
+      alt={host.username}/>
   );
 };
 
