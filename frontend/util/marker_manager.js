@@ -6,7 +6,7 @@ export default class MarkerManager {
     this._removeMarker = this._removeMarker.bind(this);
   }
 
-  updateMarkers(newSpots) {
+  updateMarkers(newSpots = []) {
     this.newSpots = newSpots;
     this.spotsToAdd().forEach(this._createMarkerFromSpot);
     this._markersToRemove().forEach(this._removeMarker);
@@ -14,7 +14,7 @@ export default class MarkerManager {
 
   spotsToAdd() {
     const currentSpotIds = this.markers.map( marker => marker.spotId );
-    const newSpots = this.spots;
+    const newSpots = this.newSpots;
     const newSpotIds = Object.keys(newSpots);
 
     return newSpotIds.reduce( (collection, spotId) => {

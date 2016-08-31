@@ -2,11 +2,13 @@ import React from 'react';
 import SpotMap from '../map/spot_map';
 import SpotIndex from '../spot/spot_index';
 
-const Search = ({ spots, updateBounds}) => {
+const Search = ({ spots, updateFilter}) => {
   return(
     <div>
-      <SpotMap spots={spots} updateBounds={updateBounds}/>
-      <SpotIndex spots={spots} />
+      <div className="map-container">
+        <SpotMap spots={spots} updateFilter={updateFilter}/>
+        <SpotIndex spots={spots} />
+      </div>
     </div>
   );
 };
