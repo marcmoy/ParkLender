@@ -32,7 +32,6 @@ length        | integer   | not null
 
 **Notes:**
 + For availability, how do I deal with date ranges and time ranges?
-+ How do I store the types of vehicles that are allowed?
 
 ## reviews
 column name   | data type | details
@@ -71,6 +70,7 @@ content     | text      | not null
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-spot_id     | integer   | not null, foreign key (references spots), indexed
+user_id     | integer   | foreign key (references users), indexed
+spot_id     | integer   | foreign key (references spots), indexed
 url         | string    | not null, unique
 thumbnail   | string    | not null, unique

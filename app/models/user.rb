@@ -1,6 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
 
-	attr_reader :password
+	attr_reader :password, :coverPhotoUrl, :coverPhotoThumbnail
 
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true
@@ -8,6 +20,9 @@ class User < ApplicationRecord
 
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
+
+	has_one :spot, primary_key: :id, foreign_key: :host_id, class_name: :Spot
+	has_one :photo
 
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)

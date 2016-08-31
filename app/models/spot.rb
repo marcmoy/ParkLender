@@ -1,0 +1,88 @@
+# == Schema Information
+#
+# Table name: spots
+#
+#  id           :integer          not null, primary key
+#  host_id      :integer          not null
+#  title        :string(48)       not null
+#  description  :text             not null
+#  lat          :float            not null
+#  lng          :float            not null
+#  hourly_rate  :float            default(0.0)
+#  daily_rate   :float            default(0.0)
+#  monthly_rate :float            default(0.0)
+#  address      :string
+#  city         :string
+#  state        :string
+#  country      :string
+#  width        :float            default(0.0), not null
+#  length       :float            default(0.0), not null
+#  car          :boolean          default(FALSE)
+#  motorcycle   :boolean          default(FALSE)
+#  van          :boolean          default(FALSE)
+#  truck        :boolean          default(FALSE)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+class Spot < ApplicationRecord
+  validates( :host_id, :title, :description, :lat, :lng,
+    :hourly_rate, :daily_rate, :monthly_rate,
+    :address, :city, :state, :country, :width, :length,
+    presence: true )
+
+  attr_reader :prices, :allowedVehicles, :location, :size
+
+  has_one :photo
+
+  belongs_to :host,
+    primary_key: :id,
+    foreign_key: :host_id,
+    class_name: :User
+
+  def self.in_bounds(bounds)
+    self.where("lat < ?", bounds[:northEast][:lat])
+        .where("lat > ?", bounds[:southWest][:lat])
+        .where("lng > ?", bounds[:southWest][:lng])
+        .where("lng < ?", bounds[:northEast][:lng])
+  end
+
+  def prices
+    @prices ||= {
+      hourlyRate: self.hourly_rate,
+      dailyRate: self.daily_rate,
+      monthlyRate: self.monthly_rate
+    }
+  end
+
+  def allowedVehicles
+    @allowedVehicles ||= allowed_vehicles
+  end
+
+  def allowed_vehicles
+    vehicles = []
+    vehicles << "car" if car
+    vehicles << "motorcycle" if motorcycle
+    vehicles << "van" if van
+    vehicles << "truck" if truck
+    vehicles
+  end
+
+  def location
+    @location ||= {
+      address: address,
+      city: city,
+      state: state,
+      country: country
+    }
+  end
+
+  def size
+    @size ||= { width: width, length: length }
+  end
+
+  def photoUrl
+    photo.url
+  end
+
+end

@@ -7,4 +7,59 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: 'marc', password: 'password')
+Photo.create(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 User.create(username: 'demo-user', password: 'password')
+Photo.create(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+
+100.times do
+  user = User.create(username: Faker::Internet.user_name, password: 'password')
+  Photo.create(
+      user_id: user.id,
+      url: Faker::Avatar.image,
+      thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
+    )
+end
+
+widths = (6..20).select{|num| num.even?}
+lengths = (12..30).select{|num| num.even?}
+
+def randomCoord (min, max)
+    rand * (max-min) + min
+end
+
+prices = (0..100).select{|num| num % 5 == 0}
+
+max_lat = 37.78417678837021
+min_lat = 37.72761122164702
+
+max_lng = -122.50545501708984
+min_lng = -122.37876892089844
+
+100.times do |i|
+  spot = Spot.create(
+    host_id: i,
+    title: Faker::Company.catch_phrase,
+    description: Faker::Hipster.sentence,
+    lat: randomCoord(min_lat, max_lat),
+    lng: randomCoord(min_lng, max_lng),
+    hourly_rate: prices.sample,
+    daily_rate: prices.sample,
+    monthly_rate: prices.sample,
+    address: Faker::Address.street_address,
+    city: 'San Francisco',
+    state: 'CA',
+    country: 'US',
+    width: widths.sample,
+    length: lengths.sample,
+    car: Faker::Boolean.boolean,
+    motorcycle: Faker::Boolean.boolean,
+    van: Faker::Boolean.boolean,
+    truck: Faker::Boolean.boolean
+  )
+
+  Photo.create(
+      spot_id: spot.id,
+      url: Faker::Placeholdit.image,
+      thumbnail: Faker::Placeholdit.image("50x50")
+    )
+end
