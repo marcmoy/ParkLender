@@ -51,6 +51,7 @@ end
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor' # error feedback
+  gem 'faker' # for sample seed data
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
