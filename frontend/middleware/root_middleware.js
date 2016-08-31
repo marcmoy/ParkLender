@@ -2,10 +2,13 @@ import { applyMiddleware } from 'redux';
 // Middlewares
 import SessionMiddleware from '../middleware/session_middleware';
 import SpotsMiddleware from '../middleware/spots_middleware';
+import createLogger from 'redux-logger';
+const loggerMiddleware = createLogger();
 
 const RootMiddleware = applyMiddleware(
   SessionMiddleware,
-  SpotsMiddleware
+  SpotsMiddleware,
+  loggerMiddleware
 );
 
 export default RootMiddleware;
