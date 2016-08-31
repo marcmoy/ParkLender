@@ -1,8 +1,10 @@
 import React from 'react';
 
-export const MainPhoto = ({ spot }) => (
-  <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
-);
+export const SpotPhoto = ({ spot }) => {
+  return (
+    <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
+  );
+};
 
 export const Price = ({ spot }) => {
 
@@ -22,12 +24,15 @@ export const Price = ({ spot }) => {
   );
 };
 
-export const HostPhoto = ({ spot }) => (
-  <div/>
-);
+export const HostPhoto = ({ host }) => {
+  debugger;
+  return (
+    <div/>
+  );
+};
 
 export const Title = ({ title }) => (
-  <div/>
+  <h1>{title}</h1>
 );
 
 export const Reviews = ({ numReviews }) => (

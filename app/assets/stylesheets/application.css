@@ -15,6 +15,7 @@
 
  /* RESET BEGIN */
 
+
  html, head, body, header,
  nav, h1, a, ul, li, main,
  section, p, footer, small {
@@ -251,8 +252,34 @@ ul.login-signup-form-error {
 }
 
 .map-container {
-  width: 700px;
-  height: 700px;
-  color: #484848;
+  position: absolute;
+  right: 0px;
+  width: 40%;
+  height: 100%;
+  display: block;
   float: right;
+}
+
+/* SEARCH RESULTS */
+
+.search-results-container {
+  width: 60%;
+  overflow: scroll;
+  float: left;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+aside.spot-index-container {
+  overflow: scroll;
+  height: 700px;
+}
+
+.spot-index-item {
+  float: left;
+  width: 50%;
+}
+
+.filter-form-container {
+  height: 200px;
 }
