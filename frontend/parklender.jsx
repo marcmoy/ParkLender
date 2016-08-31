@@ -5,16 +5,21 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 //Actions
 import configureStore from './store/store';
+import {requestSpots} from './actions/spots_actions';
+import {updateFilter} from './actions/filter_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
     const initialState = {session: {currentUser: window.currentUser}};
-    store = configureStore(initialState);
+    store = window.Store = configureStore(initialState);
   } else {
-    store = configureStore();
+    store = window.Store = configureStore();
   }
+
+  window.updateFilter = updateFilter;
+  window.requestSpots = requestSpots;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);

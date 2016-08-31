@@ -8,6 +8,7 @@ class NavBar extends React.Component {
     this.renderLogin = this.renderLogin.bind(this);
     this.renderSignUp = this.renderSignUp.bind(this);
     this.goHome = this.goHome.bind(this);
+    this.goSearch = this.goSearch.bind(this);
   }
 
   sessionLinks() {
@@ -36,6 +37,10 @@ class NavBar extends React.Component {
     this.props.router.push("/");
   }
 
+  goSearch() {
+    this.props.router.push("/search");
+  }
+
   renderLogin() {
     this.props.router.push("/login");
   }
@@ -52,8 +57,7 @@ class NavBar extends React.Component {
         </div>
 
         <div className="nav-links left">
-          <button>List</button>
-          <button>Find</button>
+          <button onClick={ this.goSearch }>Search</button>
         </div>
 
         <div className="nav-links right">

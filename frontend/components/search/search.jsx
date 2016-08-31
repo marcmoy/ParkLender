@@ -7,10 +7,13 @@ const Search = ({ spots, updateFilter}) => {
     <div>
       <div className="map-container">
         <SpotMap spots={spots} updateFilter={updateFilter}/>
-        <SpotIndex spots={spots} />
       </div>
     </div>
   );
 };
 
 export default Search;
+
+// <div className="spots-index-container">
+//   <SpotIndex spots={spots} />
+// </div>

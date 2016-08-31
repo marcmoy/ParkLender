@@ -251,7 +251,8 @@ ul.login-signup-form-error {
 }
 
 .map-container {
-  width: 480px;
-  height: 340px;
+  width: 700px;
+  height: 700px;
   color: #484848;
+  float: right;
 }

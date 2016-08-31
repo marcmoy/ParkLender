@@ -9,6 +9,9 @@ const mapDefault = {
 };
 
 class SpotMap extends React.Component{
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     this.map = new google.maps.Map(this.refs.map, mapDefault);
