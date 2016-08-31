@@ -82,7 +82,7 @@ class Spot < ApplicationRecord
   end
 
   def photoUrl
-    photo.url
+    self.photo.url
   end
 
 end
