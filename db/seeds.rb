@@ -38,8 +38,8 @@ min_lng = -122.37876892089844
 100.times do |i|
   spot = Spot.create(
     host_id: i,
-    title: Faker::Company.catch_phrase,
-    description: Faker::Hipster.sentence,
+    title: Faker::Hipster.sentence(3),
+    description: Faker::Hipster.sentence(5),
     lat: randomCoord(min_lat, max_lat),
     lng: randomCoord(min_lng, max_lng),
     hourly_rate: prices.sample,
