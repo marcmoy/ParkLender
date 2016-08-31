@@ -1,10 +1,8 @@
 import React from 'react';
 
-export const SpotPhoto = ({ spot }) => {
-  return (
-    <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
-  );
-};
+export const SpotPhoto = ({ spot }) => (
+  <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
+);
 
 export const Price = ({ spot }) => {
 
@@ -25,9 +23,8 @@ export const Price = ({ spot }) => {
 };
 
 export const HostPhoto = ({ host }) => {
-  debugger;
   return (
-    <div/>
+    <img src={host.thumbnail} className='main-photo' alt={host.username}/>
   );
 };
 
