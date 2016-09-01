@@ -24,8 +24,8 @@ ActiveRecord::Base.transaction do
       )
     rand(1..50).times do |n|
       Review.create!(
-        author_id: n + 1,
-        user_id: user.id,
+        author_id: user.id,
+        user_id: n + 1,
         rating: rand(1..5),
         content: Faker::Company::buzzword
       )

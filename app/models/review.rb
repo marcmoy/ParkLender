@@ -19,8 +19,7 @@ class Review < ApplicationRecord
   belongs_to :author,
     primary_key: :id,
     foreign_key: :author_id,
-    class_name: :User,
-    optional: true
+    class_name: :User
 
   belongs_to :spot, optional: true
   belongs_to :user, optional: true
