@@ -2,7 +2,6 @@ class Api::SpotsController < ApplicationController
   # before_action :require_logged_in, only: [:create]
   def index
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
-
     # if (params[:minSeating] && params[:maxSeating])
     #   spots = spots.where(seating: seating_range)
     # end

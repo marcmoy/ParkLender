@@ -20,8 +20,8 @@ export default ({getState, dispatch}) => next => action => {
   const result = next(action);
   switch(action.type){
     case SpotConstants.REQUEST_SPOTS:
-      const filters = getState().filters;
-      fetchSpots(filters, spotsSuccess);
+      const filter = getState().filter;
+      fetchSpots(filter, spotsSuccess);
       break;
     case SpotConstants.REQUEST_SPOT:
       fetchSpot(action.id, spotSuccess);

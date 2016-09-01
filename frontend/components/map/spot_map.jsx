@@ -5,7 +5,7 @@ import MarkerManager from '../../util/marker_manager';
 
 const mapDefault = {
   center: { lat: 37.7758, lng: -122.435 }, // center of SF
-  zoom: 13
+  zoom: 20
 };
 
 class SpotMap extends React.Component{
