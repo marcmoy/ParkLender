@@ -34,11 +34,7 @@ class Spot < ApplicationRecord
   attr_reader :prices, :allowedVehicles,
     :location, :size, :rating
 
-  has_one :photo,
-    primary_key: :id,
-    foreign_key: :spot_id,
-    class_name: :SpotPhoto
-
+  has_one :photo
   has_many :reviews
 
   belongs_to :host,

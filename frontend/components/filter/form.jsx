@@ -1,12 +1,12 @@
 const React = require('react');
 
-const _handleChange = (filter, updateFilter) => (
+const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
 );
 
-const FilterForm = ({minSeating, maxSeating, updateFilter}) => (
+const FilterForm = ({filter, updateFilter}) => (
   <div className='filter-form-container'>
-    <input type="text" placeholder="Where to?" />
+    <LocationInput handleChange={handleChange} />
     <div className='price-buttons'>
       Length of Stay
       Hourly <input type="radio" />

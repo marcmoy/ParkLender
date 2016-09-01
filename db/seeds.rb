@@ -11,13 +11,13 @@
 ActiveRecord::Base.transaction do
 
   User.create!(username: 'marc', password: 'password')
-  UserPhoto.create!(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+  Photo.create!(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
   User.create!(username: 'demo-user', password: 'password')
-  UserPhoto.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+  Photo.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 
   50.times do
     user = User.create!(username: Faker::Internet.user_name, password: 'password')
-    UserPhoto.create!(
+    Photo.create!(
         user_id: user.id,
         url: Faker::Avatar.image,
         thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
@@ -71,7 +71,7 @@ ActiveRecord::Base.transaction do
       truck: Faker::Boolean.boolean
     )
 
-    SpotPhoto.create!(
+    Photo.create!(
       spot_id: spot.id,
       url: Faker::Placeholdit.image,
       thumbnail: Faker::Placeholdit.image("50x50")
