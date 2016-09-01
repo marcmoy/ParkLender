@@ -1,6 +1,6 @@
 json.extract! spot, :id, :title, :description,
   :lat, :lng, :prices, :location, :photo,
-  :reviews, :avgRating, :numReviews
+  :reviews, :rating, :numReviews
 
 json.host do
   json.thumbnail spot.host.photo.thumbnail

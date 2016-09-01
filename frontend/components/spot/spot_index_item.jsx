@@ -15,15 +15,11 @@ const SpotIndexItem = ({ spot }) => {
 
       <figcaption className='spot-caption-container'>
         <Title title={spot.title} />
+        <Reviews numReviews={spot.reviews.length} />
+        <Rating spot={spot} rating={spot.rating} />
       </figcaption>
     </div>
   );
 };
 
 export default SpotIndexItem;
-
-
-
-
-// <Reviews numReviews={spot.reviews.length} />
-// <Rating rating={spot.rating} />

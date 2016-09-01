@@ -32,7 +32,7 @@ class Spot < ApplicationRecord
     presence: true )
 
   attr_reader :prices, :allowedVehicles,
-    :location, :size, :average_rating
+    :location, :size, :rating
 
   has_one :photo
   has_many :reviews
@@ -57,15 +57,15 @@ class Spot < ApplicationRecord
     }
   end
 
-  def avgRating
-    @average_rating ||= calc_avg_rating
+  def rating
+    @rating ||= calc_rating
   end
 
   def numReviews
     @numReviews ||= reviews.count
   end
 
-  def calc_avg_rating
+  def calc_rating
     sum = self.reviews.reduce(0){|sum,review| sum += review.rating}
     avg = sum / self.reviews.count.to_f
     (avg * 2).round / 2.0 # rounds to nearest 0.5 decimal
