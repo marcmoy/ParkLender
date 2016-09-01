@@ -13,7 +13,7 @@ Photo.create(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.imag
 
 50.times do
   user = User.create(username: Faker::Internet.user_name, password: 'password')
-  Photo.create(
+  Photo.create!(
       user_id: user.id,
       url: Faker::Avatar.image,
       thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
@@ -67,7 +67,7 @@ ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
     truck: Faker::Boolean.boolean
   )
 
-  Photo.create(
+  Photo.create!(
     spot_id: spot.id,
     url: Faker::Placeholdit.image,
     thumbnail: Faker::Placeholdit.image("50x50")
