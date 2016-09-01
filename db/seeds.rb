@@ -1,25 +1,27 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the rails db:seed command (or create!d alongside the database with db:setup).
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
 
-User.create(username: 'marc', password: 'password')
-Photo.create(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
-User.create(username: 'demo-user', password: 'password')
-Photo.create(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+# add transaction
+
+User.create!(username: 'marc', password: 'password')
+Photo.create!(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+User.create!(username: 'demo-user', password: 'password')
+Photo.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 
 50.times do
-  user = User.create(username: Faker::Internet.user_name, password: 'password')
+  user = User.create!(username: Faker::Internet.user_name, password: 'password')
   Photo.create!(
       user_id: user.id,
       url: Faker::Avatar.image,
       thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
     )
   rand(1..50).times do |n|
-    Review.create(
+    Review.create!(
       author_id: n + 1,
       user_id: user.id,
       rating: rand(1..5),
@@ -46,7 +48,7 @@ min_lng = -122.37876892089844
 ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
 
 50.times do |i|
-  spot = Spot.create(
+  spot = Spot.create!(
     host_id: i + 1,
     title: Faker::Company.buzzword,
     description: Faker::Hipster.sentence(5),
@@ -74,7 +76,7 @@ ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
   )
 
   rand(1..50).times do |n|
-    Review.create(
+    Review.create!(
       author_id: n + 1,
       spot_id: spot.id,
       rating: ratings.sample,
