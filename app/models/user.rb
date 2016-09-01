@@ -21,7 +21,11 @@ class User < ApplicationRecord
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
-	has_one :photo
+	has_one :photo,
+		primary_key: :id,
+		foreign_key: :user_id,
+		class_name: :UserPhoto
+
 	has_many :reviews
 
 	has_one :spot,

@@ -34,13 +34,18 @@ class Spot < ApplicationRecord
   attr_reader :prices, :allowedVehicles,
     :location, :size, :rating
 
-  has_one :photo
+  has_one :photo,
+    primary_key: :id,
+    foreign_key: :spot_id,
+    class_name: :SpotPhoto
+
   has_many :reviews
 
   belongs_to :host,
     primary_key: :id,
     foreign_key: :host_id,
-    class_name: :User
+    class_name: :User,
+    optional: true
 
   def self.in_bounds(bounds)
     self.where("lat < ?", bounds[:northEast][:lat])
