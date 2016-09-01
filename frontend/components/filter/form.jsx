@@ -1,4 +1,5 @@
 const React = require('react');
+import LocationInput from './input_fields/location';
 
 const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)

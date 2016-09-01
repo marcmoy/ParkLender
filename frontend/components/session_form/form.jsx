@@ -80,7 +80,8 @@ class SessionForm extends React.Component {
 	render() {
 
 		return (
-			<section className="login-signup-form group">
+			<form className="login-signup-form group"
+				onSubmit={this.handleSubmit}>
 
 				<input type="text"
 					className="login-input"
@@ -100,13 +101,13 @@ class SessionForm extends React.Component {
 				<br />
 				<div className="login-signup-buttons-div">
 					<button
-						className="submit-button"
-						onClick={this.handleSubmit}>{this.submitText()}</button>
+						type="submit"
+						className="submit-button">{this.submitText()}</button>
 					<button
 						className="demo-button"
 						onClick={this.handleDemo}>DEMO</button>
 				</div>
-			</section>
+			</form>
 		);
 	}
 }
