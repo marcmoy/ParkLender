@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const SpotPhoto = ({ spot }) => (
-  <img src={spot.photo.url} className='main-photo' alt={spot.title}/>
+  <img src={spot.photoUrl} className='main-photo' alt={spot.title}/>
 );
 
 export const Price = ({ prices }) => {
