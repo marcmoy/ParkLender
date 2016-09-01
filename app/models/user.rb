@@ -21,8 +21,18 @@ class User < ApplicationRecord
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
-	has_one :spot, primary_key: :id, foreign_key: :host_id, class_name: :Spot
 	has_one :photo
+	has_many :reviews
+
+	has_one :spot,
+		primary_key: :id,
+		foreign_key: :host_id,
+		class_name: :Spot
+
+	has_many :authored_reviews,
+		primary_key: :id,
+		foreign_key: :author_id,
+		class_name: :Review
 
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)
@@ -44,6 +54,18 @@ class User < ApplicationRecord
 		ensure_session_token_uniqueness
 		self.save
 		self.session_token
+	end
+
+	def spotReviews
+		self.authored_reviews.where.not(spot_id: nil)
+	end
+
+	def authoredReviews
+		authored_reviews
+	end
+
+	def otherUserReviews
+		self.authored_reviews.where.not(user_id: nil)
 	end
 
 	private

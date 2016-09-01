@@ -31,9 +31,11 @@ class Spot < ApplicationRecord
     :address, :city, :state, :country, :width, :length,
     presence: true )
 
-  attr_reader :prices, :allowedVehicles, :location, :size
+  attr_reader :prices, :allowedVehicles,
+    :location, :size, :average_rating
 
   has_one :photo
+  has_many :reviews
 
   belongs_to :host,
     primary_key: :id,
@@ -53,6 +55,20 @@ class Spot < ApplicationRecord
       daily: self.daily_rate,
       monthly: self.monthly_rate
     }
+  end
+
+  def avgRating
+    @average_rating ||= calc_avg_rating
+  end
+
+  def numReviews
+    @numReviews ||= reviews.count
+  end
+
+  def calc_avg_rating
+    sum = self.reviews.reduce(0){|sum,review| sum += review.rating}
+    avg = sum / self.reviews.count.to_f
+    (avg * 2).round / 2.0 # rounds to nearest 0.5 decimal
   end
 
   def allowedVehicles
@@ -79,10 +95,6 @@ class Spot < ApplicationRecord
 
   def size
     @size ||= { width: width, length: length }
-  end
-
-  def photoUrl
-    self.photo.url
   end
 
 end

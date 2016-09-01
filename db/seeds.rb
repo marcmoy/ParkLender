@@ -18,6 +18,14 @@ Photo.create(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.imag
       url: Faker::Avatar.image,
       thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
     )
+  rand(1..100).times do |n|
+    Review.create(
+      author_id: n + 1,
+      user_id: user.id,
+      rating: rand(1..5),
+      content: Faker::Company::buzzword
+    )
+  end
 end
 
 widths = (6..20).select{|num| num.even?}
@@ -34,6 +42,8 @@ min_lat = 37.72761122164702
 
 max_lng = -122.50545501708984
 min_lng = -122.37876892089844
+
+ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
 
 100.times do |i|
   spot = Spot.create(
@@ -62,4 +72,13 @@ min_lng = -122.37876892089844
     url: Faker::Placeholdit.image,
     thumbnail: Faker::Placeholdit.image("50x50")
   )
+
+  rand(1..100).times do |n|
+    Review.create(
+      author_id: n + 1,
+      spot_id: spot.id,
+      rating: ratings.sample,
+      content: Faker::Hipster.sentence(5)
+    )
+  end
 end
