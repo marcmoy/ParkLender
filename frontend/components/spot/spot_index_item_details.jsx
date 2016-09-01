@@ -46,28 +46,28 @@ export const Reviews = ({ numReviews }) => {
 export const Rating = ({ spot, rating }) => {
   let stars = [];
 
-  for (let i = 0; i < rating ; i++) {
+  for (let i = 0; i < 5 ; i++) {
     stars.push(
-      <img src='https://cloudinary.com/console/media_library#/dialog/image/upload/gold-star_rtqymr'
+      <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gold-star_rtqymr.png'
         className="gold star" key={i + 1} />
     );
   }
 
-  if (rating % 1 > 0) {
-    stars.push(
-      <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/half-star_f9d73g.png'
-        className="half star" key={rating} />
-    );
-  }
+  // if (rating % 1 > 0) {
+  //   stars.push(
+  //     <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/half-star_f9d73g.png'
+  //       className="half star" key={rating} />
+  //   );
+  // }
 
-  let j = stars.length + 1;
-  while (stars.length < 5) {
-    stars.push(
-      <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gray-star_nlnsfa.png'
-        className="gray star" key={j} />
-    );
-    j++;
-  }
+  // let j = stars.length + 1;
+  // while (stars.length < 5) {
+  //   stars.push(
+  //     <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gray-star_nlnsfa.png'
+  //       className="gray star" key={j} />
+  //   );
+  //   j++;
+  // }
 
   return(
     <div className='stars-container'>

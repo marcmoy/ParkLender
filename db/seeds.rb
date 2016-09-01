@@ -11,14 +11,14 @@ Photo.create(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.imag
 User.create(username: 'demo-user', password: 'password')
 Photo.create(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 
-100.times do
+50.times do
   user = User.create(username: Faker::Internet.user_name, password: 'password')
   Photo.create(
       user_id: user.id,
       url: Faker::Avatar.image,
       thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
     )
-  rand(1..100).times do |n|
+  rand(1..50).times do |n|
     Review.create(
       author_id: n + 1,
       user_id: user.id,
@@ -45,7 +45,7 @@ min_lng = -122.37876892089844
 
 ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
 
-100.times do |i|
+50.times do |i|
   spot = Spot.create(
     host_id: i + 1,
     title: Faker::Company.buzzword,
@@ -73,7 +73,7 @@ ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
     thumbnail: Faker::Placeholdit.image("50x50")
   )
 
-  rand(1..100).times do |n|
+  rand(1..50).times do |n|
     Review.create(
       author_id: n + 1,
       spot_id: spot.id,
