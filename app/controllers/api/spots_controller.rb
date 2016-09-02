@@ -39,4 +39,8 @@ class Api::SpotsController < ApplicationController
   def bounds
     params[:bounds]
   end
+
+  def prices
+    params[:prices]
+  end
 end

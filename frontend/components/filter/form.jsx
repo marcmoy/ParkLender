@@ -1,4 +1,5 @@
 const React = require('react');
+import PriceType from './input_fields/price_type';
 
 const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
@@ -6,13 +7,12 @@ const handleChange = (filter, updateFilter) => (
 
 const FilterForm = ({filter, updateFilter, updateMap}) => (
   <div className='filter-form-container'>
+
     <input type="text" id="autocomplete-search-field" placeholder="Where to?" />
-    <div className='price-buttons'>
-      Length of Stay
-      Hourly <input type="radio" />
-      Daily<input type="radio" />
-      Monthly<input type="radio" />
-    </div>
+
+    <PriceType filter={filter} updateFilter={updateFilter}
+      handleChange={handleChange} />
+
     <div className='date-filter'>
       Date
       <input type="text" placeholder="Check In" />
