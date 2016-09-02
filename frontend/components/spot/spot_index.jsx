@@ -7,8 +7,9 @@ class SpotIndex extends React.Component {
 
   constructor(props) {
     super(props);
+    this.initial = true;
   }
-  
+
   componentDidMount() {
     if (isEmpty(this.props.spots)) addEmptyMessage();
   }
