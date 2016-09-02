@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
 import MarkerManager from '../../util/marker_manager';
+import WhereTo from '../where_to/where_to';
 
 class SpotMap extends React.Component{
   constructor(props) {
@@ -9,18 +10,16 @@ class SpotMap extends React.Component{
   }
 
   componentDidMount() {
-    this.map = new google.maps.Map(this.refs.map, this.props.mapOpts);
+    console.log('here');
+    const map = document.getElementById('map');
+    this.map = new google.maps.Map(map, this.props.mapOpts);
     this.markers = new MarkerManager(this.map);
     this._bindBoundsListener();
+    console.log(this.map);
   }
 
   componentDidUpdate(){
     this.markers.updateMarkers(this.props.spots);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.map.setCenter(nextProps.mapOpts.center);
-    this.map.setZoom(nextProps.mapOpts.zoom);
   }
 
   _bindBoundsListener() {
@@ -29,19 +28,16 @@ class SpotMap extends React.Component{
       const bounds = {
         northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west } };
-
-      let center = {
-        lat: this.map.center.lat(),
-        lng: this.map.center.lng()
-      };
-      
-      this.props.updateMap(center, this.map.zoom);
       this.props.updateFilter('bounds', bounds);
     });
   }
 
   render() {
-    return <div className="map" ref="map"></div>;
+    return (
+      <div className="map" id="map">
+        <WhereTo map={this.map} updateMap={this.props.updateMap} />
+      </div>
+    );
   }
 }
 

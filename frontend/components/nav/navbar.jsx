@@ -55,6 +55,8 @@ class NavBar extends React.Component {
         <div className="nav-logo" onClick={ this.goHome }>
           LOGO
         </div>
+        
+        <input type="text" id="autocomplete-search-field" placeholder="Where to?" />
 
         <div className="nav-links left">
           <button onClick={ this.goSearch }>Search</button>

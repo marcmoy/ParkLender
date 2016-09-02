@@ -1,5 +1,4 @@
 const React = require('react');
-import LocationInput from './input_fields/location';
 
 const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
@@ -7,7 +6,6 @@ const handleChange = (filter, updateFilter) => (
 
 const FilterForm = ({filter, updateFilter, updateMap}) => (
   <div className='filter-form-container'>
-    <LocationInput handleChange={handleChange} updateMap={updateMap}/>
     <div className='price-buttons'>
       Length of Stay
       Hourly <input type="radio" />
