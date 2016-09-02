@@ -1,30 +1,35 @@
 import React from 'react';
 import SpotIndexItem from './spot_index_item';
+import { isEmpty } from 'lodash';
+import { addEmptyMessage } from '../../util/loader';
 
-const SpotIndex = ({ spots }) => {
+class SpotIndex extends React.Component {
 
-  let spotItems = [];
-  for (let id in spots) {
-    if (id) {
-      let spot = spots[id];
-      spotItems.push(<SpotIndexItem spot={spot} key={spot.id}/>);
-    }
+  constructor(props) {
+    super(props);
+  }
+  
+  componentDidMount() {
+    if (isEmpty(this.props.spots)) addEmptyMessage();
   }
 
-  if (spotItems.length === 0) {
-    spotItems.push(
-      <div className="no-spots-container">
-        <h1>Sorry, no spaces were found here</h1>
-        <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472793127/sad-face_vhh0oo.png'/>
-      </div>
+  render() {
+
+    let spotItems = [];
+    for (let id in this.props.spots) {
+      if (id) {
+        let spot = this.props.spots[id];
+        spotItems.push(<SpotIndexItem spot={spot} key={spot.id}/>);
+      }
+    }
+
+    return (
+      <aside className='spot-index-container'>
+        {spotItems}
+        <div className="load-message"></div>
+      </aside>
     );
   }
-
-  return (
-    <aside className='spot-index-container'>
-      {spotItems}
-    </aside>
-  );
-};
+}
 
 export default SpotIndex;

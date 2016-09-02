@@ -12,7 +12,7 @@ import { requestSpots,
        } from '../actions/spots_actions';
 // Filter Constants
 import { FilterConstants } from '../actions/filter_actions';
-
+import { addSpinner } from '../util/loader';
 
 export default ({getState, dispatch}) => next => action => {
   const spotsSuccess = data => dispatch(receiveSpots(data));
@@ -21,6 +21,7 @@ export default ({getState, dispatch}) => next => action => {
   switch(action.type){
     case SpotConstants.REQUEST_SPOTS:
       const filter = getState().filter;
+      addSpinner();
       fetchSpots(filter, spotsSuccess);
       break;
     case SpotConstants.REQUEST_SPOT:
