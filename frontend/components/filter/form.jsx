@@ -1,5 +1,8 @@
 const React = require('react');
 import PriceType from './input_fields/price_type';
+import DateRange from './input_fields/date_range';
+import TimeRange from './input_fields/time_range';
+import DateField from 'react-date-picker';
 
 const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
@@ -13,15 +16,7 @@ const FilterForm = ({filter, updateFilter, updateMap}) => (
     <PriceType filter={filter} updateFilter={updateFilter}
       handleChange={handleChange} />
 
-    <div className='date-filter'>
-      Date
-      <input type="text" placeholder="Check In" />
-      <input type="text" placeholder="Check Out" />
-    </div>
     <div className='time-filter'>
-      Time
-      <input type="text" placeholder="Start Time" />
-      <input type="text" placeholder="Start Time" />
     </div>
   </div>
 );
