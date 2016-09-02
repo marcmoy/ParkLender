@@ -5,6 +5,9 @@ class Api::SpotsController < ApplicationController
     # if (params[:minSeating] && params[:maxSeating])
     #   spots = spots.where(seating: seating_range)
     # end
+    @price_filter = params[:prices] || ["hourly_rate","daily_rate","monthly_rate"]
+    spots = apply_price_filters(spots, @price_filter)
+
     @spots = spots
     render :index
   end
@@ -42,5 +45,12 @@ class Api::SpotsController < ApplicationController
 
   def prices
     params[:prices]
+  end
+
+  def apply_price_filters(spots, filters)
+    filters.each do |price|
+      spots = spots.where("#{price} > ?", 0)
+    end
+    spots
   end
 end

@@ -57,6 +57,15 @@ class Spot < ApplicationRecord
     }
   end
 
+  def rates(prices)
+    return self.prices if prices.empty?
+    rates = {}
+    prices.each do |price|
+      rates[price] = self.send(price)
+    end
+    rates
+  end
+
   def rating
     @rating ||= calc_rating
   end

@@ -35,7 +35,6 @@ class WhereTo extends React.Component{
   }
 
   render() {
-    console.log(this.map);
     return(
       <div className="empty whereto" />
     );

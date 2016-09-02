@@ -10,12 +10,10 @@ class SpotMap extends React.Component{
   }
 
   componentDidMount() {
-    console.log('here');
     const map = document.getElementById('map');
     this.map = new google.maps.Map(map, this.props.mapOpts);
     this.markers = new MarkerManager(this.map);
     this._bindBoundsListener();
-    console.log(this.map);
   }
 
   componentDidUpdate(){
