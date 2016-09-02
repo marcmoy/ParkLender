@@ -3,18 +3,13 @@ import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
 import MarkerManager from '../../util/marker_manager';
 
-const mapDefault = {
-  center: { lat: 37.7758, lng: -122.435 }, // center of SF
-  zoom: 20
-};
-
 class SpotMap extends React.Component{
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.map = new google.maps.Map(this.refs.map, mapDefault);
+    this.map = new google.maps.Map(this.refs.map, this.props.mapOpts);
     this.markers = new MarkerManager(this.map);
     this._bindBoundsListener();
   }
@@ -23,12 +18,24 @@ class SpotMap extends React.Component{
     this.markers.updateMarkers(this.props.spots);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.map.setCenter(nextProps.mapOpts.center);
+    this.map.setZoom(nextProps.mapOpts.zoom);
+  }
+
   _bindBoundsListener() {
     google.maps.event.addListener(this.map, 'idle', () => {
       const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {
         northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west } };
+
+      let center = {
+        lat: this.map.center.lat(),
+        lng: this.map.center.lng()
+      };
+      
+      this.props.updateMap(center, this.map.zoom);
       this.props.updateFilter('bounds', bounds);
     });
   }

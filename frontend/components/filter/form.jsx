@@ -5,9 +5,9 @@ const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
 );
 
-const FilterForm = ({filter, updateFilter}) => (
+const FilterForm = ({filter, updateFilter, updateMap}) => (
   <div className='filter-form-container'>
-    <LocationInput handleChange={handleChange} />
+    <LocationInput handleChange={handleChange} updateMap={updateMap}/>
     <div className='price-buttons'>
       Length of Stay
       Hourly <input type="radio" />
