@@ -40,7 +40,8 @@
 
  html {
  	box-sizing: border-box;
-   overflow-y: scroll; /* forcing a vertical scrollbar */
+  overflow-y: scroll; /* forcing a vertical scrollbar */
+  font-family: 'Nunito', sans-serif;
  }
 
  *,
