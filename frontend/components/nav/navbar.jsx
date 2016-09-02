@@ -14,16 +14,26 @@ class NavBar extends React.Component {
   sessionLinks() {
     if (this.props.currentUser) {
       return(
-        <div>
+        <ul>
+          <li>
+            <a href="#"><img src={this.props.currentUser.photo.thumbnail}
+              className="nav-bar-profile-photo"/></a>
+            <ul className="profile-dropdown-list">
+              <li><a href="#">Your Bookings</a></li>
+              <li><a href="#">Your Listings</a></li>
+              <li><a href="#">Account Settings</a></li>
+              <li><a href="#" onClick={this.logout}>Logout</a></li>
+            </ul>
+          </li>
           <button onClick={ this.logout }>Logout</button>
-        </div>
+        </ul>
       );
     } else {
       return (
-        <div>
-          <button onClick={ this.renderLogin }>Log In</button>
-          <button onClick={ this.renderSignUp }>Sign Up</button>
-        </div>
+        <ul>
+          <a onClick={ this.renderLogin }>Log In</a>
+          <a onClick={ this.renderSignUp }>Sign Up</a>
+        </ul>
       );
     }
   }
@@ -57,7 +67,7 @@ class NavBar extends React.Component {
         </div>
 
         <div className="nav-links left">
-          <button onClick={ this.goSearch }>Search</button>
+          <a onClick={ this.goSearch }>Search</a>
         </div>
 
         <div className="nav-links right">
