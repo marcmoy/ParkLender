@@ -4,6 +4,11 @@ export const SpotPhoto = ({ spot }) => (
   <img src={spot.photoUrl} className='main-photo' alt={spot.title}/>
 );
 
+const priceKey = {
+  hourly_rate: "hour",
+  daily_rate: "day",
+  monthly_rate: "month"} ;
+
 export const Price = ({ prices }) => {
 
   const priceBlocks = [];
@@ -11,7 +16,7 @@ export const Price = ({ prices }) => {
   for (let price in prices) {
     if (prices[price] > 0) {
       let cost = prices[price];
-      let text = `$${cost} / ${price}`;
+      let text = `$${cost} / ${priceKey[price]}`;
       let priceBlock = <div className={price} key={price}>{text}</div>;
       priceBlocks.push(priceBlock);
     }
