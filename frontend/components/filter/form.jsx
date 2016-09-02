@@ -6,6 +6,7 @@ const handleChange = (filter, updateFilter) => (
 
 const FilterForm = ({filter, updateFilter, updateMap}) => (
   <div className='filter-form-container'>
+    <input type="text" id="autocomplete-search-field" placeholder="Where to?" />
     <div className='price-buttons'>
       Length of Stay
       Hourly <input type="radio" />

@@ -4,14 +4,11 @@ import { withRouter, hashHistory } from 'react-router';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { whereTo: false };
-    this.locationHash= window.location.hash;
     this.logout = this.logout.bind(this);
     this.renderLogin = this.renderLogin.bind(this);
     this.renderSignUp = this.renderSignUp.bind(this);
     this.goHome = this.goHome.bind(this);
     this.goSearch = this.goSearch.bind(this);
-    this.whereTo = this.whereTo.bind(this);
   }
 
   sessionLinks() {
@@ -50,15 +47,6 @@ class NavBar extends React.Component {
 
   renderSignUp() {
     this.props.router.push("/signup");
-  }
-
-  whereTo() {
-    if (this.locationHash.includes("search")) {
-      return <input
-        type="text"
-        id="autocomplete-search-field"
-        placeholder="Where to?" />;
-    }
   }
 
   render() {
