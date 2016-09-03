@@ -6,6 +6,10 @@
   background-color: white;
 }
 
+.listings {
+  padding-top: 20px;
+}
+
 .spot-index-container {
   position: fixed;
   top: 150px;
@@ -14,15 +18,8 @@
   width: 60%;
 }
 
-.listings {
-  padding-top: 20px;
-}
-
-.spots-index-item {
-  display: block;
-  position: relative;
-  width: 100px;
-  height: 100px;
+.spot-index-item {
+  padding-bottom: 20px;
 }
 
 .listing-photo-container {
@@ -30,10 +27,16 @@
   position: relative;
 }
 
+.picture-overflow {
+  overflow: hidden;
+  height: 200px;
+}
+
 img.main-photo {
+  margin: auto;
   cursor: pointer;
   display: block;
-  width: 95%;
+  width: 120%;
   height: auto;
   margin: auto;
 }
@@ -44,17 +47,15 @@ img.main-photo {
   background-color: #ccc;
   border-radius: 50%;
   bottom: -10px;
-  right: 10%;
+  right: 3%;
   width: 20%;
 }
 
 .spot-prices {
   position: absolute;
-  padding: 10px;
-  padding-left: 0;
-  padding-bottom: 5px;
-  left: 2.5%;
-  bottom: 0;
+  padding: 5px;
+  left: 0;
+  bottom: 3%;
   list-style: none;
   background-color: black;
   opacity: 0.8;
@@ -66,15 +67,27 @@ img.main-photo {
 }
 
 .price-tag {
-  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .spot-caption-container {
   display: block;
   position: relative;
+  padding-left: 8px;
+}
+
+.spot-title {
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .star {
-  height: 5px;
-  width: 5px;
+  height: 16px;
+  width: 16px;
+}
+
+h2.sorry {
+  color: #9c9595;
 }

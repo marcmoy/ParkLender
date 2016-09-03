@@ -14,8 +14,8 @@ const SpotIndexItem = ({ spot }) => {
         <Price prices={spot.prices} />
       </a>
 
-      <div className='spot-caption-container'>
-        <Title title={spot.title} />
+      <div className='spot-caption-container clearfix text-left'>
+        <Title title={spot.title} /><br />
         <Reviews numReviews={spot.reviews.length} />
         <Rating spot={spot} rating={spot.rating} />
       </div>

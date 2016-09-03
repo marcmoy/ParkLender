@@ -1,7 +1,9 @@
 import React from 'react';
 
 export const SpotPhoto = ({ spot }) => (
-  <img src={spot.photoUrl} className='main-photo' alt={spot.title}/>
+  <div className="picture-overflow">
+    <img src={spot.photoUrl} className='main-photo' alt={spot.title}/>
+  </div>
 );
 
 const priceKey = {
@@ -17,7 +19,7 @@ export const Price = ({ prices }) => {
     if (prices[price] > 0) {
       let cost = prices[price];
       let text = `$${cost} / ${priceKey[price]}`;
-      let className = `pirce${price}`;
+      let className = `price ${price}`;
       let priceBlock = <li className={className} key={price}>
         <span className='price-tag'>{text}</span>
       </li>;
@@ -41,13 +43,13 @@ export const HostPhoto = ({ host }) => {
 };
 
 export const Title = ({ title }) => (
-  <span className="spot-title pull-left">{title}</span>
+  <strong className="spot-title">{title}</strong>
 );
 
 export const Reviews = ({ numReviews }) => {
   // debugger
   return(
-    <span className='spot-reviews-numbers pull-left'>{numReviews} Reviews</span>
+    <span className='spot-reviews-numbers pull-left'>{numReviews} Reviews </span>
   );
 };
 
@@ -57,7 +59,7 @@ export const Rating = ({ spot, rating }) => {
   for (let i = 0; i < 5 ; i++) {
     stars.push(
       <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gold-star_rtqymr.png'
-        className="pull-left star" key={i + 1} />
+        className="star" key={i + 1} />
     );
   }
 
@@ -78,7 +80,7 @@ export const Rating = ({ spot, rating }) => {
   // }
 
   return(
-    <div className='stars-container'>
+    <div className='stars-container pull-left'>
       {stars}
     </div>
   );
