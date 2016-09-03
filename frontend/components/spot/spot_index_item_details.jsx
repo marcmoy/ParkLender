@@ -57,7 +57,7 @@ export const Rating = ({ spot, rating }) => {
   for (let i = 0; i < 5 ; i++) {
     stars.push(
       <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gold-star_rtqymr.png'
-        className="pull-left" key={i + 1} />
+        className="pull-left star" key={i + 1} />
     );
   }
 
