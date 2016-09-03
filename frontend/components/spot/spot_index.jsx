@@ -25,10 +25,13 @@ class SpotIndex extends React.Component {
     }
 
     return (
-      <aside className='spot-index-container'>
-        {spotItems}
-        <div className="load-message"></div>
-      </aside>
+      <div className='spot-index-container'>
+        <div className='listings container-fluid'>
+          <div className="row text-center">
+            {spotItems}<div className="load-message" />
+          </div>
+        </div>
+      </div>
     );
   }
 }

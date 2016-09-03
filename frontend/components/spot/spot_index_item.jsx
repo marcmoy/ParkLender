@@ -6,18 +6,19 @@ import {
 
 const SpotIndexItem = ({ spot }) => {
   return(
-    <div className='spot-index-item'>
-      <figure className='spot-photo-container'>
+    <div
+      className='spot-index-item clearfix col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+      <a className='listing-photo-container'>
         <SpotPhoto spot={spot} />
         <HostPhoto host={spot.host} />
         <Price prices={spot.prices} />
-      </figure>
+      </a>
 
-      <figcaption className='spot-caption-container'>
+      <div className='spot-caption-container'>
         <Title title={spot.title} />
         <Reviews numReviews={spot.reviews.length} />
         <Rating spot={spot} rating={spot.rating} />
-      </figcaption>
+      </div>
     </div>
   );
 };

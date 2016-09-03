@@ -24,7 +24,7 @@ header .container {
 .navbar-right > li {
   border-right: 1px solid #dce0e0;
   width: 100px;
-  height: 50px;
+  height: $header-height;
 }
 
 .navbar-right> li:hover {
@@ -37,7 +37,7 @@ input#autocomplete-search-field {
   margin-left: 20px;
   height: 30px;
   border: 1px solid white;
-  width: 600px;
+  width: 100%;
 }
 
 #autocomplete-search-field {
@@ -64,7 +64,7 @@ img.navbar-profile-photo {
 }
 
 .navbar-profile-photo {
-  height: 50px;
-  width: 50px;
+  height: $header-height;
+  width: $header-height;
   overflow: hidden;
 }

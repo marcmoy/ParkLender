@@ -1,0 +1,75 @@
+.filter-form-container {
+  height: $filter-form-height;
+  position: fixed;
+  padding: 20px;
+  width: 60%;
+  background-color: white;
+}
+
+.spot-index-container {
+  position: fixed;
+  top: 150px;
+  overflow-y: scroll;
+  height: calc(100% - 150px);
+  width: 60%;
+}
+
+.listings {
+  padding-top: 20px;
+}
+
+.spots-index-item {
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.listing-photo-container {
+  display: block;
+  position: relative;
+}
+
+img.main-photo {
+  cursor: pointer;
+  display: block;
+  width: 95%;
+  height: auto;
+  margin: auto;
+}
+
+.spot-item-host-photo {
+  position: absolute;
+  border: 2px solid white;
+  background-color: #ccc;
+  border-radius: 50%;
+  bottom: -10px;
+  right: 10%;
+  width: 20%;
+}
+
+.spot-prices {
+  position: absolute;
+  padding: 10px;
+  padding-left: 0;
+  padding-bottom: 5px;
+  left: 2.5%;
+  bottom: 0;
+  list-style: none;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.price-tag {
+  padding-left: 5px;
+}
+
+.spot-caption-container {
+  display: block;
+  position: relative;
+}

@@ -17,15 +17,18 @@ export const Price = ({ prices }) => {
     if (prices[price] > 0) {
       let cost = prices[price];
       let text = `$${cost} / ${priceKey[price]}`;
-      let priceBlock = <div className={price} key={price}>{text}</div>;
+      let className = `pirce${price}`;
+      let priceBlock = <li className={className} key={price}>
+        <span className='price-tag'>{text}</span>
+      </li>;
       priceBlocks.push(priceBlock);
     }
   }
 
   return(
-    <div className='spot-prices'>
+    <ul className='spot-prices'>
       {priceBlocks}
-    </div>
+    </ul>
   );
 };
 
@@ -38,13 +41,13 @@ export const HostPhoto = ({ host }) => {
 };
 
 export const Title = ({ title }) => (
-  <h1>{title}</h1>
+  <span className="spot-title pull-left">{title}</span>
 );
 
 export const Reviews = ({ numReviews }) => {
   // debugger
   return(
-    <span className='number-reviews'>{numReviews} Reviews</span>
+    <span className='spot-reviews-numbers pull-left'>{numReviews} Reviews</span>
   );
 };
 
@@ -54,7 +57,7 @@ export const Rating = ({ spot, rating }) => {
   for (let i = 0; i < 5 ; i++) {
     stars.push(
       <img src='http://res.cloudinary.com/dsvkuc936/image/upload/v1472693779/gold-star_rtqymr.png'
-        className="gold star" key={i + 1} />
+        className="pull-left" key={i + 1} />
     );
   }
 

@@ -115,18 +115,15 @@ class NavBar extends React.Component {
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
-
-          <div className="navbar-header pull-left">
-            <div className="navbar-brand">
-              <a onClick={ this.goHome }>ParkLender</a>
+          <div className="navbar-collapse collapse">
+            <div className="navbar-header pull-left">
+              <div className="navbar-brand">
+                <a onClick={ this.goHome }>ParkLender</a>
+              </div>
             </div>
+            { this.whereToSearch() }
+            { this.sessionLinks() }
           </div>
-
-
-          { this.whereToSearch() }
-
-          { this.sessionLinks() }
-
         </div>
       </nav>
     );

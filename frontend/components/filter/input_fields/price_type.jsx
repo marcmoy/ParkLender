@@ -23,10 +23,10 @@ class PriceType extends React.Component {
   render() {
     // need to dry this later
     return(
-      <div className="form-group text-center">
+      <div className="form-group text-center pull-left">
 
         <div className="checkbox-inline">
-          <label>
+          <label> 
             <input type="checkbox" value="hourly_rate"
               onChange={ this.updatePrices } /> Hourly
           </label>

@@ -8,6 +8,8 @@
 
 # add transaction
 
+require_relative 'photos'
+
 ActiveRecord::Base.transaction do
 
   User.create!(username: 'marc', password: 'password')
@@ -73,7 +75,7 @@ ActiveRecord::Base.transaction do
 
     Photo.create!(
       spot_id: spot.id,
-      url: Faker::Placeholdit.image,
+      url: PHOTOS[i],
       thumbnail: Faker::Placeholdit.image("50x50")
     )
 
