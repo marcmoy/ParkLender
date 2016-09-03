@@ -31,7 +31,7 @@ class SessionView extends React.Component {
 
 	render() {
 		return (
-			<div className="login-signup-modal" onClick={this.closeModal}>
+			<div class="modal fade" id="">
         <div className="login-signup-div">
           <FormHeader
 						formType={this.props.formType}

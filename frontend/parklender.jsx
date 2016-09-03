@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 //Actions
 import configureStore from './store/store';
-import {requestSpots} from './actions/spots_actions';
-import {updateFilter} from './actions/filter_actions';
+import Modal from 'react-modal';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,9 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = window.Store = configureStore();
   }
 
-  window.updateFilter = updateFilter;
-  window.requestSpots = requestSpots;
-
   const root = document.getElementById('root');
+  Modal.setAppElement(root);
   ReactDOM.render(<Root store={store}/>, root);
 });

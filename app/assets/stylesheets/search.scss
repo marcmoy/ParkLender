@@ -1,0 +1,25 @@
+@import "loader";
+
+.sidebar {
+  border: 1px solid red;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+}
+
+.map {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  height: calc(100% - 50px);
+}
+
+.filter-form-container {
+  height: 150px;
+  position: relative;
+  padding: 20px;
+}

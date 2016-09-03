@@ -34,6 +34,7 @@
     "react-datetime": "^2.5.0",
     "react-dom": "^15.3.1",
     "react-forms": "^1.0.0-rc6",
+    "react-modal": "^1.4.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "redux": "^3.5.2",

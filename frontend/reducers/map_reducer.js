@@ -7,17 +7,17 @@ const mapDefault = {
 };
 
 const MapReducer = function(state = mapDefault, action){
-  if (action.type === MapConstants.UPDATE_MAP){
+  switch (action.type) {
+    case MapConstants.UPDATE_MAP:
 
-    const newMapOptions = {
-      center: action.center,
-      zoom: action.zoom
-    };
+      const newMapOptions = {
+        center: action.center,
+        zoom: action.zoom
+      };
 
-    return merge({}, state, newMapOptions);
-
-  } else {
-    return state;
+      return merge({}, state, newMapOptions);
+    default:
+      return state;
   }
 };
 

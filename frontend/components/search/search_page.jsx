@@ -6,15 +6,13 @@ import FilterForm from '../filter/form';
 const SearchPage = ({ spots, mapOpts, filter, updateFilter, updateMap}) => {
 
   return(
-    <div className="search-page-container">
-      <div className="search-results-container">
+    <div className="map-search">
+      <div className="sidebar">
         <FilterForm filter={filter} updateFilter={updateFilter} />
         <SpotIndex spots={spots} />
       </div>
-      <div className="map-container">
-        <SpotMap spots={spots} updateFilter={updateFilter}
-          mapOpts={mapOpts} updateMap={updateMap} />
-      </div>
+      <SpotMap spots={spots} updateFilter={updateFilter}
+        mapOpts={mapOpts} updateMap={updateMap} />
     </div>
   );
 };

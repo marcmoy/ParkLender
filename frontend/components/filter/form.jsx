@@ -9,16 +9,15 @@ const handleChange = (filter, updateFilter) => (
 );
 
 const FilterForm = ({filter, updateFilter, updateMap}) => (
-  <div className='filter-form-container'>
-
-    <input type="text" id="autocomplete-search-field" placeholder="Where to?" />
+  <form className='filter-form-container'>
 
     <PriceType filter={filter} updateFilter={updateFilter}
       handleChange={handleChange} />
 
     <div className='time-filter'>
     </div>
-  </div>
+    
+  </form>
 );
 
 export default FilterForm;
