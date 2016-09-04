@@ -41,7 +41,9 @@ ActiveRecord::Base.transaction do
       rand * (max-min) + min
   end
 
-  prices = (0..100).select{|num| num % 5 == 0}
+  hourly_prices = (0..20).select{|num| num % 5 == 0}
+  daily_prices = (20..50).select{|num| num % 5 == 0}
+  monthly_prices = (50..100).select{|num| num % 5 == 0}
 
   max_lat = 37.78417678837021
   min_lat = 37.72761122164702
@@ -58,9 +60,9 @@ ActiveRecord::Base.transaction do
       description: Faker::Hipster.sentence(5),
       lat: randomCoord(min_lat, max_lat),
       lng: randomCoord(min_lng, max_lng),
-      hourly_rate: prices.sample,
-      daily_rate: prices.sample,
-      monthly_rate: prices.sample,
+      hourly_rate: hourly_prices.sample,
+      daily_rate: daily_prices.sample,
+      monthly_rate: monthly_prices.sample,
       address: Faker::Address.street_address,
       city: 'San Francisco',
       state: 'CA',
@@ -80,7 +82,7 @@ ActiveRecord::Base.transaction do
     )
 
     rand(1..3).times do |i|
-      start_date = Time.now + (i * 4).weeks
+      start_date = Time.now + (i * 4).months
       end_date = start_date + rand(1..3).weeks
       DateRange.create!(
         spot_id: spot.id,

@@ -7,11 +7,12 @@ const handleChange = (filter, updateFilter) => (
   e => updateFilter(filter, e.currentTarget.value)
 );
 
+// <DateInput filter={filter} updateFilter={updateFilter} />
+
 const FilterForm = ({filter, updateFilter, updateMap}) => (
   <form className='filter-form-container'>
     <div className='form-group'>
       <PriceType filter={filter} updateFilter={updateFilter} />
-      <DateInput filter={filter} updateFilter={updateFilter} />
     </div>
   </form>
 );

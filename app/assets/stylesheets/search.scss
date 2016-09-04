@@ -61,6 +61,11 @@
     width: 140px;
   }
 
+  button.btn.btn-primary.active {
+    background-color: #8c7d7d;
+    border-color: #8c7d7d;
+  }
+
 }
 
 @import "spots_index";
