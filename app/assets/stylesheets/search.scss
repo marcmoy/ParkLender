@@ -1,5 +1,4 @@
 .sidebar {
-  border: 1px solid red;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -14,6 +13,54 @@
   bottom: 0;
   width: 40%;
   height: calc(100% - 50px);
+}
+
+.filter-form-container {
+
+  height: $filter-form-height;
+  position: fixed;
+  padding: 10px 20px;
+  width: 60%;
+  background-color: white;
+
+  .form-group {
+    padding: 5px 0px;
+    margin-bottom: 5px;
+  }
+
+  .form-group:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .form-group-label {
+    width: 20%;
+  }
+
+  .form-group-input-field {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;
+    text-align: center;
+
+    label {
+      color: $font-gray;
+      margin-left: 10px;
+    }
+  }
+
+  button.btn.btn-primary {
+    width: 67px;
+    padding: 1px;
+    margin-right: 10px;
+  }
+
+  input[type="date"] {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 140px;
+  }
+
 }
 
 @import "spots_index";

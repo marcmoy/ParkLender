@@ -2,12 +2,12 @@ class Api::SpotsController < ApplicationController
   # before_action :require_logged_in, only: [:create]
   def index
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
-    # if (params[:minSeating] && params[:maxSeating])
-    #   spots = spots.where(seating: seating_range)
-    # end
+
     @price_filter = params[:prices] || ["hourly_rate","daily_rate","monthly_rate"]
     spots = apply_price_filters(spots, @price_filter)
 
+    debugger if dates
+    
     @spots = spots
     render :index
   end
@@ -23,10 +23,6 @@ class Api::SpotsController < ApplicationController
 
   private
 
-  # def seating_range
-  #   (params[:minSeating]..params[:maxSeating])
-  # end
-
   def spot_params
     params.require(:spot).permit(
       :lat,
@@ -41,6 +37,10 @@ class Api::SpotsController < ApplicationController
 
   def bounds
     params[:bounds]
+  end
+
+  def dates
+    params[:dates]
   end
 
   def prices

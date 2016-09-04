@@ -1,21 +1,14 @@
-.filter-form-container {
-  height: $filter-form-height;
-  position: fixed;
-  padding: 20px;
-  width: 60%;
-  background-color: white;
-}
-
 .listings {
   padding-top: 20px;
 }
 
 .spot-index-container {
   position: fixed;
-  top: 150px;
+  top: 110px;
   overflow-y: scroll;
-  height: calc(100% - 150px);
+  height: calc(100% - 110px);
   width: 60%;
+  border-bottom: 1px solid #dce0e0;
 }
 
 .spot-index-item {
@@ -33,12 +26,10 @@
 }
 
 img.main-photo {
-  margin: auto;
   cursor: pointer;
   display: block;
   width: 120%;
   height: auto;
-  margin: auto;
 }
 
 .spot-item-host-photo {
