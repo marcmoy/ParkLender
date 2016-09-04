@@ -6,8 +6,8 @@ class Api::SpotsController < ApplicationController
     @price_filter = params[:prices] || ["hourly_rate","daily_rate","monthly_rate"]
     spots = apply_price_filters(spots, @price_filter)
 
-    debugger if dates
-    
+    spots = apply_date_filters(spots, dates) if dates
+
     @spots = spots
     render :index
   end
@@ -52,5 +52,10 @@ class Api::SpotsController < ApplicationController
       spots = spots.where("#{price} > ?", 0)
     end
     spots
+  end
+
+  def apply_date_filters(spots, dates)
+    return spots if dates.any?{|date| date.blank?}
+    spots.select{|spot| spot.date_overlaps_availability?(dates)}
   end
 end

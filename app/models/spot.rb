@@ -42,6 +42,8 @@ class Spot < ApplicationRecord
     foreign_key: :host_id,
     class_name: :User
 
+  has_many :date_ranges
+
   def self.in_bounds(bounds)
     self.where("lat < ?", bounds[:northEast][:lat])
         .where("lat > ?", bounds[:southWest][:lat])
@@ -104,6 +106,10 @@ class Spot < ApplicationRecord
 
   def size
     @size ||= { width: width, length: length }
+  end
+
+  def date_overlaps_availability?(dates)
+    date_ranges.any?{|date_range| date_range.overlaps?(dates)}
   end
 
 end

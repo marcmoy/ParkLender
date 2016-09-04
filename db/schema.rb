@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901193003) do
+ActiveRecord::Schema.define(version: 20160904051444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "date_ranges", force: :cascade do |t|
+    t.integer  "spot_id",    null: false
+    t.date     "start_date", null: false
+    t.date     "end_date",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_date_ranges_on_spot_id", using: :btree
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"

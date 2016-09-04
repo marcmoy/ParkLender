@@ -79,6 +79,16 @@ ActiveRecord::Base.transaction do
       thumbnail: Faker::Placeholdit.image("50x50")
     )
 
+    rand(1..3).times do |i|
+      start_date = Time.now + (i * 4).weeks
+      end_date = start_date + rand(1..3).weeks
+      DateRange.create!(
+        spot_id: spot.id,
+        start_date: start_date,
+        end_date: end_date
+      )
+    end
+
     rand(1..50).times do |n|
       Review.create!(
         author_id: n + 1,
