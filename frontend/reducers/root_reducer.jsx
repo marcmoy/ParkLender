@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import WhereToReducer from './whereto_reducer';
 import FilterReducer from './filter_reducer';
+import SplashReducer from './splash_reducer';
 import SpotsReducer from './spots_reducer';
 import MapReducer from './map_reducer';
 
@@ -10,7 +11,8 @@ const RootReducer = combineReducers({
   filter: FilterReducer,
   spots: SpotsReducer,
   mapOpts: MapReducer,
-  whereTo: WhereToReducer
+  whereTo: WhereToReducer,
+  splash: SplashReducer
 });
 
 export default RootReducer;

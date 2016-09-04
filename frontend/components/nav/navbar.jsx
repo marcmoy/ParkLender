@@ -16,6 +16,7 @@ class NavBar extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.whereToSearch = this.whereToSearch.bind(this);
+    this.splash = this.splash.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,10 +53,29 @@ class NavBar extends React.Component {
     this.setState({ modalOpen: false, formType: "" });
   }
 
+  splash() {
+    let splash = this.props.splash === true ? "splash" : "";
+    return splash;
+  }
+
+  splashLogo() {
+    if (this.props.splash === true) {
+      return (
+        <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473015421/parklender_assets/white-logo-transparent.png"
+          className="logo" />
+      );
+    } else {
+      return (
+        <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473014664/parklender_assets/color-logo.png"
+          className="logo" />
+      );
+    }
+  }
+
   whereToSearch() {
     if (this.props.whereTo === true) {
       return (
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav" id={this.splash()}>
           <li>
             <input type="text" id="autocomplete-search-field"
               placeholder="Where to?" onSubmit={ this.goSearch } />
@@ -68,7 +88,7 @@ class NavBar extends React.Component {
   sessionLinks() {
     if (this.props.currentUser) {
       return(
-        <ul className="nav navbar-nav navbar-right">
+        <ul className="nav navbar-nav navbar-right" id={this.splash()}>
           <li className="dropdown">
             <a href="#" className="dropdown-toggle" className="text-center"
               data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -112,13 +132,16 @@ class NavBar extends React.Component {
   }
 
   render() {
+
     return (
-      <nav className="navbar navbar-default navbar-static-top">
-        <div className="container">
+      <nav className="navbar navbar-default navbar-static-top" id={this.splash()}>
+        <div className="container" id={this.splash()}>
           <div className="navbar-collapse collapse">
             <div className="navbar-header pull-left">
               <div className="navbar-brand">
-                <a onClick={ this.goHome }>ParkLender</a>
+                <a onClick={ this.goHome }>
+                  { this.splashLogo() }
+                </a>
               </div>
             </div>
             { this.whereToSearch() }

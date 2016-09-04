@@ -1,5 +1,5 @@
-import { connect } from 'react-router';
-import HomePage from './home';
+import { connect } from 'react-redux';
+import HomePage from './home_page';
 
 const mapStateToProps = state => ({
 });

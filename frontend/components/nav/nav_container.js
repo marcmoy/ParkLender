@@ -4,7 +4,8 @@ import NavBar from './navbar';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  whereTo: state.whereTo.whereTo
+  whereTo: state.whereTo.whereTo,
+  splash: state.splash.splash
 });
 
 const mapDispatchToProps = dispatch => ({
