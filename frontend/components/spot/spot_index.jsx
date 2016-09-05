@@ -27,7 +27,6 @@ class SpotIndex extends React.Component {
   }
 
   render() {
-
     let spotItems = [];
     for (let id in this.props.spots) {
       if (id) {

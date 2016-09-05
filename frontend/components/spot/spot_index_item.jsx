@@ -1,26 +1,38 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import {
   SpotPhoto, Price, HostPhoto,
   Title, Reviews, Rating
 } from './spot_index_item_details';
 
-const SpotIndexItem = ({ spot }) => {
-  return(
-    <div
-      className='spot-index-item clearfix col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-      <a className='listing-photo-container'>
-        <SpotPhoto spot={spot} />
-        <HostPhoto host={spot.host} />
-        <Price prices={spot.prices} />
-      </a>
+class SpotIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.openShowPage = this.openShowPage.bind(this);
+  }
 
-      <div className='spot-caption-container clearfix text-left'>
-        <Title title={spot.title} /><br />
-        <Reviews numReviews={spot.reviews.length} />
-        <Rating spot={spot} rating={spot.rating} />
+  openShowPage() {
+    this.props.router.push(`/spots/${this.props.spot.id}`);
+  }
+
+  render() {
+    return(
+      <div
+        className='spot-index-item clearfix col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+        <a onClick={this.openShowPage} className='listing-photo-container'>
+          <SpotPhoto spot={this.props.spot} />
+          <HostPhoto host={this.props.spot.host} />
+          <Price prices={this.props.spot.prices} />
+        </a>
+
+        <div className='spot-caption-container clearfix text-left'>
+          <Title title={this.props.spot.title} /><br />
+          <Reviews numReviews={this.props.spot.reviews.length} />
+          <Rating spot={this.props.spot} rating={this.props.spot.rating} />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default SpotIndexItem;
+export default withRouter(SpotIndexItem);

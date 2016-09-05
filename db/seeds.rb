@@ -15,11 +15,11 @@ ActiveRecord::Base.transaction do
 
   User.create!(username: 'marc', password: 'password')
   Photo.create!(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
-  User.create!(username: 'demo-user', password: 'password')
+  User.create!(username: 'Demo-User', password: 'password')
   Photo.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 
   50.times do |i|
-    user = User.create!(username: Faker::Internet.user_name, password: 'password')
+    user = User.create!(username: Faker::Internet.user_name.capitalize, password: 'password')
     Photo.create!(
         user_id: user.id,
         url: USERS[i],

@@ -1,0 +1,78 @@
+// SPOT IMAGE
+
+.spot-show-page {
+  background-color: #ccc;
+  height: 100%;
+}
+
+.spot-show-image-overflow {
+  overflow: hidden;
+  height: 350px;
+  width: 100%;
+  text-align: center;
+}
+
+img.spot-image {
+  width: 100%;
+  position: relative;
+  bottom: 50%;
+}
+
+// HOST DETAILS
+
+.spot-host-details {
+  padding: 30px 0;
+  border: 1px solid gray;
+}
+
+aside.host-photo-container {
+  display: block;
+  float: left;
+  margin-right: 30px;
+}
+
+.host-photo-container {
+
+  img {
+    border-radius: 50%;
+    border: 2px solid gray;
+    margin-left: 70px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+  }
+
+  span {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: #272626;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+}
+
+.pin {
+  display: inline-block;
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+}
+
+.spot-host-details {
+
+  h3 {
+    display: inline;
+    padding-top: 40px;
+  }
+
+  .gray-italicize-text {
+    color: gray;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  .host-num-reviews {
+    padding-left: 30px;
+  }
+}
