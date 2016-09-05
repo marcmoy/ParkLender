@@ -1,0 +1,33 @@
+.session-form-title {
+  margin: 0;
+  margin-bottom: 10px;
+  color: gray;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.session-form-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+.session-form-btn-div > button {
+  margin-left: 15px;
+  margin-right: 15px;
+  width: auto;
+  min-width: 80px;
+  border-radius: 3px;
+  border-color: transparent;
+  margin-top: 5px;
+  color: white;
+}
+
+.submit-button {
+  background-color: #ff5d62;
+}
+
+.demo-button {
+  background-color: #8a8282;
+}

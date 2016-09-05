@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 const imagesUrls = [
-  "http://res.cloudinary.com/dsvkuc936/image/upload/e_brightness:-10/v1473026130/slideshow/car-dog.jpg",
+  "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026130/slideshow/car-dog.jpg",
   "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026223/slideshow/ny.jpg",
   "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026322/slideshow/ladies.jpg",
   "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026261/slideshow/market.jpg",
