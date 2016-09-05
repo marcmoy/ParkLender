@@ -15,3 +15,20 @@
   background: #000;
   overflow: hidden;
 }
+
+.park-there {
+  position: absolute;
+  left: 0;
+  top: calc(31%);
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.park-there > header {
+  font-size: 57px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
