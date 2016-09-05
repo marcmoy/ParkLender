@@ -77,12 +77,15 @@ class NavBar extends React.Component {
       return (
         <ul className="nav navbar-nav" id={this.splash()}>
           <li>
-            <img className="looking-glass"
+            <img className="nav-looking-glass"
               src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473034351/parklender_assets/looking-glass.png" />
           </li>
           <li>
-            <input type="text" id="autocomplete-search-field"
-              placeholder="Where to?" onSubmit={ this.goSearch } />
+            <input type="text"
+              id="autocomplete-search-field"
+              className="nav-where-to-input"
+              placeholder="Where to?"
+              onSubmit={ this.goSearch } />
           </li>
         </ul>
       );

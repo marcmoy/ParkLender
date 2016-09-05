@@ -37,22 +37,22 @@ header {
   margin-left: 5px;
 }
 
-img.looking-glass {
+img.nav-looking-glass {
   height: 23px;
   width: 23px;
   margin-top: 15px;
   margin-left: 10px;
 }
 
-input#autocomplete-search-field {
+input.nav-where-to-input {
   margin-top: 13px;
-  height: 30px;
-  border: 1px solid white;
   width: 400%;
+  height: 30px;
 }
 
 #autocomplete-search-field {
   padding-left: 10px;
+  border: 1px solid white;
 }
 
 #autocomplete-search-field:focus {

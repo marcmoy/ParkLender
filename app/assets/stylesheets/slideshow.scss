@@ -19,7 +19,7 @@
 .park-there {
   position: absolute;
   left: 0;
-  top: calc(31%);
+  top: 30%;
   width: 100%;
   color: white;
   text-align: center;
@@ -31,4 +31,22 @@
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 14px;
+}
+
+div.home-where-to {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  position: absolute;
+  margin-top: 10%;
+}
+
+input.home-where-to-input {
+  height: 35px;
+  font-size: 18px;
+  width: 70%;
+  border-radius: 3px;
+  color: gray;
 }
