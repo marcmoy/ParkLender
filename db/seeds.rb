@@ -42,7 +42,7 @@ ActiveRecord::Base.transaction do
       rand * (max-min) + min
   end
 
-  hourly_prices = (0..20).select{|num| num % 5 == 0}
+  hourly_prices = (5..20).select{|num| num % 5 == 0}
   daily_prices = (20..50).select{|num| num % 5 == 0}
   monthly_prices = (50..100).select{|num| num % 5 == 0}
 
