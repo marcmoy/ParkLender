@@ -61,9 +61,15 @@
     width: 140px;
   }
 
+  button.btn.btn-primary {
+    background-color: #878f96;
+    border-color: #878f96;
+    margin-top: 5px;
+  }
+
   button.btn.btn-primary.active {
-    background-color: #8c7d7d;
-    border-color: #8c7d7d;
+    background-color: #ff5d62;
+    border-color: #ff5d62;
   }
 
 }

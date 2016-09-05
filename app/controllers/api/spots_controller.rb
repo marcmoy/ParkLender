@@ -4,7 +4,7 @@ class Api::SpotsController < ApplicationController
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
 
     @price_filter = params[:prices] || ["hourly_rate","daily_rate","monthly_rate"]
-    spots = apply_price_filters(spots, @price_filter)
+    spots = apply_price_filters(spots, @price_filter) unless @price_filter.length == 3
 
     # spots = apply_date_filters(spots, dates) if dates
 

@@ -9,6 +9,7 @@
 # add transaction
 
 require_relative 'photos'
+require_relative 'users'
 
 ActiveRecord::Base.transaction do
 
@@ -17,12 +18,12 @@ ActiveRecord::Base.transaction do
   User.create!(username: 'demo-user', password: 'password')
   Photo.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
 
-  50.times do
+  50.times do |i|
     user = User.create!(username: Faker::Internet.user_name, password: 'password')
     Photo.create!(
         user_id: user.id,
-        url: Faker::Avatar.image,
-        thumbnail: Faker::Avatar.image("my-own-slug", "50x50")
+        url: USERS[i],
+        thumbnail: USERS[i]
       )
     rand(1..50).times do |n|
       Review.create!(
@@ -55,14 +56,14 @@ ActiveRecord::Base.transaction do
 
   50.times do |i|
     spot = Spot.create!(
-      host_id: i + 1,
+      host_id: i + 3,
       title: Faker::Company.buzzword,
       description: Faker::Hipster.sentence(5),
       lat: randomCoord(min_lat, max_lat),
       lng: randomCoord(min_lng, max_lng),
       hourly_rate: hourly_prices.sample,
-      daily_rate: daily_prices.sample,
-      monthly_rate: monthly_prices.sample,
+      daily_rate: (rand(1..4) != 2 ? daily_prices.sample : 0),
+      monthly_rate: (rand(1..3) != 2 ? monthly_prices.sample : 0),
       address: Faker::Address.street_address,
       city: 'San Francisco',
       state: 'CA',
