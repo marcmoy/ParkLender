@@ -1,7 +1,7 @@
 import React from 'react';
 import SpotIndexItem from './spot_index_item';
 import { isEmpty } from 'lodash';
-import { addEmptyMessage } from '../../util/loader';
+import { addEmptyMessage, removeEmptyMessage } from '../../util/loader';
 
 class SpotIndex extends React.Component {
 
@@ -11,7 +11,19 @@ class SpotIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (isEmpty(this.props.spots)) addEmptyMessage();
+    if (isEmpty(this.props.spots)) {
+      addEmptyMessage();
+    } else {
+      removeEmptyMessage();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (isEmpty(nextProps.spots)) {
+      addEmptyMessage();
+    } else {
+      removeEmptyMessage();
+    }
   }
 
   render() {
@@ -28,7 +40,7 @@ class SpotIndex extends React.Component {
       <div className='spot-index-container'>
         <div className='listings container-fluid'>
           <div className="row text-center">
-            {spotItems}<div className="load-message" />
+            {spotItems}<div className="empty-message" />
           </div>
         </div>
       </div>

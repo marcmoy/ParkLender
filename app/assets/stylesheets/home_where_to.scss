@@ -1,0 +1,36 @@
+div.home-where-to {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  position: absolute;
+  margin-top: 10%;
+}
+
+div.home-where-to > section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+input.home-where-to-input {
+  height: 35px;
+  font-size: 18px;
+  width: 50%;
+  border-radius: 3px;
+  color: gray;
+  padding-left: 20px;
+  display: block;
+}
+
+button.home-search-button {
+  border-color: #ff5a5f;
+  background-color: #ff5a5f;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: block;
+}

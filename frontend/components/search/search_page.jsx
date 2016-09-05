@@ -8,6 +8,7 @@ const SearchPage = ({ spots, mapOpts, filter, updateFilter, updateMap}) => {
   return(
     <div className="map-search">
       <div className="sidebar">
+        <div className="load-message" />
         <FilterForm filter={filter} updateFilter={updateFilter} />
         <SpotIndex spots={spots} />
       </div>

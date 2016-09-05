@@ -6,6 +6,7 @@ class HomePage extends React.Component {
     super(props);
   }
   render() {
+
     return (
       <div>
         <Slideshow updateMap={this.props.updateMap}/>

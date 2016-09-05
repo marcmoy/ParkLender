@@ -3,7 +3,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 //Components
 import App from './App';
-import HomePage from './home/home_page';
+import HomePageContainer from './home/home_page_container';
 import SearchPageContainer from './search/search_page_container';
 //Actions
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
@@ -56,7 +56,7 @@ class AppRouter extends React.Component{
     return(
       <Router history={ hashHistory }>
         <Route path="/" component={ App } >
-          <IndexRoute component={ HomePage }
+          <IndexRoute component={ HomePageContainer }
             onEnter={ this._activateSplash }
             onLeave={ this._turnOffSplash } />
           <Route path="/search" component={ SearchPageContainer }

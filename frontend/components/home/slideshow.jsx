@@ -24,10 +24,19 @@ const settings = {
 class Slideshow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { center: {}, zoom: 13 };
+    this.sendMap = this.sendMap.bind(this);
     this.goSearch = this.goSearch.bind(this);
   }
 
+  sendMap(center, zoom) {
+    this.setState({ center: center, zoom: zoom });
+    this.props.updateMap(this.state.center, this.state.zoom);
+    this.props.router.push("/search");
+  }
+
   goSearch() {
+    this.props.updateMap(this.state.center, this.state.zoom);
     this.props.router.push("/search");
   }
 
@@ -48,13 +57,14 @@ class Slideshow extends React.Component {
           </header>
             Book parkings spots from local hosts in your neighborhood and experience a driveway like you own it.<br />
           <div className="home-where-to">
-            <form onSubmit={ this.goSearch } >
+            <section>
               <input type="text" id="home-autocomplete-search-field"
                 className="home-where-to-input"
                 placeholder="Where to?" />
-              <HomeWhereTo updateMap={this.props.updateMap} />
-              <button className="home-where-to-btn">Search</button>
-            </form>
+              <HomeWhereTo sendMap={this.sendMap} />
+              <button className="home-search-button"
+                onClick={this.goSearch}>Search</button>
+            </section>
           </div>
         </div>
       </div>

@@ -30,8 +30,8 @@ class HomeWhereTo extends React.Component{
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       };
-      
-      self.props.updateMap(center, zoom);
+
+      self.props.sendMap(center, zoom);
     });
   }
 
