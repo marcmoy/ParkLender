@@ -34,6 +34,7 @@ header {
 .logo {
   height: 25px;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 img.looking-glass {
@@ -64,12 +65,16 @@ input#autocomplete-search-field {
   padding-right: 40px;
 }
 
+li.dropdown.open {
+  background-color: rgba(0,0,0,.1);
+}
+
 .dropdown.open > a.text-center {
-  background-color: inherit;
+  background-color: transparent;
 }
 
 .dropdown.open > a.text-center:focus {
-  background-color: inherit;
+  background-color: transparent;
 }
 
 .navbar-profile-photo {
@@ -81,6 +86,6 @@ input#autocomplete-search-field {
   margin-bottom: 10px;
   border-radius: 50%;
   overflow: hidden;
-  border-color: 1px solid white;
+  border-color: 2px solid gray;
   background-color: #eee;
 }

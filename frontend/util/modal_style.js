@@ -10,7 +10,7 @@ const ModalStyle = {
   },
   content : {
     position        : 'relative',
-    margin          : '200px auto',
+    margin          : '100px auto',
     border          : '1px solid #ccc',
     height          : 'auto',
     width           : '400px',
