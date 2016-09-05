@@ -77,6 +77,10 @@ class NavBar extends React.Component {
       return (
         <ul className="nav navbar-nav" id={this.splash()}>
           <li>
+            <img className="looking-glass"
+              src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473034351/parklender_assets/looking-glass.png" />
+          </li>
+          <li>
             <input type="text" id="autocomplete-search-field"
               placeholder="Where to?" onSubmit={ this.goSearch } />
           </li>
@@ -95,7 +99,8 @@ class NavBar extends React.Component {
               aria-expanded="true">
               <img src={this.props.currentUser.photo.thumbnail}
                 className="navbar-profile-photo pull-right"/>
-              <a className="pull-right">{this.props.currentUser.username}</a>
+              <li className="pull-right"
+                id={this.splash()}>{this.props.currentUser.username}</li>
             </a>
 
             <ul className="dropdown-menu">
@@ -114,8 +119,8 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul className="nav navbar-nav navbar-right">
-            <li><a onClick={this.setLogin} className="text-center">Log In</a></li>
-            <li><a onClick={this.setSignup} className="text-center">Sign Up</a></li>
+            <li><a onClick={this.setLogin} className="text-center" id={this.splash()}>Log In</a></li>
+            <li><a onClick={this.setSignup} className="text-center" id={this.splash()}>Sign Up</a></li>
           </ul>
 
           <Modal
@@ -135,18 +140,16 @@ class NavBar extends React.Component {
 
     return (
       <nav className="navbar navbar-default navbar-static-top" id={this.splash()}>
-        <div className="container" id={this.splash()}>
-          <div className="navbar-collapse collapse">
-            <div className="navbar-header pull-left">
-              <div className="navbar-brand">
-                <a onClick={ this.goHome }>
-                  { this.splashLogo() }
-                </a>
-              </div>
+        <div className="navbar-collapse collapse">
+          <div className="navbar-header pull-left">
+            <div className="navbar-brand">
+              <a onClick={ this.goHome }>
+                { this.splashLogo() }
+              </a>
             </div>
-            { this.whereToSearch() }
-            { this.sessionLinks() }
           </div>
+          { this.whereToSearch() }
+          { this.sessionLinks() }
         </div>
       </nav>
     );
