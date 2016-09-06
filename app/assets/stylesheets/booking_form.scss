@@ -1,0 +1,103 @@
+form.booking-form.clearfix {
+  display: inline-block;
+  position: absolute;
+  right: 13%;
+  top: -43px;
+  width: 388px;
+  border-radius: 5px;
+}
+
+.booking-price {
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 30px;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.booking-content {
+  background-color: white;
+}
+
+
+.booking-form.form-inline {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.booking-form > label {
+  padding-left: 5px;
+}
+
+.booking-form input {
+  height: 25px;
+  width: 133px;
+}
+
+.booking-form label {
+  margin: 10px;
+}
+
+input.react-date-field__input {
+  width: 85px;
+}
+
+.booking-form.row {
+  text-align: center;
+}
+
+.booking-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-form button {
+  display: block;
+  padding: 5px;
+  margin: 20px;
+  background-color: #ff5d62;
+  color: white;
+  border-radius: 5px;
+}
+
+.col-lg-2.col-md-2 {
+  padding: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.time {
+  border: 1px solid gray;
+  padding-left: 30px;
+}
+
+.booking-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.charged {
+  width: 80%;
+  border-top: 1px solid gray;
+  margin: 0 auto;
+  padding-top: 20px;
+  text-align: center;
+
+  .italicize-text {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.countdown {
+  margin-bottom: 20px;
+  display: inline-block;
+
+  img {
+    padding: 10px;
+  }
+}

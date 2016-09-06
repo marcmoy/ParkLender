@@ -28,6 +28,7 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "classnames": "^2.2.5",
+    "globalize": "^0.1.1",
     "jquery": "^3.1.0",
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
@@ -46,6 +47,8 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "react-slick": "^0.13.6",
+    "react-time-select": "^2.0.0",
+    "react-widgets": "^3.4.4",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "webpack": "^1.13.2"
