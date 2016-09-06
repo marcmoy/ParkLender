@@ -21,7 +21,7 @@ class SpotShowPage extends React.Component {
         </div>
         <div className="spot-host-details clearfix">
           <SpotHostDetails spot={spotObj} />
-          <BookingFormContainer />
+          <BookingFormContainer spot={spotObj}/>
         </div>
         <div className="spot-info-container clearfix">
         </div>

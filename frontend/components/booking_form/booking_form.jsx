@@ -25,6 +25,7 @@ class BookingForm extends React.Component {
     this.updateEndDate = this.updateEndDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.inputValid = this.inputValid.bind(this);
+    this.prices = this.prices.bind(this);
   }
 
   timeToString() {
@@ -58,11 +59,41 @@ class BookingForm extends React.Component {
   inputValid() {
   }
 
+  prices() {
+
+    const priceKey = {
+      hourly_rate: "hour",
+      daily_rate: "day",
+      monthly_rate: "month"} ;
+
+    const priceBlocks = [];
+    const prices = this.props.spot.prices;
+
+    for (let price in prices) {
+      if (prices[price] > 0) {
+        let cost = prices[price];
+        let text = `$${cost} per ${priceKey[price]}`;
+        let className = `price ${price}`;
+        let priceBlock =
+        <option className='price-tag'>
+          {text}
+        </option>;
+        priceBlocks.push(priceBlock);
+      }
+    }
+
+    return(
+      <select className="price-blocks">
+        {priceBlocks}
+      </select>
+    );
+  }
+
   render() {
     return(
       <form className="booking-form clearfix" onSubmit={this.handleSubmit}>
         <div className="booking-price">
-          <span>$10 per hour</span>
+          {this.prices()}
         </div>
 
         <div className="booking-content">
