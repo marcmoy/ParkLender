@@ -1,3 +1,3 @@
-json.extract! user, :id, :username, :photo,
+json.extract! user, :id, :username,
   :spotReviews, :otherUserReviews,
   :authoredReviews, :reviews
