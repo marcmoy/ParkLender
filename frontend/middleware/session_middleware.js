@@ -19,7 +19,7 @@ export default ({getState, dispatch}) => next => action => {
       logout(() => next(action));
       break;
     case SessionConstants.SIGNUP:
-      if (action.user.user.username === 'demo-user') {
+      if (action.user.user.username === 'Demo-User') {
         login(action.user, successCallback, errorCallback);
       } else {
         signup(action.user, successCallback, errorCallback);
