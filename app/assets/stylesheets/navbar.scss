@@ -71,6 +71,10 @@ li.dropdown.open {
 
 .dropdown.open > a.text-center {
   background-color: transparent;
+  span {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .dropdown.open > a.text-center:focus {

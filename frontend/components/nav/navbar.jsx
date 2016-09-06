@@ -51,6 +51,7 @@ class NavBar extends React.Component {
 
   closeModal() {
     this.setState({ modalOpen: false, formType: "" });
+    this.props.emptyErrors();
   }
 
   splash() {
@@ -102,8 +103,8 @@ class NavBar extends React.Component {
               aria-expanded="true">
               <img src={this.props.currentUser.photo.thumbnail}
                 className="navbar-profile-photo pull-right"/>
-              <li className="pull-right"
-                id={this.splash()}>{this.props.currentUser.username}</li>
+              <span className="pull-right"
+                id={this.splash()}>{this.props.currentUser.username}</span>
             </a>
 
             <ul className="dropdown-menu">
