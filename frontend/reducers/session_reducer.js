@@ -17,9 +17,13 @@ const SessionReducer = function(state = _nullUser, action){
       const errors = action.errors;
       return merge({}, _nullUser, {errors});
     case SessionConstants.EMPTY_ERRORS:
-      const noErrorState = state;
-      noErrorState['errors'] = [];
-      return noErrorState;
+
+      let noErrorState = Object.freeze({
+        currentUser: state.currentUser,
+        errors: []
+      });
+      
+      return merge({}, noErrorState);
     default:
       return state;
   }

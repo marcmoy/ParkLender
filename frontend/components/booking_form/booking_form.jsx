@@ -14,11 +14,6 @@ class BookingForm extends React.Component {
       errors: []
     };
 
-    this.interval = window.setInterval(() =>{
-      let secs = this.state.seconds - 1;
-      this.setState({ seconds: secs });
-    }, 1000);
-
     this.timeToString = this.timeToString.bind(this);
     this.updateTime = this.updateTime.bind(this);
     this.updateStartDate = this.updateStartDate.bind(this);
@@ -26,6 +21,17 @@ class BookingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.inputValid = this.inputValid.bind(this);
     this.prices = this.prices.bind(this);
+  }
+
+  componentDidMount() {
+    this.interval = window.setInterval(() =>{
+      let secs = this.state.seconds - 1;
+      this.setState({ seconds: secs });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   timeToString() {
@@ -68,6 +74,8 @@ class BookingForm extends React.Component {
 
     const priceBlocks = [];
     const prices = this.props.spot.prices;
+    let defaultPrice;
+    let count = 0;
 
     for (let price in prices) {
       if (prices[price] > 0) {
@@ -75,18 +83,27 @@ class BookingForm extends React.Component {
         let text = `$${cost} per ${priceKey[price]}`;
         let className = `price ${price}`;
         let priceBlock =
-        <option className='price-tag'>
-          {text}
-        </option>;
+          <option className='price-tag' key={price}>
+            {text}
+          </option>;
+        defaultPrice =
+          <span className='price-tag' key={price}>
+            {text}
+          </span>;
+        count++;
         priceBlocks.push(priceBlock);
       }
     }
 
-    return(
-      <select className="price-blocks">
-        {priceBlocks}
-      </select>
-    );
+    if (count === 1) {
+      return defaultPrice;
+    } else {
+      return(
+        <select className="price-blocks">
+          {priceBlocks}
+        </select>
+      );
+    }
   }
 
   render() {
