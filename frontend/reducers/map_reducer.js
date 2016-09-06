@@ -3,7 +3,8 @@ import merge from 'lodash/merge';
 
 const mapDefault = {
   center: { lat: 37.7758, lng: -122.435 }, // center of SF
-  zoom: 13
+  zoom: 13,
+  clickableIcons: false
 };
 
 const MapReducer = function(state = mapDefault, action){

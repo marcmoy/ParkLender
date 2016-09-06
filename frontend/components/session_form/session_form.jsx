@@ -50,7 +50,7 @@ class SessionForm extends React.Component {
 		e.preventDefault();
 		this.setState({ username: "", password: "" });
 
-		this.username = ['d','e','m','o','-','u','s','e','r'];
+		this.username = ['D','e','m','o','-','U','s','e','r'];
 		this.password = ['p','a','s','s','w','o','r','d'];
 		this.currentUsername = "";
 		this.currentPass = "";
