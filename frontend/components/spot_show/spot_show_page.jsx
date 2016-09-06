@@ -1,5 +1,6 @@
 import React from 'react';
 import SpotHostDetails from './spot_host_details';
+import BookingFormContainer from '../booking_form/booking_form_container';
 
 const defaultSpot = {
   host: {thumbnail: "", name: ""},
@@ -38,7 +39,12 @@ class SpotShowPage extends React.Component {
             <img src={spotObj.photoUrl} className="spot-image"/>
           </div>
         </div>
-        <SpotHostDetails spot={spotObj} />
+        <div className="spot-host-details clearfix">
+          <SpotHostDetails spot={spotObj} />
+          <BookingFormContainer />
+        </div>
+        <div className="spot-info-container clearfix">
+        </div>
       </div>
     );
   }

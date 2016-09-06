@@ -9,6 +9,7 @@ import SpotShowPageContainer from './spot_show/spot_show_page_container';
 //Actions
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
 import { splashOn, splashOff } from '../actions/splash_actions';
+import { requestSpot } from '../actions/spots_actions';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -69,7 +70,8 @@ class AppRouter extends React.Component{
           <Route path="/search" component={ SearchPageContainer }
             onEnter={ this._activateWhereTo }
             onLeave={ this._turnOffWhereTo }/>
-          <Route path="/spots/:id" component={ SpotShowPageContainer }/>
+          <Route path="/spots/:id" component={ SpotShowPageContainer }
+            onEnter={ this._fetchSpot }/>
         </Route>
       </Router>
     );

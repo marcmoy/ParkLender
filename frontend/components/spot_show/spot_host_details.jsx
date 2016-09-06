@@ -3,7 +3,7 @@ import { Rating } from '../spot/spot_index_item_details';
 const Pin = "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png";
 
 const SpotHostDetails = ({ spot }) => (
-  <div className="spot-host-details clearfix">
+  <div>
     <aside className="host-photo-container">
       <img src={spot.host.thumbnail} />
       <span>{spot.host.name}</span>
