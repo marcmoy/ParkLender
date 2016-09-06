@@ -123,13 +123,9 @@ class NavBar extends React.Component {
             <li><a onClick={this.setSignup} className="text-center" id={this.splash()}>Sign Up</a></li>
           </ul>
 
-          <Modal
-            isOpen={this.state.modalOpen}
-            onRequestClose={this.closeModal}
-            style={ModalStyle}>
-              <SessionFormContainer
-                formType={this.state.formType}
-                closeModal={this.closeModal} />
+          <Modal isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal} style={ModalStyle}>
+              <SessionFormContainer formType={this.state.formType}/>
           </Modal>
         </div>
       );
