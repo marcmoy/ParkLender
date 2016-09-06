@@ -20,6 +20,10 @@ class NavBar extends React.Component {
     this.userThumbnail = this.userThumbnail.bind(this);
   }
 
+  componentWillReceiveProps() {
+    this.setState({ modalOpen: false });
+  }
+
   logout() {
     this.props.logout();
   }
@@ -91,11 +95,10 @@ class NavBar extends React.Component {
   }
 
   userThumbnail() {
-    let thumb = this.props.currentUser.photo.thumbnail;
-    if (thumb === undefined ) {
-      thumb = "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png"
+    if (this.props.currentUser.photo) {
+      return this.props.currentUser.photo.thumbnail;
     }
-    return thumb;
+    return "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png"
   }
 
   sessionLinks() {
@@ -106,10 +109,10 @@ class NavBar extends React.Component {
             <a href="#" className="dropdown-toggle" className="text-center"
               data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="true">
-              <img src={}
+              <img src={this.userThumbnail()}
                 className="navbar-profile-photo pull-right"/>
               <span className="pull-right"
-                id={this.splash()}>{this.userThumbnail}</span>
+                id={this.splash()}>{this.props.currentUser.username}</span>
             </a>
 
             <ul className="dropdown-menu">
