@@ -17,6 +17,7 @@ class SpotShowPage extends React.Component {
         <div className="spot-image-container">
           <div className="spot-show-image-overflow">
             <img src={spotObj.photoUrl} className="spot-image"/>
+            <button>Enlarge Photo</button>
           </div>
         </div>
         <div className="spot-host-details clearfix">

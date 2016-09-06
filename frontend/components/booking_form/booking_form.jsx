@@ -58,8 +58,13 @@ class BookingForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props.currentUser);
     e.preventDefault();
-    console.log(this.state);
+    if (!this.props.currentUser) {
+      alert("Must be logged in");
+    } else {
+      console.log(this.state);
+    }
   }
 
   inputValid() {

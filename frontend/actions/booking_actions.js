@@ -1,8 +1,14 @@
 export const BookingConstants = {
-  CREATE_BOOKING: "CREATE_BOOKING"
+  REQUEST_BOOKING: "REQUEST_BOOKING",
+  REMOVE_BOOKING: "REMOVE_BOOKING"
 };
 
-export const createBooking = request => ({
-  type: BookingConstants.CREATE_BOOKING,
-  request
+export const requestBooking = booking => ({
+  type: BookingConstants.REQUEST_BOOKING,
+  booking
+});
+
+export const removeBooking = booking => ({
+  type: BookingConstants.REMOVE_BOOKING,
+  booking
 });
