@@ -19,10 +19,6 @@ class NavBar extends React.Component {
     this.splash = this.splash.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.closeModal();
-  }
-
   logout() {
     this.props.logout();
   }
@@ -50,8 +46,8 @@ class NavBar extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalOpen: false, formType: "" });
     this.props.emptyErrors();
+    this.setState({ modalOpen: false, formType: "" });
   }
 
   splash() {
