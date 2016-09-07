@@ -3,6 +3,36 @@ import React from 'react';
 class SpotShowDetails extends React.Component {
   constructor(props) {
     super(props);
+    this.prices = this.prices.bind(this);
+  }
+
+  prices() {
+
+    const priceKey = {
+      hourly_rate: "hour",
+      daily_rate: "day",
+      monthly_rate: "month"} ;
+
+    let priceBlocks = [];
+    let prices = this.props.spot.prices;
+
+    for (let price in prices) {
+      if (prices[price] > 0) {
+        let cost = prices[price];
+        let text = `$${cost} per ${priceKey[price]}`;
+        let priceBlock =
+        <li className="price-detail-block" key={price}>
+          {text}
+        </li>;
+        priceBlocks.push(priceBlock);
+      }
+    }
+
+    return(
+      <ul className='spot-show-prices'>
+        { priceBlocks }
+      </ul>
+    );
   }
 
   render() {
@@ -20,7 +50,7 @@ class SpotShowDetails extends React.Component {
           <div className="row">
             <h3>Price</h3>
             <span className="pull-right">
-
+              {this.prices()}
             </span>
           </div>
 
@@ -35,7 +65,6 @@ class SpotShowDetails extends React.Component {
             <h3>Vehicles Allowed</h3>
             <span className="pull-right" />
           </div>
-
         </div>
       </div>
     );

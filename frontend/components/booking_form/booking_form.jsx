@@ -122,11 +122,9 @@ class BookingForm extends React.Component {
 
   inputValid() {
     if (!this.validDates()) {
-      console.log("invalid date");
       this.showDateAlert();
       return false;
     } else if (!this.validTimes()){
-      console.log("invalid time");
       this.showTimeAlert();
       return false;
     } else {

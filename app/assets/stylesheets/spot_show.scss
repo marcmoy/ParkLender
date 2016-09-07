@@ -21,6 +21,7 @@ img.spot-image {
 
 .spot-host-details {
   padding: 30px 0;
+  padding-left: 50px;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   position: relative;
@@ -36,10 +37,11 @@ aside.host-photo-container {
 
   img {
     border-radius: 50%;
-    border: 2px solid gray;
+    border: 3px solid gray;
     margin-left: 70px;
     margin-right: 40px;
     margin-bottom: 20px;
+    box-shadow: 2px, 2px, 2px, #888888;
   }
 
   span {
