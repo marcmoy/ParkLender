@@ -64,9 +64,14 @@ input.react-date-field__input {
   background-color: #ff5d62;
   color: white;
   border-radius: 5px;
-  .sent-button {
-    background-color: green;
-  }
+}
+
+.booking-form button.sent-button {
+  background-color: #699436;
+}
+
+.booking-form button.pending-button {
+  background-color: #ccc;
 }
 
 .booking-form button:disabled {
