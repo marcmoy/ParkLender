@@ -50,7 +50,7 @@ id           | integer   | not null, primary key
 driver_id    | integer   | not null, foreign key (references users), indexed
 host_id      | integer   | not null, foreign key (references users), indexed
 spot_id      | integer   | not null, foreign key, indexed
-booking_type | string    | not null, ("hourly, daily, monthly")
+type         | string    | not null, ("hourly, daily, monthly")
 status       | string    | not null, default = "PENDING"
 start_date   | date      | not null
 end_ date    | date      | not null

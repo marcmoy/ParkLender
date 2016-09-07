@@ -30,8 +30,6 @@ class Api::SpotsController < ApplicationController
       :title,
       :description,
       :prices
-      # :seating,
-      # :picture_url
     )
   end
 

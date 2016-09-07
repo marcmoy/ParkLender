@@ -1,10 +1,9 @@
-export const createBooking = (booking, success, error) => {
+export const createBooking = (booking, success) => {
   $.ajax({
     method: 'POST',
-    url: `api/spots/${booking.spotId}/booking`,
+    url: `api/spots/${booking.spot_id}/bookings`,
     data: booking,
     dataType: 'json',
-    success,
-    error
+    success
   });
 };

@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import BookingForm from './booking_form';
-import { createBooking } from '../../actions/booking_actions';
+import { requestBooking } from '../../actions/booking_actions';
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  initialPrice: state.filter,
+  currentUser: state.session.currentUser,
+  spots: state.spots
 });
 
 const mapDispatchToProps = dispatch => ({
-  createBooking: (request) => dispatch(request)
+  requestBooking: (request) => dispatch(requestBooking(request))
 });
 
 const BookingFormContainer = connect(

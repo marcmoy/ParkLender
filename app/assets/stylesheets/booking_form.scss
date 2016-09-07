@@ -17,6 +17,10 @@ form.booking-form.clearfix {
 
 .booking-content {
   background-color: white;
+
+  td:hover {
+    background-color: #ccc;
+  }
 }
 
 
@@ -178,6 +182,8 @@ input.time {
 
 .Select-control {
   width: 150px;
+  margin-left: 10px;
+  margin-right: 10px
 }
 
 .booking-content input {
@@ -193,9 +199,4 @@ input.form-control {
 
 .Select-value {
   margin-left: 15px;
-}
-
-.Select.Select--single.is-searchable {
-  margin-left: 10px;
-  margin-right: 10px;
 }

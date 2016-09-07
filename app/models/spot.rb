@@ -36,6 +36,10 @@ class Spot < ApplicationRecord
 
   has_one :photo
   has_many :reviews
+  has_many :booking_requests,
+    primary_key: :id,
+    foreign_key: :spot_id,
+    class_name: :Booking
 
   belongs_to :host,
     primary_key: :id,

@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
 	has_one :photo
 	has_many :reviews
+	has_many :bookings
 
 	has_one :spot,
 		primary_key: :id,

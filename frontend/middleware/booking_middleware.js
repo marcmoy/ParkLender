@@ -11,10 +11,10 @@ export default ({getState, dispatch}) => next => action => {
     const errors = xhr.responseJSON;
     dispatch(receiveErrors(errors));
   };
-  
+
   switch (action.type) {
     case BookingConstants.REQUEST_BOOKING:
-      createBooking(action.booking, requestSuccess, errorCallback);
+      createBooking(action.booking, requestSuccess);
       return next(action);
     // case BookingConstants.REMOVE_BOOKING:
     //   deleteBooking(action.booking);

@@ -9,6 +9,7 @@ json.photoUrl spot.photo.url
 # end
 
 json.host do
+  json.id spot.host.id
   json.thumbnail spot.host.photo.thumbnail
   json.name spot.host.username
 end
