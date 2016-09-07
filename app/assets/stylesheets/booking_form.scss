@@ -64,6 +64,9 @@ input.react-date-field__input {
   background-color: #ff5d62;
   color: white;
   border-radius: 5px;
+  .sent-button {
+    background-color: green;
+  }
 }
 
 .booking-form button:disabled {
@@ -218,6 +221,7 @@ input.form-control:disabled {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  width: 150px;
 }
 
 .Select-control {
