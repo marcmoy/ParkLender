@@ -66,6 +66,10 @@ input.react-date-field__input {
   border-radius: 5px;
 }
 
+.booking-form button:disabled {
+  cursor: not-allowed;
+}
+
 .col-lg-2.col-md-2 {
   padding: 20px;
   padding-top: 10px;
@@ -199,4 +203,23 @@ input.form-control {
 
 .Select-value {
   margin-left: 15px;
+}
+
+input.form-control:disabled {
+  background-color: #f9f9f9;
+}
+
+.time-row {
+  display: flex;
+  justify-content: center;
+}
+
+.Select.Select--single.is-searchable.has-value {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.Select-control {
+  margin: 0 auto;
 }

@@ -18,7 +18,8 @@ class BookingForm extends React.Component {
       endDate: "",
       startTime: 540,
       endTime: 1020,
-      bookSuccess: false
+      bookingSuccess: false,
+      pendingRequest: false
     };
 
     this.alertOptions = {
@@ -29,27 +30,35 @@ class BookingForm extends React.Component {
       transition: 'scale'
     };
 
+    this.prices = this.prices.bind(this);
     this.timeToString = this.timeToString.bind(this);
+
     this.updateStartDate = this.updateStartDate.bind(this);
     this.updateEndDate = this.updateEndDate.bind(this);
     this.updateStartTime = this.updateStartTime.bind(this);
     this.updateEndTime = this.updateEndTime.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.inputValid = this.inputValid.bind(this);
-    this.prices = this.prices.bind(this);
-    this.showUserAlert = this.showUserAlert.bind(this);
     this.updateType = this.updateType.bind(this);
-  }
 
-  showUserAlert(){
-    msg.show('MUST TO BE LOGGED IN TO BOOK', {
-      time: 2000,
-      type: 'error'
-    });
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.inputValid = this.inputValid.bind(this);
+    this.validDates = this.validDates.bind(this);
+    this.validDateRange = this.validDateRange.bind(this);
+    this.validTimes = this.validTimes.bind(this);
+    this.equalDates = this.equalDates.bind(this);
+
+    this.showUserAlert = this.showUserAlert.bind(this);
+    this.showDateAlert = this.showDateAlert.bind(this);
+    this.showTimeAlert = this.showTimeAlert.bind(this);
+
+    this.requestButton = this.requestButton.bind(this);
+    this.updateBookSuccess = this.updateBookSuccess.bind(this);
+    this.disableForms = this.disableForms.bind(this);
   }
 
   componentDidMount() {
     this.interval = window.setInterval(() =>{
+      console.log("tick");
       let secs = this.state.seconds - 1;
       this.setState({ seconds: secs });
     }, 1000);
@@ -59,7 +68,22 @@ class BookingForm extends React.Component {
     clearInterval(this.interval);
   }
 
+  componentDidUpdate() {
+    if (this.disableForms()) {
+      $("select.price-blocks").prop("disabled", true);
+      $("select.price-blocks").css("cursor", "not-allowed");
+      $("input.form-control").prop("disabled", true);
+      $(".Select-value").css("cursor", "not-allowed");
+    }
+  }
+
   timeToString() {
+    if (this.disableForms()) {
+      return(() => {
+        this.setState({ seconds: 0 });
+        clearInterval(this.interval);
+      });
+    }
     let seconds = this.state.seconds;
     if (seconds === 0) clearInterval(this.interval);
     let mins = Math.floor(seconds / 60);
@@ -95,7 +119,8 @@ class BookingForm extends React.Component {
       this.showUserAlert();
       return;
 
-    } else if (this.props.inputValid) {
+    } else if (!this.inputValid()) {
+      console.log("invalid input");
       return;
 
     } else {
@@ -114,11 +139,81 @@ class BookingForm extends React.Component {
         }
       };
 
-      this.props.requestBooking(booking);
+      clearInterval(this.interval);
+      this.setState({ pendingRequest: true });
+      this.props.requestBooking(booking, this.updateBookSuccess);
     }
   }
 
+  updateBookSuccess() {
+    this.setState({ bookingSuccess: true });
+  }
+
   inputValid() {
+    if (!this.validDates()) {
+      console.log("invalid date");
+      this.showDateAlert();
+      return false;
+    } else if (!this.validTimes()){
+      console.log("invalid time");
+      this.showTimeAlert();
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validDates() {
+    if (this.state.startDate === "") {
+      return false;
+    } else if (this.state.endDate === "") {
+      return false;
+    } else if (!this.validDateRange()) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validDateRange() {
+    let start = Date.parse(this.state.startDate);
+    let end = Date.parse(this.state.endDate);
+    return start <= end;
+  }
+
+  validTimes() {
+    if (this.equalDates()) {
+      return this.state.startTime < this.state.endTime;
+    } else {
+      return true;
+    }
+  }
+
+  equalDates() {
+    let start = Date.parse(this.state.startDate);
+    let end = Date.parse(this.state.endDate);
+    return start === end;
+  }
+
+  showTimeAlert(){
+    msg.show('MUST SELECT VALID TIMES', {
+      time: 2000,
+      type: 'error'
+    });
+  }
+
+  showDateAlert(){
+    msg.show('MUST SELECT VALID DATES', {
+      time: 2000,
+      type: 'error'
+    });
+  }
+
+  showUserAlert(){
+    msg.show('MUST TO BE LOGGED IN TO BOOK', {
+      time: 2000,
+      type: 'error'
+    });
   }
 
   prices() {
@@ -163,6 +258,46 @@ class BookingForm extends React.Component {
     }
   }
 
+  requestButton() {
+    if (this.state.bookingSuccess) {
+      return(
+        <button className="sent-button" disabled={true}>
+          Booking sent!
+        </button>
+      );
+    } else if (this.state.pendingRequest) {
+      return (
+        <button className="pending-button" disabled={true}>
+          Sending request...
+        </button>
+      );
+    } else {
+      return <button>Request a booking</button>;
+    }
+  }
+
+  disableForms() {
+    return this.state.pendingRequest || this.state.bookingSuccess;
+  }
+
+  countdownText() {
+    if (this.disableForms()) {
+      return(
+        <div>
+          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
+          <strong>Booking request sent!</strong> Please wait for host approval.
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
+          <strong className="timer">{this.timeToString()}</strong> until your reservation expires.
+        </div>
+      );
+    }
+  }
+
   render() {
     return(
       <form className="booking-form clearfix" onSubmit={this.handleSubmit}>
@@ -179,9 +314,11 @@ class BookingForm extends React.Component {
 
           <div className="row">
             <DatePicker className="date-picker" id="startDate"
-              value={this.state.startDate} onChange={this.updateStartDate}/>
+              value={this.state.startDate} onChange={this.updateStartDate}
+              disabled={this.disableForms()} />
             <DatePicker className="date-picker" id="endDate"
-              value={this.state.endDate} onChange={this.updateEndDate}/>
+              value={this.state.endDate} onChange={this.updateEndDate}
+              disabled={this.disableForms()} />
           </div>
 
           <div className="row">
@@ -189,15 +326,17 @@ class BookingForm extends React.Component {
             <label htmlFor="endTime">End Time</label>
           </div>
 
-          <div className="row">
+          <div className="row time-row">
             <Select options={timeOptions} value={this.state.startTime}
-                onChange={this.updateStartTime} searchbale={false}/>
-              <Select options={timeOptions} value={this.state.endTime}
-                onChange={this.updateEndTime} searchbale={false}/>
+                onChange={this.updateStartTime} searchbale={false}
+                disabled={this.disableForms()} />
+            <Select options={timeOptions} value={this.state.endTime}
+              onChange={this.updateEndTime} searchbale={false}
+              disabled={this.disableForms()} />
           </div>
 
           <div className="booking-button-container">
-            <button>Request to book</button>
+            {this.requestButton()}
           </div>
 
           <div className="booking-footer">
@@ -208,8 +347,8 @@ class BookingForm extends React.Component {
             </div>
 
             <div className="countdown">
-              <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
-              <strong className="timer">{this.timeToString()}</strong> until your reservation expires.
+
+              {this.countdownText()}
             </div>
           </div>
 

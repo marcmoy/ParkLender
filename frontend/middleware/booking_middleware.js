@@ -6,7 +6,7 @@ import { createBooking } from '../util/booking_api_util';
 import { BookingConstants,receiveBooking } from '../actions/booking_actions';
 
 export default ({getState, dispatch}) => next => action => {
-  const requestSuccess = data => dispatch(receiveBooking(data));
+  // const requestSuccess = data => dispatch(receiveBooking(data));
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
     dispatch(receiveErrors(errors));
@@ -14,7 +14,7 @@ export default ({getState, dispatch}) => next => action => {
 
   switch (action.type) {
     case BookingConstants.REQUEST_BOOKING:
-      createBooking(action.booking, requestSuccess);
+      createBooking(action.booking, action.success);
       return next(action);
     // case BookingConstants.REMOVE_BOOKING:
     //   deleteBooking(action.booking);

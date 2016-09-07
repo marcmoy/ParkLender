@@ -1,5 +1,5 @@
 json.extract! spot, :id, :title, :description,
-  :lat, :lng, :location, :reviews
+  :lat, :lng, :location, :reviews, :width, :length
 
 json.numReviews spot.numReviews
 json.rating spot.rating
@@ -15,3 +15,5 @@ json.host do
 end
 
 json.prices spot.rates(price_filter)
+
+json.vehicles spot.allowedVehicles

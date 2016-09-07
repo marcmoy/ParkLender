@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestBooking: (request) => dispatch(requestBooking(request))
+  requestBooking: (req, suc) => dispatch(requestBooking(req,suc))
 });
 
 const BookingFormContainer = connect(

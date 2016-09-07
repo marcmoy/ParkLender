@@ -1,6 +1,7 @@
 import React from 'react';
 import SpotHostDetails from './spot_host_details';
 import BookingFormContainer from '../booking_form/booking_form_container';
+import SpotShowDetails from './spot_show_details';
 
 class SpotShowPage extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class SpotShowPage extends React.Component {
           <BookingFormContainer spot={spotObj}/>
         </div>
         <div className="spot-info-container clearfix">
+          <SpotShowDetails spot={spotObj} />
         </div>
       </div>
     );
