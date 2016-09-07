@@ -56,7 +56,7 @@ input.react-date-field__input {
 .booking-form button {
   display: block;
   padding: 5px;
-  margin: 20px;
+  margin: 10px;
   background-color: #ff5d62;
   color: white;
   border-radius: 5px;
@@ -111,4 +111,91 @@ select.price-blocks {
 strong.timer {
   font-size: 20px;
   padding-right: 5px;
+}
+
+.booking-content > div.row {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.input-group {
+  width: 150px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.booking-content > div.row {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-form label {
+  width: 150px;
+  text-align: center;
+}
+
+input.time {
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #cccccc;
+}
+
+.input-group {
+  width: 150px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.booking-content > div.row {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-form label {
+  width: 150px;
+  text-align: center;
+}
+
+input.time {
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #cccccc;
+}
+
+.booking-content {
+  padding-top: 15px;
+  /* padding-bottom: 15px; */
+}
+
+.booking-button-container {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.Select-control {
+  width: 150px;
+}
+
+.booking-content input {
+  color: transparent;
+  text-shadow: 0 0 0 gray;
+  text-align: center;
+  cursor: pointer;
+}
+
+input.form-control {
+  height: 37px;
+}
+
+.Select-value {
+  margin-left: 15px;
+}
+
+.Select.Select--single.is-searchable {
+  margin-left: 10px;
+  margin-right: 10px;
 }

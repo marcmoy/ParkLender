@@ -1,5 +1,7 @@
 import React from 'react';
-import { DateField } from 'react-date-picker';
+import DatePicker from 'react-bootstrap-date-picker';
+import Select from 'react-select';
+import timeOptions from './time_options';
 
 class BookingForm extends React.Component {
   constructor(props) {
@@ -9,25 +11,26 @@ class BookingForm extends React.Component {
       seconds: 480,
       startDate: "",
       endDate: "",
-      startTime: "",
-      endTime: "",
+      startTime: 540,
+      endTime: 1020,
       errors: []
     };
 
     this.timeToString = this.timeToString.bind(this);
-    this.updateTime = this.updateTime.bind(this);
     this.updateStartDate = this.updateStartDate.bind(this);
     this.updateEndDate = this.updateEndDate.bind(this);
+    this.updateStartTime = this.updateStartTime.bind(this);
+    this.updateEndTime = this.updateEndTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.inputValid = this.inputValid.bind(this);
     this.prices = this.prices.bind(this);
   }
 
   componentDidMount() {
-    this.interval = window.setInterval(() =>{
-      let secs = this.state.seconds - 1;
-      this.setState({ seconds: secs });
-    }, 1000);
+    // this.interval = window.setInterval(() =>{
+    //   let secs = this.state.seconds - 1;
+    //   this.setState({ seconds: secs });
+    // }, 1000);
   }
 
   componentWillUnmount() {
@@ -43,10 +46,12 @@ class BookingForm extends React.Component {
     return `0${mins}:${secs}`;
   }
 
-  updateTime(e) {
-    let time = e.currentTarget.name;
-    let val = e.currentTarget.val;
-    this.setState({ time, val });
+  updateStartTime(time) {
+    this.setState({ startTime: time });
+  }
+
+  updateEndTime(time) {
+    this.setState({ endTime: time });
   }
 
   updateStartDate(date) {
@@ -119,26 +124,29 @@ class BookingForm extends React.Component {
         </div>
 
         <div className="booking-content">
-          <div className="container">
-            <div className="row">
 
-              <div className="col-lg-2 col-md-2">
-                <label htmlFor="startDate">Start Date</label>
-                <DateField id="startDate" dateFormat="MM-DD-YYYY"
-                  onChange={this.updateStartDate}/>
-                <label htmlFor="startTime">Start Time</label>
-                <input className="time" name="startTime" type="time" step="600"/>
-              </div>
+          <div className="row">
+            <label htmlFor="startDate">Start Date</label>
+            <label htmlFor="endDate">End Date</label>
+          </div>
 
-              <div className="col-lg-2 col-md-2">
-                <label htmlFor="endDate">End Date</label>
-                <DateField id="endDate" name="endDate" dateFormat="MM-DD-YYYY"
-                  onChange={this.updateEndDate}/>
-                <label htmlFor="endTime">End Time</label>
-                <input className="time" name="endTime" type="time" step="600"/>
-              </div>
+          <div className="row">
+            <DatePicker className="date-picker" id="startDate"
+              value={this.state.startDate} onChange={this.updateStartDate}/>
+            <DatePicker className="date-picker" id="endDate"
+              value={this.state.endDate} onChange={this.updateEndDate}/>
+          </div>
 
-            </div>
+          <div className="row">
+            <label htmlFor="startTime">Start Time</label>
+            <label htmlFor="endTime">End Time</label>
+          </div>
+
+          <div className="row">
+            <Select options={timeOptions} value={this.state.startTime}
+                onChange={this.updateStartTime} searchbale={false}/>
+              <Select options={timeOptions} value={this.state.endTime}
+                onChange={this.updateEndTime} searchbale={false}/>
           </div>
 
           <div className="booking-button-container">
