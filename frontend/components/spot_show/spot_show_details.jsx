@@ -20,7 +20,7 @@ class SpotShowDetails extends React.Component {
           <div className="row">
             <h3>Price</h3>
             <span className="pull-right">
-              
+
             </span>
           </div>
 

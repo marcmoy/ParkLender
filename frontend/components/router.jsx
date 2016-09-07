@@ -9,7 +9,7 @@ import SpotShowPageContainer from './spot_show/spot_show_page_container';
 //Actions
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
 import { splashOn, splashOff } from '../actions/splash_actions';
-import { requestSpot } from '../actions/spots_actions';
+import { requestSpots } from '../actions/spots_actions';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -20,7 +20,7 @@ class AppRouter extends React.Component{
     this._turnOffWhereTo = this._turnOffWhereTo.bind(this);
     this._activateSplash = this._activateSplash.bind(this);
     this._turnOffSplash = this._turnOffSplash.bind(this);
-    this._fetchSpot = this._fetchSpot.bind(this);
+    this._requestSpots = this._requestSpots.bind(this);
   }
 
   _ensureLoggedIn(nextState, replace){
@@ -55,23 +55,21 @@ class AppRouter extends React.Component{
     this.context.store.dispatch(splashOff());
   }
 
-  _fetchSpot({ params }) {
-    const spotId = parseInt(params.id);
-    this.context.store.dispatch(requestSpot(spotId));
+  _requestSpots() {
+    this.context.store.dispatch(requestSpots());
   }
 
   render(){
     return(
       <Router history={ hashHistory }>
-        <Route path="/" component={ App } >
+        <Route path="/" component={ App } onEnter={ this._requestSpots }>
           <IndexRoute component={ HomePageContainer }
             onEnter={ this._activateSplash }
             onLeave={ this._turnOffSplash } />
           <Route path="/search" component={ SearchPageContainer }
             onEnter={ this._activateWhereTo }
             onLeave={ this._turnOffWhereTo }/>
-          <Route path="/spots/:id" component={ SpotShowPageContainer }
-            onEnter={ this._fetchSpot }/>
+          <Route path="/spots/:id" component={ SpotShowPageContainer } />
         </Route>
       </Router>
     );

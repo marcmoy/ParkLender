@@ -1,25 +1,27 @@
 import React from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
 import Select from 'react-select';
-import timeOptions from './time_options';
+import { timeOptionsAM, timeOptionsPM } from './time_options';
 import AlertContainer from 'react-alert';
+import CountdownTimer from './countdown_timer';
 
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
 
     let prices = this.props.spot.prices;
-    let initialPrice = Object.keys(prices)[0];
+    let initialPrice = Object.keys(prices)[0] || "hourly_rate";
 
     this.state = {
       type: initialPrice,
       seconds: 900,
       startDate: "",
       endDate: "",
-      startTime: 540,
+      startTime: 720,
       endTime: 1020,
       bookingSuccess: false,
-      pendingRequest: false
+      pendingRequest: false,
+      disableClock: false
     };
 
     this.alertOptions = {
@@ -31,7 +33,6 @@ class BookingForm extends React.Component {
     };
 
     this.prices = this.prices.bind(this);
-    this.timeToString = this.timeToString.bind(this);
 
     this.updateStartDate = this.updateStartDate.bind(this);
     this.updateEndDate = this.updateEndDate.bind(this);
@@ -56,18 +57,6 @@ class BookingForm extends React.Component {
     this.disableForms = this.disableForms.bind(this);
   }
 
-  componentDidMount() {
-    this.interval = window.setInterval(() =>{
-      console.log("tick");
-      let secs = this.state.seconds - 1;
-      this.setState({ seconds: secs });
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
   componentDidUpdate() {
     if (this.disableForms()) {
       $("select.price-blocks").prop("disabled", true);
@@ -75,22 +64,6 @@ class BookingForm extends React.Component {
       $("input.form-control").prop("disabled", true);
       $(".Select-value").css("cursor", "not-allowed");
     }
-  }
-
-  timeToString() {
-    if (this.disableForms()) {
-      return(() => {
-        this.setState({ seconds: 0 });
-        clearInterval(this.interval);
-      });
-    }
-    let seconds = this.state.seconds;
-    if (seconds === 0) clearInterval(this.interval);
-    let mins = Math.floor(seconds / 60);
-    let secs = seconds - ( mins * 60);
-    if (mins < 10) mins = `0${mins}`;
-    if (secs < 10) secs = `0${secs}`;
-    return `${mins}:${secs}`;
   }
 
   updateStartTime(time) {
@@ -120,7 +93,6 @@ class BookingForm extends React.Component {
       return;
 
     } else if (!this.inputValid()) {
-      console.log("invalid input");
       return;
 
     } else {
@@ -139,8 +111,7 @@ class BookingForm extends React.Component {
         }
       };
 
-      clearInterval(this.interval);
-      this.setState({ pendingRequest: true });
+      this.setState({ pendingRequest: true, disableClock: true });
       this.props.requestBooking(booking, this.updateBookSuccess);
     }
   }
@@ -280,25 +251,8 @@ class BookingForm extends React.Component {
     return this.state.pendingRequest || this.state.bookingSuccess;
   }
 
-  countdownText() {
-    if (this.disableForms()) {
-      return(
-        <div>
-          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
-          <strong>Booking request sent!</strong> Please wait for host approval.
-        </div>
-      );
-    } else {
-      return(
-        <div>
-          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
-          <strong className="timer">{this.timeToString()}</strong> until your reservation expires.
-        </div>
-      );
-    }
-  }
-
   render() {
+
     return(
       <form className="booking-form clearfix" onSubmit={this.handleSubmit}>
         <div className="booking-price">
@@ -327,10 +281,10 @@ class BookingForm extends React.Component {
           </div>
 
           <div className="row time-row">
-            <Select options={timeOptions} value={this.state.startTime}
+            <Select options={timeOptionsAM} value={this.state.startTime}
                 onChange={this.updateStartTime} searchbale={false}
                 disabled={this.disableForms()} />
-            <Select options={timeOptions} value={this.state.endTime}
+            <Select options={timeOptionsPM} value={this.state.endTime}
               onChange={this.updateEndTime} searchbale={false}
               disabled={this.disableForms()} />
           </div>
@@ -347,8 +301,7 @@ class BookingForm extends React.Component {
             </div>
 
             <div className="countdown">
-
-              {this.countdownText()}
+              <CountdownTimer disabled={this.state.disableClock} />
             </div>
           </div>
 

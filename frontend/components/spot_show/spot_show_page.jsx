@@ -2,6 +2,18 @@ import React from 'react';
 import SpotHostDetails from './spot_host_details';
 import BookingFormContainer from '../booking_form/booking_form_container';
 import SpotShowDetails from './spot_show_details';
+import { addSpinner, removeSpinner } from '../../util/loader';
+
+const _nullSpot = {
+  id: null,
+  photoUrl: "",
+  host: {
+    name: "",
+    thumbnail: ""
+  },
+  rating: 0,
+  prices: {}
+};
 
 class SpotShowPage extends React.Component {
   constructor(props) {
@@ -12,6 +24,10 @@ class SpotShowPage extends React.Component {
 
     const spotId = this.props.params.id;
     let spotObj = this.props.spots[spotId];
+
+    if (!spotObj) {
+      spotObj = _nullSpot;
+    }
 
     return(
       <div className="spot-show-page clearfix">
