@@ -147,7 +147,7 @@ class NavBar extends React.Component {
   render() {
 
     return (
-      <nav className="navbar navbar-default navbar-static-top" id={this.splash()}>
+      <nav className="navbar navbar-default navbar-fixed-top" id={this.splash()}>
         <div className="navbar-collapse collapse">
           <div className="navbar-header pull-left">
             <div className="navbar-brand">
