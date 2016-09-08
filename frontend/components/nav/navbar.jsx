@@ -26,6 +26,7 @@ class NavBar extends React.Component {
 
   logout() {
     this.props.logout();
+    this.goHome();
   }
 
   goHome() {
