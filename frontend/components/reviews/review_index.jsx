@@ -15,7 +15,7 @@ class ReviewIndex extends React.Component {
       if (id) {
         let review = reviews[id];
         reviewBlocks.push(
-          <div className="row">
+          <div className="row" key={id}>
             <ReviewIndexItem review={review} key={id}/>
           </div>
         );
@@ -23,7 +23,7 @@ class ReviewIndex extends React.Component {
     }
 
     return (
-      <div className="reviews-index-container container clearfix">
+      <div className="reviews-index-container clearfix">
         {reviewBlocks}
       </div>
     );

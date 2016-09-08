@@ -2,11 +2,17 @@
   text-align: left;
   padding-left: 95px;
 
-  aside {
+  .row {
+    width: 50%;
+    padding: 20px 0;
+    border-bottom: 1px solid gray;
+  }
+
+  .review-host-photo-container {
     display: block;
     float: left;
-    padding: 20px 40px;
     text-align: center;
+    width: 300px;
 
     img {
       border-radius: 50%;
@@ -26,7 +32,14 @@
     }
   }
 
-  main {
-    font-size: 18px;
+  .review-content-container {
+    display: block;
+    padding-top: 30px;
+    font-size: 20px;
+    font-style: italic;
+
+    .review-date {
+      font-size: 18px;
+    }
   }
 }

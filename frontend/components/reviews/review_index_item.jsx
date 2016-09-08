@@ -12,15 +12,18 @@ class ReviewIndexItem extends React.Component {
 
     return(
       <div className="review-index-item-container">
-        <aside className="review-host-photo-container">
+        <div className="review-host-photo-container">
           <img src={author.photoUrl} />
           <span>{author.username}</span>
-        </aside>
-        <main className="review-content-container">
-          {review.content}
+        </div>
+        <div className="review-content-container">
+          "{review.content}"
             <br/>
-          {review.date}
-        </main>
+            <br/>
+          <span className="review-date">
+            {review.date}
+          </span>
+        </div>
       </div>
     );
   }
