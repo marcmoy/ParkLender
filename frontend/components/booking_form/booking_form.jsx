@@ -137,7 +137,7 @@ class BookingForm extends React.Component {
 
     } else {
 
-      const booking = {
+      const data = {
         booking: {
           spot_id: this.props.spot.id,
           user_id: this.props.currentUser.id,
@@ -152,7 +152,7 @@ class BookingForm extends React.Component {
       };
 
       this.setState({ pendingRequest: true, disableClock: true });
-      this.props.requestBooking(booking, this.updateBookSuccess);
+      this.props.requestBooking(data, this.updateBookSuccess);
     }
   }
 

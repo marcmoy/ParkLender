@@ -15,7 +15,7 @@ class ReviewIndex extends React.Component {
     for (let id in reviews) {
       if (id) {
         let review = reviews[id];
-        reviewBlocks.push(
+        reviewBlocks.unshift(
           <div className="row" key={id}>
             <ReviewIndexItem review={review} key={id}/>
           </div>
@@ -25,7 +25,8 @@ class ReviewIndex extends React.Component {
 
     return (
       <div className="reviews-index-container clearfix">
-        <ReviewForm spot={this.props.spot}
+        <ReviewForm spotId={this.props.spotId}
+          createSpotReview={this.props.createSpotReview}
           currentUser={this.props.currentUser} />
         {reviewBlocks}
       </div>

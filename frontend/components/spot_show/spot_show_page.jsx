@@ -45,7 +45,7 @@ class SpotShowPage extends React.Component {
         <div className="spot-info-container clearfix">
           <SpotShowDetails spot={spotObj} />
         </div>
-        <ReviewIndexContainer spot={spotObj} />
+        <ReviewIndexContainer spotId={spotId} />
       </div>
     );
   }

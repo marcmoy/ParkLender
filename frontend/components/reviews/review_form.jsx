@@ -1,5 +1,5 @@
 import React from 'react';
-import StartRatingComponent from 'react-star-rating-component';
+import StarRatingComponent from 'react-star-rating-component';
 
 $.fn.reviewFormFollow = function () {
     let $this = this,
@@ -30,9 +30,8 @@ class ReviewForm extends React.Component {
 
     let authorId, spotId, userId;
     if (this.props.currentUser) authorId = this.props.currentUser.id;
-    if (this.props.spot) spotId = this.props.spot.id;
+    if (this.props.spotId) spotId = this.props.spotId;
     // if (this.props.user) userId = this.props.user.id;
-
     this.state = {
       author_id: authorId,
       spot_id: spotId,
@@ -44,6 +43,8 @@ class ReviewForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
+    this.updateContent = this.updateContent.bind(this);
+    this.showUserAlert = this.showUserAlert.bind(this);
   }
 
   componentDidMount() {
@@ -52,10 +53,36 @@ class ReviewForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (!this.props.currentUser) {
+      this.showUserAlert();
+    } else {
+      const data = {
+        review: {
+          author_id: this.state.author_id,
+          spot_id: this.state.spot_id,
+          rating: this.state.rating,
+          content: this.state.content
+        }
+      };
+
+      this.setState({ disabled: true });
+      this.props.createSpotReview(data);
+    }
+  }
+
+  showUserAlert(){
+    msgBot.show('MUST TO BE LOGGED IN TO WRITE A REVIEW', {
+      time: 2000,
+      type: 'error'
+    });
   }
 
   onStarClick(nextValue) {
     this.setState({ rating: nextValue });
+  }
+
+  updateContent(e) {
+    this.setState({ content: e.currentTarget.value });
   }
 
   render() {
@@ -69,14 +96,15 @@ class ReviewForm extends React.Component {
 
           <div className="row">
             <div className="review-stars-container">
-              <StartRatingComponent name="rating" value={this.state.rating}
+              <StarRatingComponent name="rating" value={this.state.rating}
                 onStarClick={this.onStarClick} editing={true}/>
             </div>
           </div>
 
           <div className="row">
             <textarea className="review-content-container"
-              placeholder="Tell us what you think">
+              placeholder="Tell us what you think"
+              onChange={this.updateContent}>
             </textarea>
           </div>
 

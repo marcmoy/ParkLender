@@ -1,16 +1,10 @@
 class Api::ReviewsController < ApplicationController
 
   def create
-    # @review = Review.new(review_params)
+    @review = Review.new(review_params)
 
-    # if @review.save!
-    #   render :show
-    # else
-    #   render (
-    #     json: ["Invalid review creation"],
-    #     status: 401
-    #   )
-    # end
+    @review.save!
+    render :show
   end
 
   def index

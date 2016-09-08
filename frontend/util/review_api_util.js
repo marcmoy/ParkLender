@@ -7,12 +7,12 @@ export const fetchSpotReviews = (spotId, success) => {
   });
 };
 
-export const createSpotReview = (review, success) => {
-  let spotId = review.spotId;
+export const createSpotReview = (data, success) => {
+  let spotId = data.review.spot_id;
   $.ajax({
     method: 'POST',
     url: `api/spots/${spotId}/reviews`,
-    data: review,
+    data: data,
     dataType: 'json',
     success
   });
