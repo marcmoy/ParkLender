@@ -1,0 +1,32 @@
+.reviews-index-container{
+  text-align: left;
+  padding-left: 95px;
+
+  aside {
+    display: block;
+    float: left;
+    padding: 20px 40px;
+    text-align: center;
+
+    img {
+      border-radius: 50%;
+      border: 3px solid gray;
+      height: 100px;
+      width: 100px;
+      box-shadow: 2px, 2px, 2px, #888888;
+      margin: 10px;
+    }
+
+    span {
+      display: block;
+      color: black;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  main {
+    font-size: 18px;
+  }
+}

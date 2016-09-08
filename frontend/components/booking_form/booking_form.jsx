@@ -11,27 +11,27 @@ class BookingForm extends React.Component {
 
     let prices = this.props.spot.prices;
     let initialPrice = Object.keys(prices)[0] || "hourly_rate";
-    let initialStartDate = new Date();
-    let initialEndDate;
+    this.initialStartDate = new Date();
+    this.initialEndDate = null;
 
     if (initialPrice === "hourly_rate") {
-      initialEndDate = new Date();
+      this.initialEndDate = new Date();
 
     } else if (initialPrice === "daily_rate") {
-      initialEndDate = new Date(initialStartDate, + 1);
+      this.initialEndDate = new Date(this.initialStartDate, + 1);
 
     } else if (initialPrice === "monthly_rate") {
-      let month = initialStartDate.getMonth() + 1;
-      let nextDate = new Date(initialStartDate).setMonth(month);
+      let month = this.initialStartDate.getMonth() + 1;
+      let nextDate = new Date(this.initialStartDate).setMonth(month);
 
-      initialEndDate = new Date(nextDate);
+      this.initialEndDate = new Date(nextDate);
     }
 
     this.state = {
       type: initialPrice,
       seconds: 900,
-      startDate: initialStartDate.toISOString(),
-      endDate: initialEndDate.toISOString(),
+      startDate: this.initialStartDate.toISOString(),
+      endDate: this.initialEndDate.toISOString(),
       startTime: 420,
       endTime: 1020,
       bookingSuccess: false,

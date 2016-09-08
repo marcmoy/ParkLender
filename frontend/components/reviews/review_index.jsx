@@ -14,12 +14,16 @@ class ReviewIndex extends React.Component {
     for (let id in reviews) {
       if (id) {
         let review = reviews[id];
-        reviewBlocks.push(<ReviewIndexItem review={review} key={id}/>);
+        reviewBlocks.push(
+          <div className="row">
+            <ReviewIndexItem review={review} key={id}/>
+          </div>
+        );
       }
     }
 
     return (
-      <div className="reviews-index-container">
+      <div className="reviews-index-container container clearfix">
         {reviewBlocks}
       </div>
     );
