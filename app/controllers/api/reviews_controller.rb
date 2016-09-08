@@ -1,25 +1,25 @@
 class Api::ReviewsController < ApplicationController
 
   def create
-    @review = Review.new(review_params)
+    # @review = Review.new(review_params)
 
-    if @review.save!
-      render :show
-    else
-      render (
-        json: ["Invalid booking request"],
-        status: 401
-      )
-    end
+    # if @review.save!
+    #   render :show
+    # else
+    #   render (
+    #     json: ["Invalid review creation"],
+    #     status: 401
+    #   )
+    # end
   end
 
   def index
     @reviews = nil
 
     if params[:spot_id]
-      @reviews = Review.find_by_spot_id(params[:spot_id])
-    elsif params[:review][:user_id]
-      @reviews = Review.find_by_spot_id(params[:user_id])
+      @reviews = Review.where(spot_id: params[:spot_id])
+    elsif params[:user_id]
+      @reviews = Review.where(user_id: params[:user_id])
     end
 
     render :index

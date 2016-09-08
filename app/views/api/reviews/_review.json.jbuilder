@@ -9,6 +9,6 @@ json.extract! review,
 json.date review.date
 
 json.author do
-  json.photoUrl author.photo.url
-  json.username author.username
+  json.photoUrl review.author.photo.url
+  json.username review.author.username
 end

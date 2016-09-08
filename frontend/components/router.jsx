@@ -10,6 +10,8 @@ import SpotShowPageContainer from './spot_show/spot_show_page_container';
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
 import { splashOn, splashOff } from '../actions/splash_actions';
 import { requestSpots } from '../actions/spots_actions';
+import { requestSpotReviews, requestUserReviews }
+  from '../actions/review_actions';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -21,6 +23,8 @@ class AppRouter extends React.Component{
     this._activateSplash = this._activateSplash.bind(this);
     this._turnOffSplash = this._turnOffSplash.bind(this);
     this._requestSpots = this._requestSpots.bind(this);
+    this._requestSpotReviews = this._requestSpotReviews.bind(this);
+    this._requestUserReviews = this._requestUserReviews.bind(this);
   }
 
   _ensureLoggedIn(nextState, replace){
@@ -59,6 +63,16 @@ class AppRouter extends React.Component{
     this.context.store.dispatch(requestSpots());
   }
 
+  _requestSpotReviews(nextState) {
+    let spotId = nextState.params.spotId;
+    this.context.store.dispatch(requestSpotReviews(spotId));
+  }
+
+  _requestUserReviews(nextState) {
+    let userId = nextState.params.userId;
+    this.context.store.dispatch(requestUserReviews(userId));
+  }
+
   render(){
     return(
       <Router history={ hashHistory }>
@@ -69,7 +83,8 @@ class AppRouter extends React.Component{
           <Route path="/search" component={ SearchPageContainer }
             onEnter={ this._activateWhereTo }
             onLeave={ this._turnOffWhereTo }/>
-          <Route path="/spots/:id" component={ SpotShowPageContainer } />
+          <Route path="/spots/:spotId" component={ SpotShowPageContainer }
+            onEnter={ this._requestSpotReviews }/>
         </Route>
       </Router>
     );

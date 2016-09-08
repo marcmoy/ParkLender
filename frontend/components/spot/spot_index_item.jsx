@@ -27,7 +27,7 @@ class SpotIndexItem extends React.Component {
 
         <div className='spot-caption-container clearfix text-left'>
           <Title title={this.props.spot.title} /><br />
-          <Reviews numReviews={this.props.spot.reviews.length} />
+          <Reviews numReviews={this.props.spot.numReviews} />
           <Rating spot={this.props.spot} rating={this.props.spot.rating} />
         </div>
       </div>

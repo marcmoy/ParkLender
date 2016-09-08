@@ -32,6 +32,8 @@ class SpotShowPage extends React.Component {
       spotObj = _nullSpot;
     }
 
+    debugger;
+
     return(
       <div className="spot-show-page clearfix">
         <div className="spot-image-container">
@@ -47,7 +49,7 @@ class SpotShowPage extends React.Component {
         <div className="spot-info-container clearfix">
           <SpotShowDetails spot={spotObj} />
         </div>
-        <ReviewIndex reviews={spotObj.reviews} />
+        <ReviewIndex />
       </div>
     );
   }

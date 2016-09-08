@@ -1,4 +1,4 @@
-import { ReviewConstants } from '../actions/spots_actions';
+import { ReviewConstants } from '../actions/review_actions';
 import { merge, isEmpty } from 'lodash';
 import { removeSpinner, addEmptyMessage } from '../util/loader';
 

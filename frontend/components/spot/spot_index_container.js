@@ -3,6 +3,7 @@ import SpotIndex from './spot_index';
 import { receiveSpot } from '../../actions/spots_actions';
 
 const mapStateToProps = state => ({
+  spots: state.spots
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

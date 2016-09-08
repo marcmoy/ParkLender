@@ -7,13 +7,14 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
-    let reviews = this.props.reviews.map(review => (
-      <ReviewIndexItem review={review} />
-    ));
+    // debugger;
+    // let reviews = this.props.reviews.map(review => (
+    //   <ReviewIndexItem review={review} />
+    // ));
 
     return (
       <div className="reviews-index-container">
-        {reviews}
+
       </div>
     );
   }
