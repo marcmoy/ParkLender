@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewIndexItem from './review_index_item';
-import ReviewForm from './review_form';
+import ReviewFormContainer from './review_form_container';
 
 class ReviewIndex extends React.Component {
   constructor(props) {
@@ -25,9 +25,7 @@ class ReviewIndex extends React.Component {
 
     return (
       <div className="reviews-index-container clearfix">
-        <ReviewForm spotId={this.props.spotId}
-          createSpotReview={this.props.createSpotReview}
-          currentUser={this.props.currentUser} />
+        <ReviewFormContainer spotId={this.props.spotId} />
         {reviewBlocks}
       </div>
     );

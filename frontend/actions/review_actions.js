@@ -22,9 +22,10 @@ export const receiveSpotReviews = reviews => ({
   reviews
 });
 
-export const createSpotReview = review => ({
+export const createSpotReview = (review, success) => ({
   type: ReviewConstants.CREATE_SPOT_REVIEW,
-  review
+  review,
+  success
 });
 
 export const receiveSpotReview = review => ({

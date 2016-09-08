@@ -24,7 +24,10 @@ export default ({getState, dispatch}) => next => action => {
       fetchSpotReviews(action.spotId, requestSpotsSuccess);
       return next(action);
     case ReviewConstants.CREATE_SPOT_REVIEW:
-      const receiveSpotSuccess = data => dispatch(receiveSpotReview(data));
+      const receiveSpotSuccess = data => {
+        action.success();
+        dispatch(receiveSpotReview(data));
+      };
       createSpotReview(action.review, receiveSpotSuccess);
       return next(action);
 

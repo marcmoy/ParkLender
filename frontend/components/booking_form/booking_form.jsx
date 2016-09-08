@@ -157,7 +157,7 @@ class BookingForm extends React.Component {
   }
 
   updateBookSuccess() {
-    this.setState({ bookingSuccess: true });
+    this.setState({ bookingSuccess: true, pendingRequest: false });
   }
 
   inputValid() {

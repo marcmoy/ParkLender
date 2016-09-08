@@ -38,13 +38,23 @@ class ReviewForm extends React.Component {
       // user_id: userId,
       rating: 0,
       content: "",
-      disabled: false
+      existingReview: false,
+      sendingReview: false,
+      reviewSuccess: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.showUserAlert = this.showUserAlert.bind(this);
+    this.reviewTitle = this.reviewTitle.bind(this);
+    this.updateReviewSuccess = this.updateReviewSuccess.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser) {
+      this.setState({ author_id: nextProps.currentUser.id });
+    }
   }
 
   componentDidMount() {
@@ -65,8 +75,8 @@ class ReviewForm extends React.Component {
         }
       };
 
-      this.setState({ disabled: true });
-      this.props.createSpotReview(data);
+      this.setState({ sendingReview: true });
+      this.props.createSpotReview(data, this.updateReviewSuccess);
     }
   }
 
@@ -85,12 +95,26 @@ class ReviewForm extends React.Component {
     this.setState({ content: e.currentTarget.value });
   }
 
+  updateReviewSuccess() {
+    this.setState({ reviewSuccess: true, pendingReview: false });
+  }
+
+  reviewTitle() {
+    if (this.state.reviewSuccess) {
+      return <span>Review posted!</span>;
+    } else if (this.state.pendingReview){
+      return <span>Posting your review...</span>;
+    } else {
+      return <span>Write a Review</span>;
+    }
+  }
+
   render() {
 
     return(
       <form className="review-form-container" onSubmit={this.handleSubmit}>
         <div className="write-a-review">
-          <span>Write a Review</span>
+          {this.reviewTitle()}
         </div>
         <div className="review-form-content">
 
