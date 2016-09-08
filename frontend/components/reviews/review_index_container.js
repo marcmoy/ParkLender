@@ -4,10 +4,11 @@ import {
   receiveSpotReview,
   createSpotReview,
   receiveUserReview,
-  createUserReview } from '../../actions/reviews_actions';
+  createUserReview } from '../../actions/review_actions';
 
 const mapStateToProps = state => ({
-  reviews: state.reviews
+  reviews: state.reviews,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

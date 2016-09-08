@@ -206,6 +206,9 @@ input.time {
 
 input.form-control {
   height: 37px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: normal;
 }
 
 .Select-value {
@@ -230,4 +233,9 @@ input.form-control:disabled {
 
 .Select-control {
   margin: 0 auto;
+}
+
+.has-value.Select--single > .Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+  color: black;
+  font-weight: 600;
 }

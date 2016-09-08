@@ -3,7 +3,7 @@ import SpotHostDetails from './spot_host_details';
 import BookingFormContainer from '../booking_form/booking_form_container';
 import SpotShowDetails from './spot_show_details';
 import { addSpinner, removeSpinner } from '../../util/loader';
-import ReviewIndex from '../reviews/review_index';
+import ReviewIndexContainer from '../reviews/review_index_container';
 
 const _nullSpot = {
   id: null,
@@ -45,7 +45,7 @@ class SpotShowPage extends React.Component {
         <div className="spot-info-container clearfix">
           <SpotShowDetails spot={spotObj} />
         </div>
-        <ReviewIndex reviews={reviews}/>
+        <ReviewIndexContainer spot={spotObj} />
       </div>
     );
   }

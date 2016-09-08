@@ -4,44 +4,31 @@ import Select from 'react-select';
 import { timeOptionsAM, timeOptionsPM } from './time_options';
 import AlertContainer from 'react-alert';
 import CountdownTimer from './countdown_timer';
-// 797.7777989116721
-// 550
+
 $.fn.bookingFormFollow = function () {
     let $this = this,
         $window = $(window);
 
+    // listen for scroll
     $window.scroll(function (e) {
+
+        // grabs window's scroll position
         let scroll = $window.scrollTop();
-        // // if (550 < scroll && scroll <= 920) {
-        //   // $this.css({
-        //   //     position: 'fixed',
-        //   //     top: 50
-        //   // });
-        // // } else if (scroll > 920) {
-        //   $this.css({
-        //       position: 'absolute',
-        //       top: 350
-        //   });
-        // // } else {
-        //   // $this.css({
-        //   //     position: 'absolute',
-        //   //     top: -43
-        //   // });
-        // // }
-        if (scroll <= 550) {
+
+        if (scroll <= 480) {
           $this.css({
               position: 'absolute',
               top: -43
           });
-        } else if (550 < scroll && scroll <= 920) {
+        } else if (480 < scroll && scroll <= 890) {
           $this.css({
               position: 'fixed',
-              top: 50
+              top: 70
           });
-        } else if (scroll > 920){
+        } else if (scroll > 890){
           $this.css({
               position: 'absolute',
-              top: 350
+              top: 360
           });
         }
     });
