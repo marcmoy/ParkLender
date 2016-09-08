@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import SpotShowPage from './spot_show_page';
 
 const mapStateToProps = state => ({
-  spots: state.spots
+  spots: state.spots,
+  reviews: state.reviews
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

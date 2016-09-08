@@ -6,13 +6,14 @@ class ReviewIndexItem extends React.Component {
   }
 
   render() {
+
     let review = this.props.review;
     let author = review.author;
 
     return(
       <div className="review-index-item-container">
         <aside className="review-host-photo-container">
-          <img src={author.photo.url} />
+          <img src={author.photoUrl} />
           <span>{author.username}</span>
         </aside>
         <main className="review-content-container">

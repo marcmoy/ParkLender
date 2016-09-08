@@ -21,18 +21,14 @@ const _nullSpot = {
 class SpotShowPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { spot: _nullSpot };
   }
 
   render() {
 
-    const spotId = this.props.params.id;
-    let spotObj = this.props.spots[spotId];
-
-    if (!spotObj) {
-      spotObj = _nullSpot;
-    }
-
-    debugger;
+    const spotId = this.props.params.spotId;
+    let spotObj = this.props.spots[spotId] || _nullSpot;
+    let reviews = this.props.reviews || {};
 
     return(
       <div className="spot-show-page clearfix">
@@ -49,7 +45,7 @@ class SpotShowPage extends React.Component {
         <div className="spot-info-container clearfix">
           <SpotShowDetails spot={spotObj} />
         </div>
-        <ReviewIndex />
+        <ReviewIndex reviews={reviews}/>
       </div>
     );
   }

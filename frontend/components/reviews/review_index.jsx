@@ -7,14 +7,20 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
-    // debugger;
-    // let reviews = this.props.reviews.map(review => (
-    //   <ReviewIndexItem review={review} />
-    // ));
+
+    let reviews = this.props.reviews;
+    let reviewBlocks = [];
+
+    for (let id in reviews) {
+      if (id) {
+        let review = reviews[id];
+        reviewBlocks.push(<ReviewIndexItem review={review} key={id}/>);
+      }
+    }
 
     return (
       <div className="reviews-index-container">
-
+        {reviewBlocks}
       </div>
     );
   }
