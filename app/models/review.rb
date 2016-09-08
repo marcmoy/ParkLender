@@ -10,7 +10,7 @@
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+require 'date'
 
 class Review < ApplicationRecord
   validates :author_id, presence: true
@@ -23,5 +23,10 @@ class Review < ApplicationRecord
 
   belongs_to :spot, optional: true
   belongs_to :user, optional: true
+
+  def date
+    month = Date::MONTHNAMES[created_at.month]
+    "#{month} #{created_at.day}, #{created_at.year}"
+  end
 
 end

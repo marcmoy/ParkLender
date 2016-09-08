@@ -1,5 +1,5 @@
 json.extract! spot, :id, :title, :description,
-  :lat, :lng, :location, :reviews, :width, :length
+  :lat, :lng, :location, :width, :length
 
 json.numReviews spot.numReviews
 json.rating spot.rating
