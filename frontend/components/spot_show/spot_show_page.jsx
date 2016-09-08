@@ -12,7 +12,8 @@ const _nullSpot = {
     thumbnail: ""
   },
   rating: 0,
-  prices: {}
+  prices: {},
+  vehicles: []
 };
 
 class SpotShowPage extends React.Component {

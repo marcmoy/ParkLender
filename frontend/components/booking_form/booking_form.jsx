@@ -11,25 +11,32 @@ class BookingForm extends React.Component {
 
     let prices = this.props.spot.prices;
     let initialPrice = Object.keys(prices)[0] || "hourly_rate";
+    let initialStartDate = new Date();
+    let initialEndDate;
+
+    if (initialPrice === "hourly_rate") {
+      initialEndDate = new Date();
+
+    } else if (initialPrice === "daily_rate") {
+      initialEndDate = new Date(initialStartDate, + 1);
+
+    } else if (initialPrice === "monthly_rate") {
+      let month = initialStartDate.getMonth() + 1;
+      let nextDate = new Date(initialStartDate).setMonth(month);
+
+      initialEndDate = new Date(nextDate);
+    }
 
     this.state = {
       type: initialPrice,
       seconds: 900,
-      startDate: "",
-      endDate: "",
-      startTime: 720,
+      startDate: initialStartDate.toISOString(),
+      endDate: initialEndDate.toISOString(),
+      startTime: 420,
       endTime: 1020,
       bookingSuccess: false,
       pendingRequest: false,
       disableClock: false
-    };
-
-    this.alertOptions = {
-      offset: 14,
-      position: 'bottom right',
-      theme: 'dark',
-      time: 5000,
-      transition: 'scale'
     };
 
     this.prices = this.prices.bind(this);
@@ -165,21 +172,21 @@ class BookingForm extends React.Component {
   }
 
   showTimeAlert(){
-    msg.show('MUST SELECT VALID TIMES', {
+    msgBot.show('MUST SELECT VALID TIMES', {
       time: 2000,
       type: 'error'
     });
   }
 
   showDateAlert(){
-    msg.show('MUST SELECT VALID DATES', {
+    msgBot.show('MUST SELECT VALID DATES', {
       time: 2000,
       type: 'error'
     });
   }
 
   showUserAlert(){
-    msg.show('MUST TO BE LOGGED IN TO BOOK', {
+    msgBot.show('MUST TO BE LOGGED IN TO BOOK', {
       time: 2000,
       type: 'error'
     });
@@ -302,8 +309,6 @@ class BookingForm extends React.Component {
               <CountdownTimer disabled={this.state.disableClock} />
             </div>
           </div>
-
-          <AlertContainer ref= {(a) => global.msg = a } {...this.alertOptions} />
         </div>
 
       </form>

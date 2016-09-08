@@ -10,7 +10,6 @@ class CountdownTimer extends React.Component {
 
   componentDidMount() {
     this.interval = window.setInterval(() =>{
-      console.log("tick");
       let secs = this.state.seconds - 1;
       this.setState({ seconds: secs });
     }, 1000);

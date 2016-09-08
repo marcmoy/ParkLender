@@ -137,7 +137,8 @@ class NavBar extends React.Component {
 
           <Modal isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal} style={ModalStyle}>
-              <SessionFormContainer formType={this.state.formType}/>
+              <SessionFormContainer formType={this.state.formType}
+                showDemoAlert={this.props.showDemoAlert}/>
           </Modal>
         </div>
       );

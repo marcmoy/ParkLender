@@ -63,7 +63,7 @@ input.react-date-field__input {
 
 .booking-form button {
   display: block;
-  padding: 5px;
+  padding: 5px 10px;
   margin: 10px;
   background-color: #ff5d62;
   color: white;
@@ -119,6 +119,8 @@ input.react-date-field__input {
 
   img {
     padding: 10px;
+    height: 60px;
+    width: 60px;
   }
 }
 

@@ -4,6 +4,7 @@ class SpotShowDetails extends React.Component {
   constructor(props) {
     super(props);
     this.prices = this.prices.bind(this);
+    this.vehicles = this.vehicles.bind(this);
   }
 
   prices() {
@@ -28,9 +29,31 @@ class SpotShowDetails extends React.Component {
       }
     }
 
-    return(
+    return (
       <ul className='spot-show-prices'>
         { priceBlocks }
+      </ul>
+    );
+  }
+
+  vehicles() {
+    let vehicleBlocks = [];
+    let vehicles = this.props.spot.vehicles;
+
+    for (let i = 0; i < vehicles.length; i++) {
+
+      let text = vehicles[i].charAt(0).toUpperCase() + vehicles[i].slice(1);
+
+      vehicleBlocks.push(
+        <li className="vehicle-detail-block" key={i}>
+          {text}
+        </li>
+      );
+    }
+
+    return (
+      <ul className="vehicles-show">
+        {vehicleBlocks}
       </ul>
     );
   }
@@ -57,13 +80,18 @@ class SpotShowDetails extends React.Component {
           <div className="row">
             <h3>Size</h3>
             <span className="pull-right">
-              {this.props.spot.width}' wide x {this.props.spot.length}' long
+              <ul>
+                <li>{this.props.spot.width}' wide</li>
+                <li>{this.props.spot.length}' long</li>
+              </ul>
             </span>
           </div>
 
           <div className="row">
             <h3>Vehicles Allowed</h3>
-            <span className="pull-right" />
+            <span className="pull-right">
+              {this.vehicles()}
+            </span>
           </div>
         </div>
       </div>

@@ -69,6 +69,7 @@ class SessionForm extends React.Component {
 
 		} else {
 			let user = this.state;
+			// this.props.showDemoAlert(); // bonus feature
 			this.props.processForm({ user });
 			window.clearInterval(this.interval);
 		}

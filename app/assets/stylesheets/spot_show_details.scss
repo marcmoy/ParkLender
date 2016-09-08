@@ -1,6 +1,7 @@
 .spot-show-details-container {
-  padding-top: 40px;
+  padding: 20px 0;
   padding-left: 40px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
   background-color: #eee;
@@ -13,23 +14,28 @@
     margin-right: 0;
 
     .row:not(:last-child) {
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid #c1bebe;
     }
 
     .row {
       text-align: left;
-      font-size: 18px;
+      font-size: 16px;
       padding: 20px 0;
 
       h2, h3 {
-        font-size: 24px;
         color: black;
         font-weight: bold;
       }
 
       h3 {
+        font-size: 20px;
         display: block;
         float: left
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
       }
 
       ul {
@@ -39,10 +45,13 @@
         text-align: left;
 
         li {
+          min-width: 80px;
+          font-weight: 600;
+          text-align: center;
           font-style: italic;
           padding: 5px 10px;
           margin: 10px;
-          border: 1px solid gray;
+          border: 1px solid #c1bebe;
           border-radius: 5px;
           background-color: white;
           float: left;
