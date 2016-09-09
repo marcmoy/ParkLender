@@ -15,7 +15,9 @@ const _nullSpot = {
   rating: 0,
   prices: {},
   vehicles: [],
-  reviews: {}
+  reviews: {},
+  bookings: {},
+  spotReviews: {}
 };
 
 class SpotShowPage extends React.Component {

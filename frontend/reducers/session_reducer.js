@@ -22,7 +22,7 @@ const SessionReducer = function(state = _nullUser, action){
         currentUser: state.currentUser,
         errors: []
       });
-      
+
       return merge({}, noErrorState);
     default:
       return state;

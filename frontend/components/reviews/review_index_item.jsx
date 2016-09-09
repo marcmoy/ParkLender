@@ -1,4 +1,5 @@
 import React from 'react';
+import { Rating } from '../spot/spot_index_item_details';
 
 class ReviewIndexItem extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class ReviewIndexItem extends React.Component {
           <span>{author.username}</span>
         </div>
         <div className="review-content-container">
+          <Rating rating={review.rating} /><br/>
           "{review.content}"
             <br/>
             <br/>

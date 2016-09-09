@@ -81,9 +81,21 @@ img.main-photo {
   cursor: pointer;
 }
 
-.star {
+i.star {
   height: 16px;
   width: 16px;
+  font-size: inherit;
+  font-style: normal;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+i.gold.star {
+  color: #FFB400;
+
+}
+i.gray.star {
+  color: #ccc;
 }
 
 h2.sorry {

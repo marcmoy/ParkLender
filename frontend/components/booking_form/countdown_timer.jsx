@@ -6,17 +6,32 @@ class CountdownTimer extends React.Component {
     this.state = { seconds: 900 };
     this.timeToString = this.timeToString.bind(this);
     this.countdownText = this.countdownText.bind(this);
+    this.activateTimer = this.activateTimer.bind(this);
   }
 
   componentDidMount() {
-    this.interval = window.setInterval(() =>{
-      let secs = this.state.seconds - 1;
-      this.setState({ seconds: secs });
-    }, 1000);
+    if (!this.props.disabled) {
+      this.activateTimer();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.disabled) {
+      this.activateTimer();
+    } else {
+      // clearInterval(this.interval);
+    }
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
+  }
+
+  activateTimer() {
+    // this.interval = window.setInterval(() =>{
+    //   let secs = this.state.seconds - 1;
+    //   this.setState({ seconds: secs });
+    // }, 1000);
   }
 
   timeToString() {
@@ -36,7 +51,7 @@ class CountdownTimer extends React.Component {
 
   countdownText() {
     if (this.props.disabled) {
-      clearInterval(this.interval);
+      // clearInterval(this.interval);
       return(
         <div>
           <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473285677/parklender_assets/checkmark.png" />

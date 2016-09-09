@@ -65,21 +65,19 @@ input.react-date-field__input {
   display: block;
   padding: 5px 10px;
   margin: 10px;
-  background-color: #ff5d62;
+  background-color: #699436;
   color: white;
   border-radius: 5px;
+  float: left;
+  min-width: 120px;
 }
 
-.booking-form button.sent-button {
-  background-color: #699436;
+.booking-form button.cancel-button {
+  background-color: #f44336;
 }
 
 .booking-form button.pending-button {
   background-color: #ccc;
-}
-
-.booking-form button:disabled {
-  cursor: not-allowed;
 }
 
 .col-lg-2.col-md-2 {

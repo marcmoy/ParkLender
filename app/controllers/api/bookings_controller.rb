@@ -1,5 +1,10 @@
 class Api::BookingsController < ApplicationController
 
+  def index
+    @bookings = Booking.all
+    render :index
+  end
+
   def create
     @booking = Booking.new(booking_params)
     @booking.start_date  = Date.parse(params[:booking][:start_date])
@@ -16,6 +21,11 @@ class Api::BookingsController < ApplicationController
         status: 401
       )
 		end
+  end
+
+  def destroy
+    @booking = Booking.find_by_id(params[:id])
+    @booking.delete
   end
 
   private

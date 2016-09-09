@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
+import BookingReducer from './booking_reducer';
 import WhereToReducer from './whereto_reducer';
 import FilterReducer from './filter_reducer';
 import ReviewsReducer from './reviews_reducer';
@@ -14,7 +15,8 @@ const RootReducer = combineReducers({
   mapOpts: MapReducer,
   whereTo: WhereToReducer,
   splash: SplashReducer,
-  reviews: ReviewsReducer
+  reviews: ReviewsReducer,
+  bookings: BookingReducer
 });
 
 export default RootReducer;

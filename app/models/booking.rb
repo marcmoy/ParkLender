@@ -20,9 +20,12 @@
 class Booking < ApplicationRecord
   validates :spot_id, :user_id, :host_id, :price_type, :price,
   :start_time, :end_time, :start_date, :end_date, :status, presence: true
+  validates_uniqueness_of :user_id, :scope => [:spot_id] # users can only make a single booking per spot
 
   validates :status, inclusion: { in: %w(PENDING APPROVED DENIED) }
   validates :price_type, inclusion: { in: %w(monthly_rate hourly_rate daily_rate) }
+
+  validate :no_self_booking
 
   belongs_to :user
   belongs_to :host,
@@ -31,4 +34,24 @@ class Booking < ApplicationRecord
     class_name: :User
 
   belongs_to :spot
+
+  def no_self_booking
+    return if host_id != user_id
+    errors[:host_id] << "must can't be the same as user_id"
+    errors[:user_id] << "must can't be the same as host_id"
+  end
+
+  def start_time_minutes
+    hours = start_time.hour - 7
+    hours += 24 if hours < 0
+    hours *= 60
+    return hours + start_time.min
+  end
+
+  def end_time_minutes
+    hours = end_time.hour - 7
+    hours += 24 if hours < 0
+    hours *= 60
+    return hours + end_time.min
+  end
 end

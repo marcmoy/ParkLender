@@ -40,32 +40,56 @@ class BookingForm extends React.Component {
 
     let prices = this.props.spot.prices;
     let initialPrice = Object.keys(prices)[0] || "hourly_rate";
-    this.initialStartDate = new Date();
-    this.initialEndDate = null;
+    let initialStartDate = new Date();
+    let initialEndDate = new Date();
 
     if (initialPrice === "hourly_rate") {
-      this.initialEndDate = new Date();
+      initialEndDate = new Date();
 
     } else if (initialPrice === "daily_rate") {
-      this.initialEndDate = new Date(this.initialStartDate, + 1);
+      initialEndDate = new Date(initialStartDate, + 1);
 
     } else if (initialPrice === "monthly_rate") {
-      let month = this.initialStartDate.getMonth() + 1;
-      let nextDate = new Date(this.initialStartDate).setMonth(month);
+      let month = initialStartDate.getMonth() + 1;
+      let nextDate = new Date(initialStartDate).setMonth(month);
 
-      this.initialEndDate = new Date(nextDate);
+      initialEndDate = new Date(nextDate);
+    }
+
+    let initialStartTime = 420;
+    let initialEndTime = 1020;
+
+    let existingBooking = false;
+    if (this.props.currentUser && this.props.bookings && this.props.spot.id) {
+      let currentUserId = this.props.currentUser.id;
+      let spotId = this.props.spot.id;
+      let bookings = this.props.bookings;
+
+      for (let id in bookings) {
+        if (id) {
+          let booking = bookings[id];
+          if (booking.user_id === currentUserId && booking.spot_id === spotId) {
+            initialStartDate = new Date(booking.start_date);
+            initialEndDate = new Date(booking.end_date);
+            initialStartTime = booking.start_time_minutes;
+            initialEndTime = booking.end_time_minutes;
+            initialPrice = booking.price_type;
+            existingBooking = true;
+          }
+        }
+      }
     }
 
     this.state = {
       type: initialPrice,
       seconds: 900,
-      startDate: this.initialStartDate.toISOString(),
-      endDate: this.initialEndDate.toISOString(),
-      startTime: 420,
-      endTime: 1020,
-      bookingSuccess: false,
+      startDate: initialStartDate.toISOString(),
+      endDate: initialEndDate.toISOString(),
+      startTime: initialStartTime,
+      endTime: initialEndTime,
+      bookingSuccess: existingBooking,
       pendingRequest: false,
-      disableClock: false
+      disableClock: existingBooking
     };
 
     this.prices = this.prices.bind(this);
@@ -87,10 +111,40 @@ class BookingForm extends React.Component {
     this.showUserAlert = this.showUserAlert.bind(this);
     this.showDateAlert = this.showDateAlert.bind(this);
     this.showTimeAlert = this.showTimeAlert.bind(this);
+    this.showDeleteAlert = this.showDeleteAlert.bind(this);
 
     this.requestButton = this.requestButton.bind(this);
     this.updateBookSuccess = this.updateBookSuccess.bind(this);
     this.disableForms = this.disableForms.bind(this);
+    this.submitBooking = this.submitBooking.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser && nextProps.bookings && nextProps.spot.id ) {
+      let bookings = nextProps.bookings;
+      let currentUserId = nextProps.currentUser.id;
+      let spotId = nextProps.spot.id;
+
+      for (let id in bookings) {
+        if (id) {
+          let booking = bookings[id];
+          if (booking.user_id === currentUserId && booking.spot_id === spotId) {
+            this.setState({
+              type: booking.price_type,
+              seconds: 900,
+              startDate: new Date(booking.start_date).toISOString(),
+              endDate: new Date(booking.end_date).toISOString(),
+              startTime: booking.start_time_minutes,
+              endTime: booking.end_time_minutes,
+              bookingSuccess: true,
+              pendingRequest: false,
+              disableClock: false
+            });
+          }
+        }
+      }
+    }
   }
 
   componentDidMount() {
@@ -103,6 +157,11 @@ class BookingForm extends React.Component {
       $("select.price-blocks").css("cursor", "not-allowed");
       $("input.form-control").prop("disabled", true);
       $(".Select-value").css("cursor", "not-allowed");
+    } else {
+      $("select.price-blocks").prop("disabled", false);
+      $("select.price-blocks").css("cursor", "pointer");
+      $("input.form-control").prop("disabled", false);
+      $(".Select-value").css("cursor", "pointer");
     }
   }
 
@@ -128,6 +187,9 @@ class BookingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+  }
+
+  submitBooking() {
     if (!this.props.currentUser) {
       this.showUserAlert();
       return;
@@ -152,11 +214,11 @@ class BookingForm extends React.Component {
       };
 
       this.setState({ pendingRequest: true, disableClock: true });
-      this.props.requestBooking(data, this.updateBookSuccess);
+      this.props.submitBooking(data, this.updateBookSuccess);
     }
   }
 
-  updateBookSuccess() {
+  updateBookSuccess(data) {
     this.setState({ bookingSuccess: true, pendingRequest: false });
   }
 
@@ -225,6 +287,13 @@ class BookingForm extends React.Component {
     });
   }
 
+  showDeleteAlert(){
+    msgBot.show('BOOKING CANCELLED', {
+      time: 2000,
+      type: 'success'
+    });
+  }
+
   prices() {
     const priceKey = {
       hourly_rate: "hour",
@@ -270,9 +339,11 @@ class BookingForm extends React.Component {
   requestButton() {
     if (this.state.bookingSuccess) {
       return(
-        <button className="sent-button" disabled={true}>
-          Booking sent!
-        </button>
+        <div>
+          <button className="cancel-button" onClick={this.resetForm}>
+            Cancel Booking
+          </button>
+        </div>
       );
     } else if (this.state.pendingRequest) {
       return (
@@ -281,8 +352,27 @@ class BookingForm extends React.Component {
         </button>
       );
     } else {
-      return <button>Request a booking</button>;
+      return <button onClick={this.submitBooking}>Request a booking</button>;
     }
+  }
+
+  resetForm() {
+    let spotId = this.props.spot.id;
+    let booking = this.props.bookings[spotId];
+    this.props.removeBooking(booking, () => {
+      this.showDeleteAlert();
+      this.setState({
+        type: this.initialPrice,
+        seconds: 900,
+        startDate: "",
+        endDate: "",
+        startTime: 420,
+        endTime: 1020,
+        bookingSuccess: false,
+        pendingRequest: false,
+        disableClock: false
+      });
+    });
   }
 
   disableForms() {
