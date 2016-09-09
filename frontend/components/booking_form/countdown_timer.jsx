@@ -63,14 +63,14 @@ class CountdownTimer extends React.Component {
     if (this.state.disabled) {
       return(
         <div>
-          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473285677/parklender_assets/checkmark.png" />
+          <img src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473285677/parklender_assets/checkmark.png" />
           <strong>Please wait for host approval</strong>
         </div>
       );
     } else {
       return(
         <div>
-          <img src="http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
+          <img src="https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_32/v1473136726/parklender_assets/clock.png" />
           <strong className="timer">{this.timeToString()}</strong> until your reservation expires.
         </div>
       );

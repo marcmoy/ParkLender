@@ -64,12 +64,12 @@ class NavBar extends React.Component {
   splashLogo() {
     if (this.props.splash === true) {
       return (
-        <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473015421/parklender_assets/white-logo-transparent.png"
+        <img src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473015421/parklender_assets/white-logo-transparent.png"
           className="logo" />
       );
     } else {
       return (
-        <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473014664/parklender_assets/color-logo.png"
+        <img src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473014664/parklender_assets/color-logo.png"
           className="logo" />
       );
     }
@@ -81,7 +81,7 @@ class NavBar extends React.Component {
         <ul className="nav navbar-nav" id={this.splash()}>
           <li>
             <img className="nav-looking-glass"
-              src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473034351/parklender_assets/looking-glass.png" />
+              src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473034351/parklender_assets/looking-glass.png" />
           </li>
           <li>
             <input type="text"
@@ -99,7 +99,7 @@ class NavBar extends React.Component {
     if (this.props.currentUser.photo) {
       return this.props.currentUser.photo.thumbnail;
     }
-    return "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png"
+    return "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png"
   }
 
   sessionLinks() {

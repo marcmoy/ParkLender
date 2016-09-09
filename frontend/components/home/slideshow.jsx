@@ -4,10 +4,10 @@ import Slider from 'react-slick';
 import HomeWhereTo from '../where_to/home_where_to';
 
 const imagesUrls = [
-  "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026130/slideshow/car-dog.jpg",
-  "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026223/slideshow/ny.jpg",
-  "http://res.cloudinary.com/dsvkuc936/image/upload/v1473026322/slideshow/ladies.jpg",
-  "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026261/slideshow/market.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473026130/slideshow/car-dog.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026223/slideshow/ny.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473026322/slideshow/ladies.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026261/slideshow/market.jpg",
 ];
 
 const settings = {

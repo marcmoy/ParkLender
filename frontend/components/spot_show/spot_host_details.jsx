@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rating } from '../spot/spot_index_item_details';
-const Pin = "http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png";
+const Pin = "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png";
 
 const SpotHostDetails = ({ spot }) => (
   <div>
