@@ -17,13 +17,6 @@ export default ({getState, dispatch}) => next => action => {
   };
 
   switch (action.type) {
-    // case BookingConstants.REQUEST_BOOKING:
-    //   const bookingSuccess = data => {
-    //     action.success();
-    //     dispatch(receiveBooking(data));
-    //   };
-    //   createBooking(action.booking, bookingSuccess);
-    //   return next(action);
     case BookingConstants.SUBMIT_BOOKING:
         const submitSuccess = data => {
           dispatch(receiveBooking(data));

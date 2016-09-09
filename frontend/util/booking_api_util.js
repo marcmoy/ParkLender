@@ -19,7 +19,7 @@ export const createBooking = (booking, success) => {
 export const deleteBooking = (booking, success) => {
   $.ajax({
     method: 'DELETE',
-    url: `api/spots/${booking.spotId}/bookings/${booking.bookingId}`,
+    url: `api/spots/${booking.spot_id}/bookings/${booking.id}`,
     data: booking,
     dataType: 'json',
     success

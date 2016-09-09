@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitBooking: (booking, success) => dispatch(submitBooking(booking, success))
+ submitBooking: (booking, success) => dispatch(submitBooking(booking, success)),
+ removeBooking: (booking, success) => dispatch(removeBooking(booking, success))
 });
 
 const BookingFormContainer = connect(

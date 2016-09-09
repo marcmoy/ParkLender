@@ -118,6 +118,7 @@ class BookingForm extends React.Component {
     this.disableForms = this.disableForms.bind(this);
     this.submitBooking = this.submitBooking.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.deleteBooking = this.deleteBooking.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -358,7 +359,21 @@ class BookingForm extends React.Component {
 
   resetForm() {
     let spotId = this.props.spot.id;
-    let booking = this.props.bookings[spotId];
+    let currentUserId = this.props.currentUser.id;
+    let bookings = this.props.bookings;
+    let bookingToDelete;
+    for (let id in bookings) {
+      if (id) {
+        let booking = bookings[id];
+        if (booking.user_id === currentUserId && booking.spot_id === spotId) {
+          bookingToDelete = booking;
+        }
+      }
+    }
+    return this.deleteBooking(bookingToDelete);
+  }
+
+  deleteBooking(booking) {
     this.props.removeBooking(booking, () => {
       this.showDeleteAlert();
       this.setState({
