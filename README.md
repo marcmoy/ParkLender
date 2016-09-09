@@ -1,4 +1,3 @@
-# ParkLender
 
 ![logo](./docs/color-logo.png)
 
@@ -14,37 +13,37 @@ Check it out live at: [https://parklender.herokuapp.com/](https://parklender.her
 - Parking spot searches can be filtered by price type rates.
 - Users can post reviews on each parkings spot.
 
-***Try out a demo account!***
+###Try out a demo account!###
 
 
 ![demo](./docs/demo-login.png)
 
 
-***Check out parking spots***
+###Check out parking spots###
 
 
 ![search](./docs/search.png)
 
 
-***Filter by price types***
+###Filter by price types###
 
 
 ![filter](./docs/filter.png)
 
 
-***Search by location***
+###Search by location###
 
 
 ![search-bar](./docs/search-bar.png)
 
 
-***Send a booking request***
+###Send a booking request###
 
 
 ![booking](./docs/booking.png)
 
 
-***Write a review***
+###Write a review###
 
 
 ![review](./docs/review.png)
