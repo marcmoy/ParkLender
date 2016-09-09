@@ -53,7 +53,14 @@ export default class MarkerManager {
   }
 
   createInfoWindow(spot) {
-    const text = `${spot.title}`;
+    const text = `<div class='spot-index-item clearfix'>
+      <a class='listing-photo-container'>
+        <div class="picture-overflow">
+          <img src="${spot.photoUrl}" class="main-photo" alt=${spot.title}/>
+        </div>
+        <img src="${spot.host.thumbnail}" class="spot-item-host-photo" alt=${spot.host.username}/>
+      </a>
+    </div>`;
     return new google.maps.InfoWindow({ content: text });
   }
 }
