@@ -11,6 +11,8 @@
 require_relative 'photos'
 require_relative 'users'
 require_relative 'reviews'
+require_relative 'title'
+require_relative 'descriptions'
 
 ActiveRecord::Base.transaction do
 
@@ -47,19 +49,20 @@ ActiveRecord::Base.transaction do
   daily_prices = (30..60).select{|num| num % 5 == 0}
   monthly_prices = (80..120).select{|num| num % 5 == 0}
 
-  max_lat = 37.78417678837021
-  min_lat = 37.72761122164702
 
-  max_lng = -122.50545501708984
-  min_lng = -122.37876892089844
+  max_lat = 37.779021218924235
+  min_lat = 37.761381025222875
+
+  max_lng = -122.49378204345703
+  min_lng = -122.40348815917969
 
   ratings = [3,3,3,4,4,4,5,5,5,5,5,5,5,5] # get more 5 ratings
 
   50.times do |i|
     spot = Spot.create!(
       host_id: i + 3,
-      title: Faker::Company.buzzword,
-      description: Faker::Hipster.sentence(5),
+      title: TITLES[i],
+      description: DESCRIPTION[i],
       lat: randomCoord(min_lat, max_lat),
       lng: randomCoord(min_lng, max_lng),
       hourly_rate: hourly_prices.sample,

@@ -49,4 +49,4 @@ PHOTOS = [
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1472931497/driveway/driveway-048.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1472931489/driveway/driveway-049.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1472931488/driveway/driveway-050.jpg"
-].shuffle
+]
