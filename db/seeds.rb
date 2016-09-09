@@ -51,10 +51,10 @@ ActiveRecord::Base.transaction do
 
 
   max_lat = 37.779021218924235
-  min_lat = 37.761381025222875
+  min_lat = 37.72243367562528
 
   max_lng = -122.49378204345703
-  min_lng = -122.40348815917969
+  min_lng = -122.3997974395752
 
   ratings = [3,3,3,4,4,4,5,5,5,5,5,5,5,5] # get more 5 ratings
 
