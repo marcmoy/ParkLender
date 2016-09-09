@@ -117,12 +117,12 @@ class NavBar extends React.Component {
             </a>
 
             <ul className="dropdown-menu">
-              <li><a href="#">Your Bookings</a></li>
-              <li role="separator" className="divider"></li>
-              <li><a href="#">Your Listings</a></li>
-              <li role="separator" className="divider"></li>
-              <li><a href="#">Account Settings</a></li>
-              <li role="separator" className="divider"></li>
+              // <li><a href="#">Your Bookings</a></li>
+              // <li role="separator" className="divider"></li>
+              // <li><a href="#">Your Listings</a></li>
+              // <li role="separator" className="divider"></li>
+              // <li><a href="#">Account Settings</a></li>
+              // <li role="separator" className="divider"></li>
               <li><a onClick={this.logout}>Logout</a></li>
             </ul>
           </li>
