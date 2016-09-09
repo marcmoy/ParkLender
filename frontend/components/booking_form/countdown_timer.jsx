@@ -3,40 +3,50 @@ import React from 'react';
 class CountdownTimer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 900 };
+    this.state = { seconds: 900, disabled: this.props.disabled };
     this.timeToString = this.timeToString.bind(this);
     this.countdownText = this.countdownText.bind(this);
     this.activateTimer = this.activateTimer.bind(this);
   }
 
   componentDidMount() {
-    if (!this.props.disabled) {
+    if (!this.state.disabled) {
       this.activateTimer();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.disabled) {
-      this.activateTimer();
+    // timer off
+    if (nextProps.disabled) {
+
+      if (!this.state.disabled) {
+        clearInterval(this.interval);
+      }
+
+      this.setState({ disabled: true, seconds: 900 });
     } else {
-      // clearInterval(this.interval);
+      // timer on
+      if (this.state.disabled) {
+        this.activateTimer();
+      }
+
+      this.setState({ disabled: false });
     }
   }
 
   componentWillUnmount() {
-    // clearInterval(this.interval);
+    clearInterval(this.interval);
   }
 
   activateTimer() {
-    // this.interval = window.setInterval(() =>{
-    //   let secs = this.state.seconds - 1;
-    //   this.setState({ seconds: secs });
-    // }, 1000);
+    this.interval = window.setInterval(() =>{
+      let secs = this.state.seconds - 1;
+      this.setState({ seconds: secs });
+    }, 1000);
   }
 
   timeToString() {
-    if (this.props.disabled) {
-      this.setState({ seconds: 0 });
+    if (this.state.disabled) {
       clearInterval(this.interval);
     } else {
       let seconds = this.state.seconds;
@@ -50,8 +60,7 @@ class CountdownTimer extends React.Component {
   }
 
   countdownText() {
-    if (this.props.disabled) {
-      // clearInterval(this.interval);
+    if (this.state.disabled) {
       return(
         <div>
           <img src="http://res.cloudinary.com/dsvkuc936/image/upload/v1473285677/parklender_assets/checkmark.png" />

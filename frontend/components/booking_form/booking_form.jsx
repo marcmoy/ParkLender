@@ -140,7 +140,7 @@ class BookingForm extends React.Component {
               endTime: booking.end_time_minutes,
               bookingSuccess: true,
               pendingRequest: false,
-              disableClock: false
+              disableClock: true
             });
           }
         }
@@ -377,7 +377,7 @@ class BookingForm extends React.Component {
     this.props.removeBooking(booking, () => {
       this.showDeleteAlert();
       this.setState({
-        type: this.initialPrice,
+        type: "hourly_rate",
         seconds: 900,
         startDate: "",
         endDate: "",
