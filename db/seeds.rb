@@ -10,29 +10,30 @@
 
 require_relative 'photos'
 require_relative 'users'
+require_relative 'reviews'
 
 ActiveRecord::Base.transaction do
 
   User.create!(username: 'marc', password: 'password')
-  Photo.create!(user_id: 1, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+  Photo.create!(user_id: 1, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
   User.create!(username: 'Demo-User', password: 'password')
-  Photo.create!(user_id: 2, url: Faker::Avatar.image, thumbnail: Faker::Avatar.image("my-own-slug", "50x50"))
+  Photo.create!(user_id: 2, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
 
-  50.times do |i|
-    user = User.create!(username: Faker::Internet.user_name.capitalize, password: 'password')
+  58.times do |i|
+    user = User.create!(username: USERNAMES[i], password: 'go_fullstack_go')
     Photo.create!(
         user_id: user.id,
-        url: USERS[i],
-        thumbnail: USERS[i]
+        url: USERSPHOTOS[i],
+        thumbnail: USERSPHOTOS[i]
       )
-    rand(1..50).times do |n|
-      Review.create!(
-        author_id: user.id,
-        user_id: n + 1,
-        rating: rand(1..5),
-        content: Faker::Company::buzzword
-      )
-    end
+    # rand(1..50).times do |n|
+    #   Review.create!(
+    #     author_id: user.id,
+    #     user_id: n + 1,
+    #     rating: rand(1..5),
+    #     content: Faker::Company::buzzword
+    #   )
+    # end
   end
 
   widths = (6..20).select{|num| num.even?}
@@ -43,8 +44,8 @@ ActiveRecord::Base.transaction do
   end
 
   hourly_prices = (5..20).select{|num| num % 5 == 0}
-  daily_prices = (20..50).select{|num| num % 5 == 0}
-  monthly_prices = (50..100).select{|num| num % 5 == 0}
+  daily_prices = (30..60).select{|num| num % 5 == 0}
+  monthly_prices = (80..120).select{|num| num % 5 == 0}
 
   max_lat = 37.78417678837021
   min_lat = 37.72761122164702
@@ -52,7 +53,7 @@ ActiveRecord::Base.transaction do
   max_lng = -122.50545501708984
   min_lng = -122.37876892089844
 
-  ratings = [0,1,2,3,4,4,4,5,5,5,5,5] # get more 5 ratings
+  ratings = [3,3,3,4,4,4,5,5,5,5,5,5,5,5] # get more 5 ratings
 
   50.times do |i|
     spot = Spot.create!(
@@ -70,8 +71,8 @@ ActiveRecord::Base.transaction do
       country: 'US',
       width: widths.sample,
       length: lengths.sample,
-      car: Faker::Boolean.boolean,
-      motorcycle: Faker::Boolean.boolean,
+      car: true,
+      motorcycle: true,
       van: Faker::Boolean.boolean,
       truck: Faker::Boolean.boolean
     )
@@ -92,12 +93,14 @@ ActiveRecord::Base.transaction do
       )
     end
 
-    rand(1..50).times do |n|
+    initial_user_id = rand(3..18)
+
+    rand(10..30).times do |n|
       Review.create!(
-        author_id: n + 1,
+        author_id: initial_user_id + n,
         spot_id: spot.id,
         rating: ratings.sample,
-        content: Faker::Hipster.sentence(5)
+        content: GOOD_REVIEWS.sample
       )
     end
   end

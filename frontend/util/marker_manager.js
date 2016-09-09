@@ -52,20 +52,45 @@ export default class MarkerManager {
     this.markers.splice(idx, 1);
   }
 
+  _stars(rating) {
+    let stars = [];
+
+    for (let i = 0; i < rating ; i++) {
+      stars.push(
+        `<i class="gold star">★</i>`
+      );
+    }
+
+    let j = stars.length + 1;
+    while (stars.length < 5) {
+      stars.push(
+        `<i class="gray star">★</i>`
+      );
+      j++;
+    }
+
+    return(
+      `<div class="stars-container pull-left info-window">
+        ${stars.join("")}
+      </div>`
+    );
+  }
+
   createInfoWindow(spot) {
     const text = `
-    <div class='spot-index-item clearfix'>
-      <a class='listing-photo-container'>
-        <div class="picture-overflow">
-          <img src="${spot.photoUrl}" class="main-photo" alt=${spot.title}/>
+      <div class='spot-index-item clearfix info-window'>
+        <a href="#/spots/${spot.id}" class='listing-photo-container info-window'>
+          <div class="picture-overflow info-window">
+            <img src="${spot.photoUrl}" class="main-photo info-window" alt=${spot.title}/>
+          </div>
+          <img src="${spot.host.thumbnail}" class="spot-item-host-photo info-window" alt=${spot.host.username}/>
+        </a>
+        <div class="spot-caption-container clearfix text-left info-window">
+          <strong class="spot-title">${spot.title}</strong><br/>
+          <span class="spot-reviews-numbers pull-left info-window">${spot.numReviews} Reviews </span>
+          ${this._stars(spot.rating)}
         </div>
-        <img src="${spot.host.thumbnail}" class="spot-item-host-photo" alt=${spot.host.username}/>
-      </a>
-      <div class="spot-caption-container clearfix text-left">
-        <strong class="spot-title">${spot.title}</strong><br/>
-        <span class="spot-reviews-numbers pull-left">${spot.numReviews} Reviews </span>
       </div>
-    </div>
     `;
     return new google.maps.InfoWindow({ content: text });
   }

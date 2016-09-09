@@ -1,4 +1,15 @@
-USERS = [
+DEFAULT_PIC = "http://res.cloudinary.com/dsvkuc936/image/upload/v1473185243/parklender_assets/default-pic.png"
+
+USERNAMES = [
+  "Jimbo", "Sheamus", "Harry", "BillyBob", "JohnnyBoy", "George49ers", "Darrel", "Victor", "Shadow167", "Matth3w",
+  "SarahB", "Jhoe", "JamsXD", "Victoria67", "Kathy", "Leslie", "Rohnda", "KatieLeung", "Gina", "Zoey",
+  "Nick", "Cloud3n", "Jerry", "Mike", "Harfeteh", "Sanjermaine", "DavidLee", "Diego", "Russ99", "Saxon",
+  "Tiff8ny", "Coco", "EmmaMatson", "Pinky", "Jolie", "Josephine", "Heidi", "CrazyEyez123", "Jennifer", "Cassandra",
+  "SteveCarey", "HaroldEry", "Zack50", "Glenn", "Brock", "Daphne", "Brian", "Vincent", "Cialina", "JBuilder",
+  "Steve", "Harrison", "Emily", "Joe", "BobbyBrack", "Rocky", "Jimmy", "Jose"
+]
+
+USERSPHOTOS = [
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061886/users/001.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061887/users/002.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061887/users/003.jpg",
@@ -48,5 +59,13 @@ USERS = [
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061890/users/047.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061890/users/048.jpg",
   "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061890/users/049.jpg",
-  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061890/users/050.jpg"
-].shuffle
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473061890/users/050.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441675/users/051.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441676/users/052.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441676/users/053.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441675/users/054.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441676/users/055.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441675/users/057.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441676/users/058.jpg",
+  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473441676/users/059.jpg"
+]
