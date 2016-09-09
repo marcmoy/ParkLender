@@ -14,9 +14,27 @@
 
 img.spot-image {
   width: 100%;
+  height: auto;
   position: relative;
 }
 
+button.view-photo {
+  padding: 10px 20px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 50%;
+  border: 2px solid gray;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 5%;
+  z-index: 10;
+  color: white;
+  font-weight: bold;
+}
+
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
 // HOST DETAILS
 
 .spot-host-details {

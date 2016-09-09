@@ -47,8 +47,8 @@ class ReviewForm extends React.Component {
     this.onStarClick = this.onStarClick.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.showUserAlert = this.showUserAlert.bind(this);
-    this.reviewTitle = this.reviewTitle.bind(this);
     this.updateReviewSuccess = this.updateReviewSuccess.bind(this);
+    // this.reviewTitle = this.reviewTitle.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -75,7 +75,7 @@ class ReviewForm extends React.Component {
         }
       };
 
-      this.setState({ sendingReview: true });
+      this.setState({ pendingReview: true });
       this.props.createSpotReview(data, this.updateReviewSuccess);
     }
   }
@@ -99,22 +99,22 @@ class ReviewForm extends React.Component {
     this.setState({ reviewSuccess: true, pendingReview: false });
   }
 
-  reviewTitle() {
-    if (this.state.reviewSuccess) {
-      return <span>Review posted!</span>;
-    } else if (this.state.pendingReview){
-      return <span>Posting your review...</span>;
-    } else {
-      return <span>Write a Review</span>;
-    }
-  }
+  // reviewTitle() {
+  //   if (this.state.reviewSuccess) {
+  //     return <span>Review posted!</span>;
+  //   } else if (this.state.pendingReview){
+  //     return <span>Posting your review...</span>;
+  //   } else {
+  //     return <span>Write a Review</span>;
+  //   }
+  // }
 
   render() {
 
     return(
       <form className="review-form-container" onSubmit={this.handleSubmit}>
         <div className="write-a-review">
-          {this.reviewTitle()}
+          <span>Write a Review</span>
         </div>
         <div className="review-form-content">
 

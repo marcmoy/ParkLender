@@ -14,7 +14,6 @@
 class Review < ApplicationRecord
   validates :author_id, presence: true
   validates_numericality_of :rating, :in => 0..5
-  validates_uniqueness_of :author_id, :scope => [:spot_id, :user_id]
 
   belongs_to :author,
     primary_key: :id,

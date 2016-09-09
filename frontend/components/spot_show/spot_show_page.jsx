@@ -2,8 +2,9 @@ import React from 'react';
 import SpotHostDetails from './spot_host_details';
 import BookingFormContainer from '../booking_form/booking_form_container';
 import SpotShowDetails from './spot_show_details';
-import { addSpinner, removeSpinner } from '../../util/loader';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import Modal from 'react-modal';
+import { SpotShowModalStyle } from '../../util/modal_style.js';
 
 const _nullSpot = {
   id: null,
@@ -23,7 +24,17 @@ const _nullSpot = {
 class SpotShowPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { spot: _nullSpot };
+    this.state = { spot: _nullSpot, modalOpen: false };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal(e) {
+    this.setState({ modalOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -37,7 +48,13 @@ class SpotShowPage extends React.Component {
         <div className="spot-image-container">
           <div className="spot-show-image-overflow">
             <img src={spotObj.photoUrl} className="spot-image"/>
-            <button>Enlarge Photo</button>
+            <button className="view-photo" onClick={this.openModal}>
+              View Photo
+            </button>
+            <Modal isOpen={this.state.modalOpen}
+              onRequestClose={this.closeModal} style={SpotShowModalStyle}>
+              <img src={spotObj.photoUrl} className="spot-image"/>
+            </Modal>
           </div>
         </div>
         <div className="spot-host-details clearfix">
