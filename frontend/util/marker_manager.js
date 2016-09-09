@@ -53,14 +53,20 @@ export default class MarkerManager {
   }
 
   createInfoWindow(spot) {
-    const text = `<div class='spot-index-item clearfix'>
+    const text = `
+    <div class='spot-index-item clearfix'>
       <a class='listing-photo-container'>
         <div class="picture-overflow">
           <img src="${spot.photoUrl}" class="main-photo" alt=${spot.title}/>
         </div>
         <img src="${spot.host.thumbnail}" class="spot-item-host-photo" alt=${spot.host.username}/>
       </a>
-    </div>`;
+      <div class="spot-caption-container clearfix text-left">
+        <strong class="spot-title">${spot.title}</strong><br/>
+        <span class="spot-reviews-numbers pull-left">${spot.numReviews} Reviews </span>
+      </div>
+    </div>
+    `;
     return new google.maps.InfoWindow({ content: text });
   }
 }
