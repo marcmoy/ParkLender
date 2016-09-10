@@ -62,6 +62,7 @@
     "react-widgets": "^3.4.4",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
+    "rheostat": "^2.0.0",
     "webpack": "^1.13.2"
   },
   "engines": {

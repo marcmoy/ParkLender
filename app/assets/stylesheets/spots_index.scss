@@ -4,16 +4,16 @@
 
 .spot-index-container {
   position: fixed;
-  top: 110px;
+  top: $top-offset-of-spot-index;
   overflow-y: scroll;
-  height: calc(100% - 110px);
+  height: calc(100% - 200px);
   width: 60%;
   border-bottom: 1px solid #dce0e0;
 }
 
 .spot-index-item {
   padding-bottom: 20px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .spot-index-item:hover {
