@@ -1,24 +1,22 @@
 const React = require('react');
-import PriceType from './input_fields/price_type';
-import DateInput from './input_fields/date_input';
-import TimeRange from './input_fields/time_range';
-import Rheostat from 'rheostat';
+import PriceType from './filters/price_type';
+import PriceRange from './filters/price_range';
+// import DateInput from './input_fields/date_input';
+// import TimeRange from './input_fields/time_range';
 
-const handleChange = (filter, updateFilter) => (
-  e => updateFilter(filter, e.currentTarget.value)
-);
+// const handleChange = (filter, updateFilter) => (
+//   e => updateFilter(filter, e.currentTarget.value)
+// );
 
 // <DateInput filter={filter} updateFilter={updateFilter} />
 
-const FilterForm = ({filter, updateFilter, updateMap}) => (
+const FilterForm = ({ updateFilter }) => (
   <form className='filter-form-container'>
     <div className='form-group'>
-      <PriceType filter={filter} updateFilter={updateFilter} />
+      <PriceType updateFilter={ updateFilter } />
     </div>
     <div className='form-group'>
-      <div className='row rheostat-row'>
-        <Rheostat min={1} max={100} values={[1,100]} />
-      </div>
+      <PriceRange updateFilter={ updateFilter } />
     </div>
   </form>
 );
