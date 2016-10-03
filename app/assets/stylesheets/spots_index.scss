@@ -1,12 +1,8 @@
-.listings {
-  padding-top: 20px;
-}
-
 .spot-index-container {
   position: fixed;
   top: $top-offset-of-spot-index;
   overflow-y: scroll;
-  height: calc(100% - 200px);
+  height: calc(100% - 180px);
   width: 60%;
   border-bottom: 1px solid #dce0e0;
 }

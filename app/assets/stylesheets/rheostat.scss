@@ -28,6 +28,12 @@
   align-items: center;
   width: 60%;
   margin: 0 auto;
+
+  button.btn.btn-primary {
+    position: absolute;
+    right: 0;
+    width: auto
+   }
 }
 
 .rheostat {

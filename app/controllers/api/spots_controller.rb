@@ -2,12 +2,12 @@ class Api::SpotsController < ApplicationController
   # before_action :require_logged_in, only: [:create]
   def index
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
-
-    @price_filter = params[:prices] || ["hourly_rate","daily_rate","monthly_rate"]
-    spots = apply_price_filters(spots, @price_filter) unless @price_filter.length == 3
-
-    # spots = apply_date_filters(spots, dates) if dates
-
+    min = 0
+    max = 100
+    min = params[:priceRange][0].to_i if params[:priceRange]
+    max = params[:priceRange][1].to_i if params[:priceRange]
+    @price_filter = params[:prices] || %w(hourly_rate daily_rate monthly_rate)
+    spots = apply_price_filters(spots, @price_filter, min, max)
     @spots = spots
     render :index
   end
@@ -29,7 +29,7 @@ class Api::SpotsController < ApplicationController
       :lng,
       :title,
       :description,
-      :prices
+      :prices,
     )
   end
 
@@ -45,9 +45,10 @@ class Api::SpotsController < ApplicationController
     params[:prices]
   end
 
-  def apply_price_filters(spots, filters)
-    filters.each do |price|
-      spots = spots.where("#{price} > ?", 0)
+  def apply_price_filters(spots, price_types, min, max)
+    price_types = %w(hourly_rate daily_rate monthly_rate) if price_types.empty?
+    price_types.each do |price|
+      spots = spots.where({ price => (min..max) })
     end
     spots
   end

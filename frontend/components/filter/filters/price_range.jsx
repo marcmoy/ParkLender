@@ -1,44 +1,67 @@
 import React from 'react';
 import Rheostat from 'rheostat';
+import $ from 'jquery';
 
 class PriceRange extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { min: 0, max: 100 };
+    this.state = { min: 1, max: 100 };
     this.updateValue = this.updateValue.bind(this);
     this.updateMin = this.updateMin.bind(this);
     this.updateMax = this.updateMax.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
+  }
+
+  componentDidMount() {
+    $('input.price-range').click(function() {
+      $(this).select();
+    });
   }
 
   updateMin(e) {
     e.preventDefault();
-    this.setState({ min: e.target.value });
+    let value = parseInt(e.target.value);
+    if (isNaN(value)) return;
+    this.setState({ min: value });
+    this.updateFilter();
   }
 
   updateMax(e) {
     e.preventDefault();
-    this.setState({ max: e.target.value });
+    let value = parseInt(e.target.value);
+    if (isNaN(value)) return;
+    this.setState({ max: value });
+    this.updateFilter();
   }
 
   updateValue(sliderState) {
     let min = sliderState.values[0];
     let max = sliderState.values[1];
     this.setState({ min: min, max: max });
+    this.updateFilter();
+  }
+
+  updateFilter() {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      let range = [this.state.min, this.state.max];
+      this.props.updateFilter('priceRange', range);
+    }, 300);
   }
 
   render() {
     return (
       <div className='row rheostat-row'>
         <div className='price-range-input'>
-          <label for='min'>Min</label>
-          <input type='text' name='min'
+          <label htmlFor='min'>Min</label>
+          <input type='text' name='min' className='price-range'
             value={this.state.min} onChange={this.updateMin}/>
         </div>
         <Rheostat min={1} max={100} values={[this.state.min,this.state.max]}
           onValuesUpdated={this.updateValue} />
         <div className='price-range-input'>
-          <label for='max'>Max</label>
-          <input type='text' name='max'
+          <label htmlFor='max'>Max</label>
+          <input type='text' name='max' className='price-range'
             value={this.state.max} onChange={this.updateMax}/>
         </div>
       </div>
