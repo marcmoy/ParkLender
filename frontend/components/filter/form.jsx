@@ -15,9 +15,7 @@ const FilterForm = ({ updateFilter }) => (
     <div className='form-group'>
       <PriceType updateFilter={ updateFilter } />
     </div>
-    <div className='form-group'>
-      <PriceRange updateFilter={ updateFilter } />
-    </div>
+    <PriceRange updateFilter={ updateFilter } />
   </form>
 );
 

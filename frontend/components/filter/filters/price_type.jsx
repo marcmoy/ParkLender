@@ -21,9 +21,8 @@ class PriceType extends React.Component {
   }
 
   render() {
-    // need to dry this later
     return(
-      <span>
+      <span className="price-type">
         <button type="button" className="btn btn-primary" data-toggle="button"
           autoComplete="off" aria-pressed="false" value="hourly_rate"
           onClick={this.updatePrices}>Hourly</button>
@@ -39,24 +38,3 @@ class PriceType extends React.Component {
 }
 
 export default PriceType;
-
-// <div className="checkbox-inline">
-//   <label>
-//     <input type="checkbox" value="hourly_rate"
-//       onChange={ this.updatePrices } /> Hourly
-//   </label>
-// </div>
-//
-// <div className="checkbox-inline">
-//   <label>
-//     <input type="checkbox" value="daily_rate"
-//       onChange={ this.updatePrices } /> Daily
-//   </label>
-// </div>
-//
-// <div className="checkbox-inline">
-//   <label>
-//     <input type="checkbox" value="monthly_rate"
-//       onChange={ this.updatePrices } /> Monthly
-//   </label>
-// </div>

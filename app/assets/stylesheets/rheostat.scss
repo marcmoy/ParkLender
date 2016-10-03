@@ -1,6 +1,33 @@
+.price-type {
+  margin: 0 auto;
+}
+
+.price-range-input {
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: darkgray;
+  padding: 3px;
+  margin-bottom: 10px;
+  position: relative;
+
+  input { border: 0; width: 3rem; height: 2rem; text-align: center; }
+  input:focus { border: 0; outline: 0; }
+  label { position: absolute; bottom: -3rem; }
+}
+
+.price-range-input:before {
+  content: '$';
+}
+
 .rheostat-row {
-  width: 80%;
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .rheostat {
@@ -38,6 +65,8 @@
 }
 
 .rheostat-horizontal {
+  display: inline-block;
+  width: 60%;
   height: 24px;
 }
 
