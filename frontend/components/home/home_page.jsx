@@ -1,6 +1,6 @@
 import React from 'react';
 import Slideshow from './slideshow';
-import HowItWorks from './how_it_works';
+import FeaturedCities from './featured_cities';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -9,12 +9,8 @@ class HomePage extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className='push-up'>
         <Slideshow updateMap={this.props.updateMap}/>
-        <HowItWorks />
-        <footer>
-          Here is the footer
-        </footer>
       </div>
     );
   }

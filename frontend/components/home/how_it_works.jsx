@@ -1,5 +1,5 @@
 import React from 'react';
-
+// if time permits, add this component
 class HowItWorks extends React.Component {
   constructor(props) {
     super(props);

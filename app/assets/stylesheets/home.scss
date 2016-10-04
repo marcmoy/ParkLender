@@ -1,7 +1,14 @@
 @import "slideshow";
 @import "home_where_to";
 
+.push-up {
+  position: relative;
+  top: -90px;
+  overflow-y: hidden;
+}
+
 footer {
   background-color: blue;
   width: 100%;
+  height: 50px;
 }

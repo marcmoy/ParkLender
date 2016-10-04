@@ -1,16 +1,14 @@
 .slideshow-container {
   display: block;
   width: 100%;
-  position: relative;
-  top: -90px;
-  height: 100vh;
+  height: 90vh;
+  overflow: hidden;
 }
 
 .slick-container {
   display: block;
   margin: 0 auto;
   padding: 0;
-  height: 90%;
   width: auto;
   color: #333;
   background: #000;
