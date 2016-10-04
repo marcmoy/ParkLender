@@ -1,16 +1,17 @@
 .slideshow-container {
   display: block;
   width: 100%;
-  position: absolute;
-  top: -50px;
+  position: relative;
+  top: -90px;
+  height: 100vh;
 }
 
 .slick-container {
   display: block;
   margin: 0 auto;
   padding: 0;
-  width: 100%;
-  height: auto;
+  height: 90%;
+  width: auto;
   color: #333;
   background: #000;
   overflow: hidden;
@@ -24,6 +25,7 @@
   color: white;
   text-align: center;
   font-size: 18px;
+  padding: 20px 0;
 }
 
 .park-there > header {
