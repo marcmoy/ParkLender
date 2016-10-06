@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import $ from 'jquery';
 
 class SessionForm extends React.Component {
 	constructor(props) {

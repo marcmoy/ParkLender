@@ -1,28 +1,41 @@
 import React from 'react';
 import { withRouter, hashHistory } from 'react-router';
-import Modal from 'react-modal';
-import { ModalStyle } from '../../util/modal_style.js';
 import SessionFormContainer from '../session_form/session_form_container';
 import $ from 'jquery';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false, formType: "" };
+    this.state = { formType: "" };
     this.logout = this.logout.bind(this);
     this.goHome = this.goHome.bind(this);
     this.goSearch = this.goSearch.bind(this);
     this.setLogin = this.setLogin.bind(this);
     this.setSignup = this.setSignup.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
     this.whereToSearch = this.whereToSearch.bind(this);
     this.splash = this.splash.bind(this);
     this.userThumbnail = this.userThumbnail.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
-  componentWillReceiveProps() {
-    this.setState({ modalOpen: false });
+  componentDidMount() {
+    this.$modal = $('#modal');
+    this.$sessionForm = $('#session-form');
+    this.$modal.click(() => {
+      this.$modal.hide();
+      this.$sessionForm.hide();
+    });
+  }
+
+  openModal() {
+    this.$sessionForm.hide();
+    this.$sessionForm.removeClass('animated fadeInDown');
+    this.$modal.show();
+    // hack to make animation happen between login / sign up clicks
+    setTimeout(() => {
+      this.$sessionForm.show();
+      this.$sessionForm.addClass('animated fadeInDown');
+    }, 1);
   }
 
   logout() {
@@ -46,15 +59,6 @@ class NavBar extends React.Component {
   setSignup(e) {
     this.setState({ formType: "signup"});
     this.openModal();
-  }
-
-  openModal(e) {
-    this.setState({ modalOpen: true });
-  }
-
-  closeModal() {
-    this.props.emptyErrors();
-    this.setState({ modalOpen: false, formType: "" });
   }
 
   splash() {
@@ -100,7 +104,7 @@ class NavBar extends React.Component {
     if (this.props.currentUser.photo) {
       return this.props.currentUser.photo.thumbnail;
     }
-    return "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png"
+    return "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png";
   }
 
   sessionLinks() {
@@ -131,11 +135,9 @@ class NavBar extends React.Component {
             <li><a onClick={this.setSignup} className="text-center" id={this.splash()}>Sign Up</a></li>
           </ul>
 
-          <Modal isOpen={this.state.modalOpen}
-            onRequestClose={this.closeModal} style={ModalStyle}>
-              <SessionFormContainer formType={this.state.formType}
-                showDemoAlert={this.props.showDemoAlert}/>
-          </Modal>
+          <div id="session-form">
+            <SessionFormContainer formType={this.state.formType}/>
+          </div>
         </div>
       );
     }

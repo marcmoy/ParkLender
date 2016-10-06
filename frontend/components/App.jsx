@@ -23,11 +23,11 @@ const showDemoAlert = () => {
     time: 3000,
     type: 'success'
   });
-}
-
+};
 
 const App = ({children}) => (
   <div>
+    <div id="modal"></div>
     <header>
       <NavBar showDemoAlert={showDemoAlert}/>
     </header>

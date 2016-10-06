@@ -1,5 +1,6 @@
 import { SessionConstants } from '../actions/session_actions';
 import merge from 'lodash/merge';
+import $ from 'jquery';
 
 const _nullUser = Object.freeze({
   currentUser: null,
@@ -10,6 +11,8 @@ const SessionReducer = function(state = _nullUser, action){
   switch(action.type){
     case SessionConstants.RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
+      $('#session-form').hide();
+      $('#modal').hide();
       return merge({}, _nullUser, {currentUser});
     case SessionConstants.LOGOUT:
       return merge({}, _nullUser);
