@@ -88,7 +88,7 @@ class SessionForm extends React.Component {
 	render() {
 
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form className='session-form' onSubmit={this.handleSubmit}>
         <h3 className="session-form-title">{this.formTitle()}</h3>
 
 				<input type="text"

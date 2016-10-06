@@ -3,6 +3,7 @@ import { withRouter, hashHistory } from 'react-router';
 import Modal from 'react-modal';
 import { ModalStyle } from '../../util/modal_style.js';
 import SessionFormContainer from '../session_form/session_form_container';
+import $ from 'jquery';
 
 class NavBar extends React.Component {
   constructor(props) {
