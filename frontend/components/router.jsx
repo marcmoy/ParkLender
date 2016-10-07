@@ -6,6 +6,7 @@ import App from './App';
 import HomePageContainer from './home/home_page_container';
 import SearchPageContainer from './search/search_page_container';
 import SpotShowPageContainer from './spot_show/spot_show_page_container';
+import ListingContainer from './listing/listing_container';
 //Actions
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
 import { splashOn, splashOff } from '../actions/splash_actions';
@@ -87,6 +88,8 @@ class AppRouter extends React.Component{
             onLeave={ this._turnOffWhereTo }/>
           <Route path="/spots/:spotId" component={ SpotShowPageContainer }
             onEnter={ this._requestSpotShowInfo }/>
+          <Route path="/:userId/spots/new" component={ ListingContainer }
+            onEnter={ this._redirectIfLoggedIn }/>
         </Route>
       </Router>
     );

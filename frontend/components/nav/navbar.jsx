@@ -128,6 +128,9 @@ class NavBar extends React.Component {
     if (this.props.currentUser) {
       return(
         <ul className="nav navbar-nav navbar-right" id={this.splash()}>
+          <li>
+            <a href={`/users`}>Become a Host</a>
+          </li>
           <li className="dropdown">
             <a href="#" className="dropdown-toggle" className="text-center"
               data-toggle="dropdown" role="button" aria-haspopup="true"
