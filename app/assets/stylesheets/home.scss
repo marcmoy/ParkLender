@@ -4,11 +4,31 @@
 .push-up {
   position: relative;
   top: -90px;
-  overflow-y: hidden;
 }
 
 footer {
-  background-color: blue;
-  width: 100%;
-  height: 50px;
+  position: relative;
+  bottom: -90px;
+  background-color: #eee;
+
+  div.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    ul {
+     width: auto;
+     float: left;
+     list-style: none;
+     margin: 2em;
+     padding: 0 3em;
+
+     img { height: 40px; margin: auto 0; }
+
+     h5 { margin-bottom: 5px; font-weight: 600; }
+
+     li a { color: #4e4444; cursor: pointer; }
+     li a:hover { color: #000; text-decoration: none; }
+    }
+  }
 }

@@ -27,6 +27,13 @@ class NavBar extends React.Component {
       $sessionForm.hide();
       this.props.emptyErrors();
     });
+    let $navbar = $('.navbar#splash');
+    if ($navbar) { $navbar.splashHeaderFollow(); }
+  }
+
+  componentDidUpdate() {
+    let $navbar = $('.navbar#splash');
+    if ($navbar) { $navbar.splashHeaderFollow(); }
   }
 
   update(fields) {
@@ -132,6 +139,10 @@ class NavBar extends React.Component {
             </a>
 
             <ul className="dropdown-menu">
+              <li><a href="#">Your Bookings</a></li>
+              <li role="separator" className="divider"></li>
+              <li><a href="#">Your Listings</a></li>
+              <li role="separator" className="divider"></li>
               <li><a onClick={this.logout}>Logout</a></li>
             </ul>
           </li>
@@ -178,9 +189,22 @@ class NavBar extends React.Component {
 
 export default withRouter(NavBar);
 
-// <li><a href="#">Your Bookings</a></li>
-// <li role="separator" className="divider"></li>
-// <li><a href="#">Your Listings</a></li>
-// <li role="separator" className="divider"></li>
+$.fn.splashHeaderFollow = function () {
+    let $this = this,
+        $window = $(window);
+
+    // listen for scroll
+    $window.scroll(function (e) {
+
+        // grabs window's scroll position
+        let scroll = $window.scrollTop();
+        if (scroll <= 400) {
+          $this.removeClass('show');
+        } else {
+          $this.addClass('show');
+        }
+    });
+};
+
 // <li><a href="#">Account Settings</a></li>
 // <li role="separator" className="divider"></li>

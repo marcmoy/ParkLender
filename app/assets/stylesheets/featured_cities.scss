@@ -1,11 +1,46 @@
 .featured-cities-container {
+  list-style: none;
+  padding: 3em 2em;
+  text-align: center;
 
   ul {
-    list-style: none;
+    padding: 0;
+    margin: auto;
 
     li {
       display: inline;
       float: left;
+      padding: 2em;
+      width: 50%;
+
+      div.overflow {
+        height: 22em;
+        width: auto;
+        overflow: hidden;
+        float: left;
+        position: relative;
+        cursor: pointer;
+
+        img { width: 100%; }
+
+        label {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          margin: auto;
+          background: rgba(0,0,0,0.3);
+          color: white;
+          font-weight: normal;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          font-size: 2.5em;
+          line-height: 3em;
+          height: 0;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

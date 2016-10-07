@@ -1,20 +1,57 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+import CITIES from '../../util/cities';
+import $ from 'jquery';
 
 class FeaturedCities extends React.Component {
   constructor(props) {
     super(props);
     this.renderCities = this.renderCities.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    let pics = $('div.city-pic');
+    for (let i = 0; i < pics.length; i++) {
+      let $pic = $(pics[i]);
+      let city = $pic.attr('id').split(' ').join('');
+      let $label = $(`label.${city}`);
+      $pic.hover(
+        () => $label.animate(
+          { height: '3em'},
+          { duration: 300,
+            complete: () => $label.css({ height: '3em'})
+          }
+        ),
+        () => $label.animate(
+          { height: '0'},
+          { duration: 300,
+            complete: () => $label.css({ height: '0'})
+          }
+        )
+      );
+    }
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    let name = e.target.attributes.id.value;
+    this.props.updateMap(CITIES[name].center, 13);
+    this.props.router.push("/search");
   }
 
   renderCities() {
     let cities = [];
-    for (let city in CITY_PICS) {
+    for (let city in CITIES) {
       if (city) {
+        let name = city.split(' ').join('');
         cities.push(
-          <li>
-            <div className='overflow'>
-              <img src={CITY_PICS[city]} />
-              <label>{city}</label>
+          <li key={name} id={city}>
+            <div className='overflow city-pic' id={city}>
+              <img src={CITIES[city].url} className='city-pic'
+                onClick={this.handleClick} id={city}/>
+              <label className={name} id={city}
+                onClick={this.handleClick}>{city}</label>
             </div>
           </li>
         );
@@ -23,13 +60,10 @@ class FeaturedCities extends React.Component {
     return cities;
   }
 
-  handleClick(e) {
-    e.preventDefault();
-  }
-
   render() {
     return(
-      <div className='featured-cities-container'>
+      <div className='featured-cities-container clearfix'>
+        <h1>Featured Cities</h1>
         <ul>
           {this.renderCities()}
         </ul>
@@ -38,13 +72,4 @@ class FeaturedCities extends React.Component {
   }
 }
 
-const CITY_PICS = {
-  'San Francisco': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554446/featured_cities/sf.jpg',
-  'New York': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554428/featured_cities/ny.jpg',
-  'Seattle': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554436/featured_cities/seattle.jpg',
-  'Chicago': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554446/featured_cities/chicago.jpg',
-  'Los Angeles': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554449/featured_cities/los-angeles.jpg',
-  'Boston': 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554449/featured_cities/boston.jpg'
-};
-
-export default FeaturedCities;
+export default withRouter(FeaturedCities);
