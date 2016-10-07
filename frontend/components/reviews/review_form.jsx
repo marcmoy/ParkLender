@@ -10,7 +10,6 @@ $.fn.reviewFormFollow = function () {
 
         // grabs window's scroll position
         let scroll = $window.scrollTop();
-        console.log(scroll);
         if (scroll <= 1175) {
           $this.css({
               position: 'absolute',
@@ -19,7 +18,7 @@ $.fn.reviewFormFollow = function () {
         } else {
           $this.css({
               position: 'fixed',
-              top: 200
+              top: 220
           });
         }
     });

@@ -22,15 +22,18 @@ button.view-photo {
   padding: 10px 20px;
   font-size: 1em;
   position: absolute;
-  bottom: 50%;
+  bottom: 5em;
   border: 2px solid gray;
-  left: 0;
+  left: 1em;
   background-color: rgba(0,0,0,0.7);
   border-radius: 5%;
   z-index: 10;
   color: white;
   font-weight: bold;
+  opacity: 0.4;
 }
+
+button.view-photo:hover { opacity: 1 }
 
 body.ReactModal__Body--open {
   overflow: hidden;
