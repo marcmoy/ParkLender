@@ -5,17 +5,13 @@ import $ from 'jquery';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "" };
+		this.update = this.update.bind(this);
 		this.errorMessages = this.errorMessages.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDemo = this.handleDemo.bind(this);
 		this.animate = this.animate.bind(this);
 		this.submitText = this.submitText.bind(this);
     this.formTitle = this.formTitle.bind(this);
-	}
-
-	update(field) {
-		return e => { this.setState({[field]: e.currentTarget.value }); };
 	}
 
 	errorMessages() {
@@ -43,37 +39,43 @@ class SessionForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault(e);
-		const user = this.state;
+		let user = { user: this.props.username, password: this.props.password };
 		this.props.processForm({ user });
 	}
 
 	handleDemo(e) {
 		e.preventDefault();
-		this.setState({ username: "", password: "" });
-
+		this.props.update({ username: "", password: "" });
+		this.update = this.update.bind(this);
 		this.username = ['D','e','m','o','-','U','s','e','r'];
 		this.password = ['p','a','s','s','w','o','r','d'];
 		this.currentUsername = "";
 		this.currentPass = "";
-
 		this.interval = window.setInterval(this.animate, 50);
 	}
 
 	animate() {
 		if (this.username.length > 0){
 			this.currentUsername = this.currentUsername + this.username.shift();
-			this.setState({ username: this.currentUsername });
+			this.props.update({ username: this.currentUsername });
 
 		} else if (this.password.length > 0) {
 			this.currentPass = this.currentPass + this.password.shift();
-			this.setState({ password: this.currentPass });
+			this.props.update({ password: this.currentPass });
 
 		} else {
-			let user = this.state;
+			let user = { user: this.props.username, password: this.props.password };
 			// this.props.showDemoAlert(); // bonus feature
 			this.props.processForm({ user });
+			this.props.update({ username: "", password: "" });
 			window.clearInterval(this.interval);
 		}
+	}
+
+	update(field) {
+		return e => {
+			this.props.update({[field]: e.currentTarget.value });
+		};
 	}
 
 	submitText() {
@@ -93,16 +95,18 @@ class SessionForm extends React.Component {
         <h3 className="session-form-title">{this.formTitle()}</h3>
 
 				<input type="text"
+					id="username"
 					className="form-control"
 					placeholder="Username"
-					value={this.state.username}
+					value={this.props.user}
 					onChange={this.update("username")}/>
 
-					<input type="password"
-						className="form-control"
-						placeholder="Password"
-						value={this.state.password}
-						onChange={this.update("password")}/>
+				<input type="password"
+					id="password"
+					className="form-control"
+					placeholder="Password"
+					value={this.props.password}
+					onChange={this.update("password")}/>
 
 				{this.errorMessages()}
 

@@ -8,6 +8,7 @@ class Api::SpotsController < ApplicationController
     max = params[:priceRange][1].to_i if params[:priceRange]
     @price_filter = params[:prices] || %w(hourly_rate daily_rate monthly_rate)
     spots = apply_price_filters(spots, @price_filter, min, max)
+    @min, @max = min, max
     @spots = spots
     render :index
   end
@@ -47,9 +48,10 @@ class Api::SpotsController < ApplicationController
 
   def apply_price_filters(spots, price_types, min, max)
     price_types = %w(hourly_rate daily_rate monthly_rate) if price_types.empty?
+    query = [];
     price_types.each do |price|
-      spots = spots.where({ price => (min..max) })
+      query << "#{price} BETWEEN #{min} AND #{max}"
     end
-    spots
+    spots.where(query.join(" OR "))
   end
 end

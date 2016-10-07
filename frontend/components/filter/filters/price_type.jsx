@@ -17,7 +17,10 @@ class PriceType extends React.Component {
       newPrices = [...this.state.prices, price];
     }
     this.setState({ prices: newPrices });
-    this.props.updateFilter('prices', newPrices);
+    clearTimeout(this.timeout);
+    this.timemout = setTimeout(() => {
+      this.props.updateFilter('prices', this.state.prices);
+    }, 500);
   }
 
   render() {

@@ -63,11 +63,12 @@ class Spot < ApplicationRecord
     }
   end
 
-  def rates(prices)
-    return self.prices if prices.empty?
+  def rates(price_types, min, max)
+    price_types = prices if price_types.empty?
     rates = {}
-    prices.each do |price|
-      rates[price] = self.send(price)
+    price_types.each do |type|
+      cost = send(type)
+      rates[type] = send(type) if cost.between?(min, max)
     end
     rates
   end

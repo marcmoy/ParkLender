@@ -11,7 +11,8 @@ class SpotIndexItem extends React.Component {
     this.openShowPage = this.openShowPage.bind(this);
   }
 
-  openShowPage() {
+  openShowPage(e) {
+    e.preventDefault();
     this.props.router.push(`/spots/${this.props.spot.id}`);
   }
 

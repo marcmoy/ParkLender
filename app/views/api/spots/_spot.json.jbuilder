@@ -14,6 +14,6 @@ json.host do
   json.name spot.host.username
 end
 
-json.prices spot.rates(price_filter)
+json.prices spot.rates(price_filter, min, max)
 
 json.vehicles spot.allowedVehicles

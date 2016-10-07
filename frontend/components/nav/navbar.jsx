@@ -6,7 +6,8 @@ import $ from 'jquery';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { formType: "" };
+    this.state = { formType: "", username: "", password: "" };
+    this.update = this.update.bind(this);
     this.logout = this.logout.bind(this);
     this.goHome = this.goHome.bind(this);
     this.goSearch = this.goSearch.bind(this);
@@ -19,23 +20,32 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    this.$modal = $('#modal');
-    this.$sessionForm = $('#session-form');
-    this.$modal.click(() => {
-      this.$modal.hide();
-      this.$sessionForm.hide();
+    let $modal = $('#modal');
+    let $sessionForm = $('#session-form');
+    $modal.click(() => {
+      $modal.hide();
+      $sessionForm.hide();
+      this.props.emptyErrors();
     });
   }
 
+  update(fields) {
+    this.setState(fields);
+  }
+
   openModal() {
-    this.$sessionForm.hide();
-    this.$sessionForm.removeClass('animated fadeInDown');
-    this.$modal.show();
-    // hack to make animation happen between login / sign up clicks
-    setTimeout(() => {
-      this.$sessionForm.show();
-      this.$sessionForm.addClass('animated fadeInDown');
-    }, 1);
+    let $modal = $('#modal');
+    let $sessionForm = $('#session-form');
+    this.setState({ username: "", password: "" });
+    $modal.click(() => {
+      $modal.hide();
+      $sessionForm.hide();
+      this.props.emptyErrors();
+    });
+    $modal.show();
+    $sessionForm.removeClass('animated fadeInDown');
+    $sessionForm.show();
+    $sessionForm.addClass('animated fadeInDown');
   }
 
   logout() {
@@ -136,7 +146,9 @@ class NavBar extends React.Component {
           </ul>
 
           <div id="session-form">
-            <SessionFormContainer formType={this.state.formType}/>
+            <SessionFormContainer formType={this.state.formType}
+              update={this.update} user={this.state.username}
+              password={this.state.password}/>
           </div>
         </div>
       );
@@ -158,6 +170,7 @@ class NavBar extends React.Component {
           { this.whereToSearch() }
           { this.sessionLinks() }
         </div>
+        <div id="modal"></div>
       </nav>
     );
   }

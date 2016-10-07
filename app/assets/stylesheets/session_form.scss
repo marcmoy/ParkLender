@@ -1,14 +1,19 @@
 #session-form {
   display: none;
   position: fixed;
-  top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  height: 300px;
-  width: 300px;
+  top: 30%;
   margin: auto;
+  z-index: 1001;
+  width: 25em;
+  height: auto;
   background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  -moz-box-shadow:    3px 3px 5px 6px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(0,0,0,0.7);
+  box-shadow:         3px 3px 5px 6px rgba(0,0,0,0.7);
 }
 
 .session-form-title {
@@ -43,4 +48,10 @@
 
 .demo-button {
   background-color: #8a8282;
+}
+
+ul.login-signup-form-error {
+  list-style: none;
+  a.text-danger { font-size: 0.8em }
+  a.text-danger:hover { color: #a94442; text-decoration: none; cursor: inherit; }
 }

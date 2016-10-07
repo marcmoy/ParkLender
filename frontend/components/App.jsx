@@ -27,7 +27,6 @@ const showDemoAlert = () => {
 
 const App = ({children}) => (
   <div>
-    <div id="modal"></div>
     <header>
       <NavBar showDemoAlert={showDemoAlert}/>
     </header>
