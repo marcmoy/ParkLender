@@ -20,15 +20,15 @@ $.fn.bookingFormFollow = function () {
               position: 'absolute',
               top: -43
           });
-        } else if (480 < scroll && scroll <= 890) {
+        } else if (480 < scroll && scroll <= 815) {
           $this.css({
               position: 'fixed',
               top: 70
           });
-        } else if (scroll > 890){
+        } else if (scroll > 815){
           $this.css({
               position: 'absolute',
-              top: 360
+              top: 280
           });
         }
     });

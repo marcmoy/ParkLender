@@ -39,7 +39,10 @@ class SessionForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault(e);
-		let user = { user: this.props.username, password: this.props.password };
+		let user = {
+			username: this.props.username,
+			password: this.props.password
+		};
 		this.props.processForm({ user });
 	}
 
@@ -64,8 +67,12 @@ class SessionForm extends React.Component {
 			this.props.update({ password: this.currentPass });
 
 		} else {
-			let user = { user: this.props.username, password: this.props.password };
-			// this.props.showDemoAlert(); // bonus feature
+
+			let user = {
+				username: this.props.username,
+				password: this.props.password
+			};
+			
 			this.props.processForm({ user });
 			this.props.update({ username: "", password: "" });
 			window.clearInterval(this.interval);
@@ -98,7 +105,7 @@ class SessionForm extends React.Component {
 					id="username"
 					className="form-control"
 					placeholder="Username"
-					value={this.props.user}
+					value={this.props.username}
 					onChange={this.update("username")}/>
 
 				<input type="password"

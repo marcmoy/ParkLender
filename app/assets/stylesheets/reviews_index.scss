@@ -1,7 +1,6 @@
 .reviews-index-container {
   position: relative;
   text-align: left;
-  padding-left: 95px;
 
   .row {
     width: 50%;
@@ -13,7 +12,8 @@
     display: block;
     float: left;
     text-align: center;
-    width: 300px;
+    width: auto;
+    padding: 0 50px;
 
     img {
       border-radius: 50%;
@@ -28,7 +28,7 @@
       display: block;
       color: black;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 1.2em;
       text-align: center;
     }
   }
@@ -36,11 +36,11 @@
   .review-content-container {
     display: block;
     padding-top: 30px;
-    font-size: 20px;
+    font-size: 1.1em;
     font-style: italic;
 
     .review-date {
-      font-size: 18px;
+      font-size: 1em;
     }
   }
 }

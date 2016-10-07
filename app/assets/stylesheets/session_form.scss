@@ -6,7 +6,7 @@
   top: 30%;
   margin: auto;
   z-index: 1001;
-  width: 25em;
+  width: 21em;
   height: auto;
   background-color: white;
   padding: 1em;
@@ -52,6 +52,7 @@
 
 ul.login-signup-form-error {
   list-style: none;
+  padding: 5px;
   a.text-danger { font-size: 0.8em }
   a.text-danger:hover { color: #a94442; text-decoration: none; cursor: inherit; }
 }

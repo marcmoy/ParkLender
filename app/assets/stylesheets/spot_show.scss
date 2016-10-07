@@ -20,7 +20,7 @@ img.spot-image {
 
 button.view-photo {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1em;
   position: absolute;
   bottom: 50%;
   border: 2px solid gray;
@@ -56,21 +56,18 @@ aside.host-photo-container {
   img {
     border-radius: 50%;
     border: 3px solid gray;
-    margin-left: 70px;
-    margin-right: 40px;
     margin-bottom: 20px;
     box-shadow: 2px, 2px, 2px, #888888;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
   }
 
   span {
     display: block;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.3em;
     color: #272626;
     font-weight: bold;
-    padding-left: 20px;
   }
 }
 
@@ -91,7 +88,7 @@ aside.host-photo-container {
 
   .italicize-text {
     font-style: italic;
-    font-size: 18px;
+    font-size: 1.2em;
   }
 
   .host-num-reviews {

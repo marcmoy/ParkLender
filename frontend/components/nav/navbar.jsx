@@ -147,7 +147,7 @@ class NavBar extends React.Component {
 
           <div id="session-form">
             <SessionFormContainer formType={this.state.formType}
-              update={this.update} user={this.state.username}
+              update={this.update} username={this.state.username}
               password={this.state.password}/>
           </div>
         </div>

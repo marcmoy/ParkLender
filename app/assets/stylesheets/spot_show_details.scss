@@ -1,17 +1,13 @@
 .spot-show-details-container {
   padding: 20px 0;
-  padding-left: 40px;
   margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
   background-color: #eee;
 
   .container {
-
-    float: left;
-    width: 40%;
-    margin-left: 90px;
-    margin-right: 0;
+    width: 50%;
+    margin-left: 0;
 
     .row:not(:last-child) {
       border-bottom: 1px solid #c1bebe;
@@ -19,8 +15,9 @@
 
     .row {
       text-align: left;
-      font-size: 16px;
+      font-size: 1em;
       padding: 20px 0;
+      padding-left: 50px;
 
       h2, h3 {
         color: black;
@@ -28,13 +25,13 @@
       }
 
       h3 {
-        font-size: 20px;
+        font-size: 1.2em;
         display: block;
         float: left
       }
 
       h2 {
-        font-size: 24px;
+        font-size: 1.3em;
         margin-bottom: 20px;
       }
 
