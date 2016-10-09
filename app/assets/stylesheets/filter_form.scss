@@ -14,6 +14,10 @@
     justify-content: center;
   }
 
+  .form-group:not(:last-child) {
+    border-bottom: 1px solid #ded2d2;
+  }
+
   .form-group-label {
     width: 20%;
   }

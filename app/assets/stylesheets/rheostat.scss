@@ -1,12 +1,21 @@
 .price-type {
   margin: 0 auto;
+  width: 95%;
+  position: relative;
+
+  span.filter-name {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #565a5c;
+  }
 }
 
 .price-range-input {
-  margin: 0 auto;
+  margin: 0 1em;
   text-align: center;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #ece5e5;
   text-align: center;
   color: darkgray;
   padding: 3px;
@@ -26,19 +35,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 95%;
   margin: 0 auto;
+  position: relative;
 
   button.btn.btn-primary {
     position: absolute;
     right: 0;
-    width: auto
-   }
+    width: auto;
+  }
+
+  span.filter-name {
+    color: #565a5c;
+    padding-bottom: 1em;
+    position: absolute;
+    left: 0;
+  }
 }
 
 .rheostat {
   overflow: visible;
-  margin: 10px 20px;
+  margin: 10px;
 }
 
 .rheostat-background {
@@ -55,7 +72,7 @@
 .rheostat-handle {
   background-color: #fff;
   border: 1px solid #d8d8d8;
-  border-radius: 20%;
+  border-radius: 50%;
   height: 24px;
   outline: none;
   z-index: 2;
@@ -68,23 +85,24 @@
   display: block;
   position: absolute;
   background-color: #dadfe8;
+  color: white;
 }
 
 .rheostat-horizontal {
   display: inline-block;
-  width: 60%;
+  width: 40%;
   height: 24px;
 }
 
 .rheostat-horizontal .rheostat-background {
-  height: 15px;
-  top: 0px;
+  height: 5px;
+  top: 5px;
   width: 100%;
 }
 
 .rheostat-horizontal .rheostat-progress {
-  height: 13px;
-  top: 2px;
+  height: 5px;
+  top: 5px;
 }
 
 .rheostat-horizontal .rheostat-handle {

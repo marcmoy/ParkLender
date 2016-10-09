@@ -26,6 +26,7 @@ class PriceType extends React.Component {
   render() {
     return(
       <span className="price-type">
+        <span className='filter-name'>Price Type</span>
         <button type="button" className="btn btn-primary" data-toggle="button"
           autoComplete="off" aria-pressed="false" value="hourly_rate"
           onClick={this.updatePrices}>Hourly</button>

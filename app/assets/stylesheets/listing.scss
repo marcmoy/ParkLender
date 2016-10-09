@@ -28,6 +28,7 @@ div.listings-container {
         margin: 0;
         font-size: 0.8em;
         color: gray;
+        font-weight: normal;
       }
     }
 
@@ -61,6 +62,10 @@ div.listings-container {
         display: block;
         margin: 1em 0;
         cursor: inherit;
+      }
+
+      h3 {
+        font-weight: normal;
       }
 
       a.text-danger:hover { text-decoration: none; }

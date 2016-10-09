@@ -51,18 +51,19 @@ class PriceRange extends React.Component {
 
   render() {
     return (
-      <div className='row rheostat-row'>
-        <div className='price-range-input'>
-          <label htmlFor='min'>Min</label>
-          <input type='text' name='min' className='price-range'
-            value={this.state.min} onChange={this.updateMin}/>
-        </div>
-        <Rheostat min={1} max={100} values={[this.state.min,this.state.max]}
-          onValuesUpdated={this.updateValue} />
-        <div className='price-range-input'>
-          <label htmlFor='max'>Max</label>
-          <input type='text' name='max' className='price-range'
-            value={this.state.max} onChange={this.updateMax}/>
+      <div className='form-group'>
+        <div className='row rheostat-row'>
+          <span className='filter-name'>Price Range</span>
+          <div className='price-range-input'>
+            <input type='text' name='min' className='price-range'
+              value={this.state.min} onChange={this.updateMin}/>
+          </div>
+          <Rheostat min={1} max={100} values={[this.state.min,this.state.max]}
+            onValuesUpdated={this.updateValue} />
+          <div className='price-range-input'>
+            <input type='text' name='max' className='price-range'
+              value={this.state.max} onChange={this.updateMax}/>
+          </div>
         </div>
       </div>
     );
