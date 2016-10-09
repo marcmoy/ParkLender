@@ -33,7 +33,7 @@ const CITIES = {
   },
   'Los Angeles': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554449/featured_cities/los-angeles.jpg',
-    zoom: 15,
+    zoom: 14,
     center: {
       lat: 34.051991625826886,
       lng: -118.24400424957275
