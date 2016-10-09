@@ -30,6 +30,7 @@ class Listing extends React.Component {
     this.buildLinks = this.buildLinks.bind(this);
     this.buildElements = this.buildElements.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.scrollTo = this.scrollTo.bind(this);
   }
 
   componentDidMount() {
