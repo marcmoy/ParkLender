@@ -36,7 +36,8 @@ class FeaturedCities extends React.Component {
   handleClick(e) {
     e.preventDefault();
     let name = e.target.attributes.id.value;
-    this.props.updateMap(CITIES[name].center, 13);
+    let city = CITIES[name];
+    this.props.updateMap(city.center, city.zoom);
     this.props.router.push("/search");
   }
 

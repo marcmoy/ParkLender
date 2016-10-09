@@ -2,7 +2,9 @@ import { MapConstants } from '../actions/map_actions';
 import merge from 'lodash/merge';
 
 const mapDefault = {
-  center: { lat: 37.7758, lng: -122.435 }, // center of SF
+  center: {
+    lat: 37.75243528806485,
+    lng: -122.45554447174072 }, // center of SF
   zoom: 13,
   clickableIcons: false
 };

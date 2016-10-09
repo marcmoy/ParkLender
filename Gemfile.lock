@@ -44,6 +44,7 @@ GEM
     arel (7.1.1)
     autoprefixer-rails (6.4.0.3)
       execjs
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -58,6 +59,9 @@ GEM
       momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     byebug (9.0.5)
+    cloudinary (1.2.3)
+      aws_cf_signer
+      rest-client
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -68,6 +72,8 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    domain_name (0.5.20160826)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.6.3)
@@ -77,6 +83,8 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -101,6 +109,7 @@ GEM
     momentjs-rails (2.11.1)
       railties (>= 3.1)
     multi_json (1.12.1)
+    netrc (0.11.0)
     newrelic_rpm (3.16.2.321)
     nio4r (1.2.1)
     nokogiri (1.6.8)
@@ -108,6 +117,7 @@ GEM
       pkg-config (~> 1.1.7)
     pg (0.18.4)
     pkg-config (1.1.7)
+    prettyusers (0.0.3.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -150,6 +160,10 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rest-client (2.0.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -176,6 +190,10 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
+    ui_faces (0.1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     web-console (3.3.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -197,6 +215,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootstrap3-datetimepicker-rails (~> 4.14.30)
   byebug
+  cloudinary
   coffee-rails (~> 4.2)
   faker
   figaro
@@ -206,6 +225,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   newrelic_rpm
   pg (~> 0.18)
+  prettyusers
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
@@ -215,6 +235,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   uglifier (>= 1.3.0)
+  ui_faces
   web-console
 
 BUNDLED WITH

@@ -37,6 +37,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 # figaro for cloudinary
 gem 'figaro'
+gem 'cloudinary'
+gem 'ui_faces'
+gem 'prettyusers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,27 +1,31 @@
 const CITIES = {
   'San Francisco': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554446/featured_cities/sf.jpg',
+    zoom: 13,
     center: {
-      lat: 37.7758,
-      lng: -122.435
+      lat: 37.75243528806485,
+      lng: -122.45554447174072
     }
   },
   'New York': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554428/featured_cities/ny.jpg',
+    zoom: 14,
     center: {
-      lat: 40.7124340719721,
-      lng: -74.00549411773682
+      lat: 40.72843667328196,
+      lng: -73.99193286895752
     }
   },
   'Seattle': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554436/featured_cities/seattle.jpg',
+    zoom: 14,
     center: {
-      lat: 47.605920264681885,
-      lng: -122.33222723007202
+      lat: 47.61267923212693,
+      lng: -122.31658458709717
     }
   },
   'Chicago': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554446/featured_cities/chicago.jpg',
+    zoom: 16,
     center: {
       lat: 41.87778039443483,
       lng: -87.6289701461792
@@ -29,6 +33,7 @@ const CITIES = {
   },
   'Los Angeles': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554449/featured_cities/los-angeles.jpg',
+    zoom: 15,
     center: {
       lat: 34.051991625826886,
       lng: -118.24400424957275
@@ -36,6 +41,7 @@ const CITIES = {
   },
   'Boston': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554449/featured_cities/boston.jpg',
+    zoom: 15,
     center: {
       lat: 42.359787609982966,
       lng: -71.05798244476318
