@@ -19,13 +19,13 @@ class FeaturedCities extends React.Component {
       $pic.hover(
         () => $label.animate(
           { height: '3em'},
-          { duration: 300,
+          { duration: 100,
             complete: () => $label.css({ height: '3em'})
           }
         ),
         () => $label.animate(
           { height: '0'},
-          { duration: 300,
+          { duration: 100,
             complete: () => $label.css({ height: '0'})
           }
         )

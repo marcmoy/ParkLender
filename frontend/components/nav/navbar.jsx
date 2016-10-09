@@ -11,6 +11,7 @@ class NavBar extends React.Component {
     this.logout = this.logout.bind(this);
     this.goHome = this.goHome.bind(this);
     this.goSearch = this.goSearch.bind(this);
+    this.goListing = this.goListing.bind(this);
     this.setLogin = this.setLogin.bind(this);
     this.setSignup = this.setSignup.bind(this);
     this.whereToSearch = this.whereToSearch.bind(this);
@@ -66,6 +67,10 @@ class NavBar extends React.Component {
 
   goSearch() {
     this.props.router.push("/search");
+  }
+
+  goListing() {
+    this.props.router.push("/listings/new");
   }
 
   setLogin(e) {
@@ -126,10 +131,11 @@ class NavBar extends React.Component {
 
   sessionLinks() {
     if (this.props.currentUser) {
+
       return(
         <ul className="nav navbar-nav navbar-right" id={this.splash()}>
-          <li>
-            <a href={`/users`}>Become a Host</a>
+          <li className="host-link">
+            <a id={this.splash()} onClick={this.goListing}>Host a Spot</a>
           </li>
           <li className="dropdown">
             <a href="#" className="dropdown-toggle" className="text-center"

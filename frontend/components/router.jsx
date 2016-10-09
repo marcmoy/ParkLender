@@ -78,18 +78,18 @@ class AppRouter extends React.Component{
 
   render(){
     return(
-      <Router history={ hashHistory }>
+      <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" component={ App } onEnter={ this._requestSpots }>
-          <IndexRoute component={ HomePageContainer }
+          <IndexRoute component={HomePageContainer}
             onEnter={ this._activateSplash }
             onLeave={ this._turnOffSplash } />
-          <Route path="/search" component={ SearchPageContainer }
+          <Route path="/search" component={SearchPageContainer}
             onEnter={ this._activateWhereTo }
             onLeave={ this._turnOffWhereTo }/>
-          <Route path="/spots/:spotId" component={ SpotShowPageContainer }
+          <Route path="/spots/:spotId" component={SpotShowPageContainer}
             onEnter={ this._requestSpotShowInfo }/>
-          <Route path="/:userId/spots/new" component={ ListingContainer }
-            onEnter={ this._redirectIfLoggedIn }/>
+          <Route path="/listings/new" component={ListingContainer}
+            onEnter={ this._ensureLoggedIn }/>
         </Route>
       </Router>
     );

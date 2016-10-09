@@ -1,0 +1,138 @@
+div.listings-container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  .left-menu {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    width: 20%;
+    height: calc(100vh - 50px);
+    background-color: white;
+    border-right: 1px solid gray;
+
+    a {
+      width: 100%;
+      display: block;
+      padding: 0.8em;
+      padding-left: 3em;
+      opacity: 0.3;
+      font-size: 1.5em;
+      color: #211d1d;
+      cursor: pointer;
+
+      h5 {
+        margin: 0;
+        font-size: 0.8em;
+        color: gray;
+      }
+    }
+
+    a.active {
+      opacity: 1.0;
+      padding-left: 3.5em;
+    }
+
+    a:hover {
+      text-decoration: none;
+      background-color: #eee;
+      opacity: 0.8;
+    }
+  }
+
+  .main {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    width: 80%;
+
+    .element {
+      text-align: left;
+      height: calc(100vh);
+      width: 100%;
+      padding: 100px;
+      font-size: 16px;
+
+      a.text-danger {
+        display: block;
+        margin: 1em 0;
+        cursor: inherit;
+      }
+
+      a.text-danger:hover { text-decoration: none; }
+
+      .continue-button {
+        display: block;
+        padding: 0.5em;
+        background-color: #00a699;
+        color: white;
+        border: none;
+        margin: 2em 0;
+        letter-spacing: 1.5px;
+      }
+
+      .continue-button.upload-photo {
+        background-color: #727ea2;
+        margin-top: 0;
+      }
+
+      input.form-input-element {
+        width: 500px;
+        padding: 0.5em;
+        border-radius: 5px;
+        border: 1px solid gray;
+      }
+
+      textarea {
+        resize: none;
+        padding: 0.5em;
+        width: 500px;
+        height: 200px;
+        border-radius: 5px;
+        border: 1px solid gray;
+      }
+
+      .Select.Select--single.is-searchable.has-value {
+        margin: 1em 0;
+      }
+
+      .has-value.Select--single > .Select-control .Select-value .Select-value-label {
+        font-weight: normal;
+        color: #211d1d;
+      }
+
+      span.vehicle-checkbox {
+        display: block;
+        margin: 1em 0;
+        width: 10em;
+        border: 1px solid gray;
+        background: white;
+        border-radius: 5px;
+        padding: 0.5em;
+        text-align: right;
+
+        label {
+          padding: 0;
+          margin: 0;
+          float: left;
+          font-weight: normal;
+        }
+
+        input[type="checkbox"] {
+          margin: 0;
+          padding: 0;
+          transform: scale(1.1);
+          cursor: pointer;
+        }
+      }
+
+      .img-preview img {
+        height: 15em;
+      }
+    }
+  }
+}

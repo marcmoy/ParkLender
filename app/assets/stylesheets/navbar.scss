@@ -69,6 +69,23 @@ input.nav-where-to-input {
   padding-right: 40px;
 }
 
+li.host-link {
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  a {
+    border: 2px solid #c4c4c4;
+    border-radius: 0.2em;
+    padding: 0.3em 0.5em;
+    margin: 0 1em;
+    font-weight: normal;
+  }
+
+  a#splash { border-color: white; background-color: rgba(0,0,0,0.1); }
+}
+
 li.dropdown.open {
   background-color: rgba(0,0,0,0.1);
 }
