@@ -46,8 +46,23 @@
   background-color: #ff5d62;
 }
 
+.submit-button:disabled {
+  background-color: #757272;
+  cursor: progress;
+}
+
 .demo-button {
   background-color: #8a8282;
+}
+
+.demo-button:disabled {
+  background-color: #757272;
+  cursor: progress;
+}
+
+input:disabled {
+  color: #757272;
+  cursor: not-allowed;
 }
 
 ul.login-signup-form-error {

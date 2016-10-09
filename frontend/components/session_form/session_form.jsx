@@ -5,6 +5,7 @@ import $ from 'jquery';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = { loggingIn: false };
 		this.update = this.update.bind(this);
 		this.errorMessages = this.errorMessages.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,9 +73,25 @@ class SessionForm extends React.Component {
 				username: this.props.username,
 				password: this.props.password
 			};
-			
-			this.props.processForm({ user });
-			this.props.update({ username: "", password: "" });
+			this.setState({ loggingIn: true });
+			$('#modal').off('click');
+			$('.submit-button').prop('disabled', true);
+			$('.demo-button').prop('disabled', true);
+			$('#username').prop('disabled', true);
+			$('#password').prop('disabled', true);
+
+			let success = () => {
+				$('.submit-button').prop('disabled', false);
+				$('.demo-button').prop('disabled', false);
+				$('#username').prop('disabled', false);
+				$('#password').prop('disabled', false);
+				$('#session-form').hide();
+				$('#modal').hide();
+				this.setState({ loggingIn: false });
+				this.props.update({ username: "", password: "" });
+			};
+
+			this.props.processForm({ user }, success);
 			window.clearInterval(this.interval);
 		}
 	}
@@ -86,8 +103,13 @@ class SessionForm extends React.Component {
 	}
 
 	submitText() {
-		if (this.props.formType === "signup") return "CREATE ACCOUNT";
-		return "LOGIN";
+		let text;
+		if (this.props.formType === "signup") {
+			text = this.state.loggingIn ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT';
+		} else {
+			text = this.state.loggingIn ? 'LOGGING IN...' : 'LOGIN';
+		}
+		return text;
 	}
 
   formTitle() {

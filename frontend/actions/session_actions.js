@@ -7,23 +7,26 @@ export const SessionConstants = {
   EMPTY_ERRORS: "EMPTY_ERRORS"
 };
 
-export const signup = user => ({
+export const signup = (user, success) => ({
   type: SessionConstants.SIGNUP,
-  user
+  user,
+  success
 });
 
-export const login = user => ({
+export const login = (user, success) => ({
   type: SessionConstants.LOGIN,
-  user
+  user,
+  success
 });
 
 export const logout = () => ({
   type: SessionConstants.LOGOUT
 });
 
-export const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = (currentUser, success) => ({
   type: SessionConstants.RECEIVE_CURRENT_USER,
-  currentUser
+  currentUser,
+  success
 });
 
 export const receiveErrors = errors => ({
