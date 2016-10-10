@@ -1,11 +1,15 @@
+import $ from 'jquery';
+
 export const addSpinner = () => {
   removeEmptyMessage();
+  $('.spot-index-container').css({ opacity: '0.3' });
   const loader = $(".load-message")[0];
   if (loader) loader.innerHTML = '<div class="loader">Loading...</div>';
 };
 
 export const removeSpinner = () => {
   const loader = $(".load-message")[0];
+  $('.spot-index-container').css({ opacity: '1.0' });
   if (loader) loader.innerHTML = "";
 };
 
