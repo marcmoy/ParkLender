@@ -8,7 +8,7 @@ const SpotHostDetails = ({ spot }) => (
       <img src={spot.host.thumbnail} />
       <span>{spot.host.name}</span>
     </aside>
-    <img src={Pin} className="pin"/><h3>San Francisco, CA</h3><br/>
+    <img src={Pin} className="pin"/><h3>{spot.city}, {spot.state}</h3><br/>
     <span className="italicize-text">member since Sept 2016</span><br/>
     <span className="italicize-text pull-left host-num-reviews">
       {spot.numReviews} Reviews</span>
