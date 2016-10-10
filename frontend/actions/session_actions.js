@@ -29,9 +29,10 @@ export const receiveCurrentUser = (currentUser, success) => ({
   success
 });
 
-export const receiveErrors = errors => ({
+export const receiveErrors = (errors, callback) => ({
   type: SessionConstants.RECEIVE_ERRORS,
-  errors
+  errors,
+  callback
 });
 
 export const emptyErrors = () => ({

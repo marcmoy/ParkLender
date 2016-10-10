@@ -44,7 +44,13 @@ class SessionForm extends React.Component {
 			username: this.props.username,
 			password: this.props.password
 		};
-		this.props.processForm({ user });
+		this.setState({ loggingIn: true });
+
+		let callback = () => {
+			this.setState({ loggingIn: false });
+		};
+
+		this.props.processForm({ user }, callback);
 	}
 
 	handleDemo(e) {
@@ -74,19 +80,8 @@ class SessionForm extends React.Component {
 				password: this.props.password
 			};
 			this.setState({ loggingIn: true });
-			$('#modal').off('click');
-			$('.submit-button').prop('disabled', true);
-			$('.demo-button').prop('disabled', true);
-			$('#username').prop('disabled', true);
-			$('#password').prop('disabled', true);
 
 			let success = () => {
-				$('.submit-button').prop('disabled', false);
-				$('.demo-button').prop('disabled', false);
-				$('#username').prop('disabled', false);
-				$('#password').prop('disabled', false);
-				$('#session-form').hide();
-				$('#modal').hide();
 				this.setState({ loggingIn: false });
 				this.props.update({ username: "", password: "" });
 			};

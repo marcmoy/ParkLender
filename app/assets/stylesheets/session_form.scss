@@ -48,7 +48,8 @@
 
 .submit-button:disabled {
   background-color: #eee;
-  cursor: progress;
+  color: gray;
+  cursor: not-allowed;
 }
 
 .demo-button {
@@ -57,7 +58,8 @@
 
 .demo-button:disabled {
   background-color: #eee;
-  cursor: progress;
+  color: gray;
+  cursor: not-allowed;
 }
 
 input:disabled {
@@ -68,7 +70,6 @@ input:disabled {
 ul.login-signup-form-error {
   list-style: none;
   padding: 5px;
-  text-align: center;
-  a.text-danger { font-size: 0.8em }
+  a.text-danger { font-size: 0.8em; }
   a.text-danger:hover { color: #a94442; text-decoration: none; cursor: inherit; }
 }
