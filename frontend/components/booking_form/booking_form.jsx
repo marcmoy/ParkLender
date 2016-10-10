@@ -5,6 +5,9 @@ import { timeOptionsAM, timeOptionsPM } from './time_options';
 import AlertContainer from 'react-alert';
 import CountdownTimer from './countdown_timer';
 
+// worst code I've ever written
+// if you're reading this, sorry.
+
 $.fn.bookingFormFollow = function () {
     let $this = this,
         $window = $(window);

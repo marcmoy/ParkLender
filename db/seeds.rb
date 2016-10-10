@@ -150,13 +150,14 @@ ActiveRecord::Base.transaction do
 
       user_photo = i.odd? ? UiFaces.man : UiFaces.woman
 
-      # chloepark photo link is broken
-      until user_photo != 'https://s3.amazonaws.com/uifaces/faces/twitter/chloepark/128.jpg'
-        user_photo = i.odd? ? UiFaces.man : UiFaces.woman
-      end
-
       # try to avoid repeats as much as possible
       user_photo = i.odd? ? UiFaces.man : UiFaces.woman if @user_photos[user_photo]
+
+      # chloepark photo link is broken
+      until user_photo != "https://s3.amazonaws.com/uifaces/faces/twitter/chloepark/128.jpg"
+        user_photo = i.odd? ? UiFaces.man : UiFaces.woman
+      end
+      
       @user_photos[user_photo] = true
 
       user = User.create!(username: name, password: 'go_fullstack_go')
