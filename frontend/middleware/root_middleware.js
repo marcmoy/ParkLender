@@ -11,8 +11,8 @@ const RootMiddleware = applyMiddleware(
   SessionMiddleware,
   SpotsMiddleware,
   BookingMiddleware,
-  ReviewsMiddleware
-  // loggerMiddleware
+  ReviewsMiddleware,
+  loggerMiddleware
 );
 
 export default RootMiddleware;

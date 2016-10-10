@@ -18,19 +18,27 @@ class Api::SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.create!(spot_params)
-    render :show
+    @spot = Spot.new(spot_params)
+    if @spot.save
+      image_url = params[:spot][:image_url]
+      Photo.create!(spot_id: @spot.id, url: image_url, thumbnail: image_url)
+      render 'api/spots/show'
+    else
+      render json: @spot.errors.full_messages, status: 422
+    end
   end
 
   private
 
   def spot_params
     params.require(:spot).permit(
-      :lat,
-      :lng,
-      :title,
-      :description,
-      :prices,
+      :host_id,
+      :lat, :lng,
+      :address, :city, :state, :country,
+      :title, :description,
+      :hourly_rate, :daily_rate, :monthly_rate,
+      :width, :length,
+      :car, :motorcycle, :van, :truck
     )
   end
 

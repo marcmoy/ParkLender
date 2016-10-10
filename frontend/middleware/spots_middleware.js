@@ -31,7 +31,11 @@ export default ({getState, dispatch}) => next => action => {
       dispatch(requestSpots());
       break;
     case SpotConstants.CREATE_SPOT:
-      createSpot(action.spot, spotSuccess);
+      let errorCallback = data => console.log(data);
+      let createSuccess = spot => {
+        dispatch(receiveSpot(spot, action.success));
+      };
+      createSpot(action.spot, createSuccess, errorCallback);
       break;
     case SpotConstants.CREATE_REVIEW:
       createReview(action.review, spotSuccess);

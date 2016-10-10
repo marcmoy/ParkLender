@@ -82,6 +82,7 @@ class Spot < ApplicationRecord
   end
 
   def calc_rating
+    return 0 if self.reviews.empty?
     sum = self.reviews.reduce(0){|sum,review| sum += review.rating}
     avg = sum / self.reviews.count.to_f
     (avg * 2).round / 2.0 # rounds to nearest 0.5 decimal

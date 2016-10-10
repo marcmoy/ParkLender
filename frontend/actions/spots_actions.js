@@ -21,14 +21,16 @@ export const receiveSpots = spots => ({
   spots
 });
 
-export const receiveSpot = spot => ({
+export const receiveSpot = (spot, success) => ({
   type: SpotConstants.RECEIVE_SPOT,
-  spot
+  spot,
+  success
 });
 
-export const createSpot = spot => ({
+export const createSpot = (spot, success) => ({
   type: SpotConstants.CREATE_SPOT,
-  spot
+  spot,
+  success
 });
 
 // export const createReview = review => ({

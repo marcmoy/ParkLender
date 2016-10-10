@@ -101,6 +101,11 @@ div.listings-container {
         border: 1px solid gray;
       }
 
+      .Select {
+        width: 150px;
+        margin: 1em 0;
+      }
+
       .Select.Select--single.is-searchable.has-value {
         margin: 1em 0;
       }
@@ -139,5 +144,17 @@ div.listings-container {
         height: 15em;
       }
     }
+  }
+}
+
+.review-listing {
+  font-size: 1em;
+  color: gray;
+
+  h4 {
+    color: black;
+    display: inline-block;
+    margin-right: 1em;
+    width: 7em;
   }
 }

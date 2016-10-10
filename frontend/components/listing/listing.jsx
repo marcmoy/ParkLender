@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, DirectLink, Element, Events, scroll, scrollSpy, scroller }
   from 'react-scroll';
-import { Location, Price, Size, Vehicles, Description, Photo, Confirm }
+import { Location, Price, Size, Vehicles, Description, Photo }
   from './listing_form_components';
+import Confirm from './listing_form_components';
 
 const formFields = [
   { name: 'Location', component: Location },
@@ -17,16 +18,6 @@ const formFields = [
 class Listing extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      location: {},
-      lat: null, lng: null,
-      hourlyRate: 5, dailyRate: 30, monthlyRate: 100,
-      width: 10, length: 20,
-      vehicles: { car: false, motorcycle: false, truck: false },
-      title: '',
-      description: '',
-      imageUrl: null
-    };
     this.buildLinks = this.buildLinks.bind(this);
     this.buildElements = this.buildElements.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -73,10 +64,12 @@ class Listing extends React.Component {
       elements.push(
         <Element key={name} name={name} className='element'>
           <FieldComponent
-            state={this.state}
-            setState={this.setState}
+            currentUser={this.props.currentUser}
+            listing={this.props.listing}
+            updateListing={this.props.updateListing}
             updateField={this.updateField}
-            scrollNext={this.scrollTo(nextName)}/>
+            scrollNext={this.scrollTo(nextName)}
+            createSpot={this.props.createSpot}/>
         </Element>
       );
     }
@@ -84,7 +77,11 @@ class Listing extends React.Component {
   }
 
   updateField(field) {
-    return (value) => this.setState({ [field]: value });
+    return (selectOption) => {
+      let listing = this.props.listing;
+      listing[field] = selectOption.value;
+      this.props.updateListing(listing);
+    };
   }
 
   render() {

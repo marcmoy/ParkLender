@@ -14,6 +14,7 @@ import { requestSpots } from '../actions/spots_actions';
 import { requestBookings } from '../actions/booking_actions';
 import { requestSpotReviews, requestUserReviews }
   from '../actions/review_actions';
+import { clearListing } from '../actions/listing_actions';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -26,6 +27,7 @@ class AppRouter extends React.Component{
     this._turnOffSplash = this._turnOffSplash.bind(this);
     this._requestSpots = this._requestSpots.bind(this);
     this._requestSpotShowInfo = this._requestSpotShowInfo.bind(this);
+    this._clearListing = this._clearListing.bind(this);
     // this._requestUserReviews = this._requestUserReviews.bind(this);
   }
 
@@ -71,6 +73,10 @@ class AppRouter extends React.Component{
     this.context.store.dispatch(requestSpotReviews(spotId));
   }
 
+  _clearListing() {
+    this.context.store.dispatch(clearListing());
+  }
+
   // _requestUserReviews(nextState) {
   //   let userId = nextState.params.userId;
   //   this.context.store.dispatch(requestUserReviews(userId));
@@ -78,7 +84,7 @@ class AppRouter extends React.Component{
 
   render(){
     return(
-      <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 0)}>
+      <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 50)}>
         <Route path="/" component={ App } onEnter={ this._requestSpots }>
           <IndexRoute component={HomePageContainer}
             onEnter={ this._activateSplash }
@@ -89,7 +95,8 @@ class AppRouter extends React.Component{
           <Route path="/spots/:spotId" component={SpotShowPageContainer}
             onEnter={ this._requestSpotShowInfo }/>
           <Route path="/listings/new" component={ListingContainer}
-            onEnter={ this._ensureLoggedIn }/>
+            onEnter={ this._ensureLoggedIn }
+            onLeave={ this._clearListing }/>
         </Route>
       </Router>
     );

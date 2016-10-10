@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  spot_id    :integer
-#  url        :string
+#  url        :string           not null
 #  thumbnail  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

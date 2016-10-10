@@ -26,12 +26,14 @@ export const createReview = (review, success) => {
   });
 };
 
-export const createSpot = (spot, success) => {
+export const createSpot = (listing, success, error) => {
+  let spot = { spot: listing };
   $.ajax({
     method: 'POST',
-    url: 'api/spots',
+    url: `api/users/${listing.host_id}/spots`,
     data: spot,
     dataType: 'json',
-    success
+    success,
+    error
   });
 };

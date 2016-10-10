@@ -10,6 +10,10 @@ const SpotsReducer = function(state = {}, action){
       return action.spots;
     case SpotConstants.RECEIVE_SPOT:
       const newSpot = {[action.spot.id]: action.spot};
+      if (action.success) {
+        // ensures client receives spot before redirecting
+        setTimeout(() => action.success(action.spot), 200);
+      }
       return merge({}, state, newSpot);
     default:
       return state;
