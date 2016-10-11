@@ -8,35 +8,6 @@ import CountdownTimer from './countdown_timer';
 // worst code I've ever written
 // if you're reading this, sorry.
 
-$.fn.bookingFormFollow = function () {
-    let $this = this,
-        $window = $(window);
-
-    // listen for scroll
-    $window.scroll(function (e) {
-
-        // grabs window's scroll position
-        let scroll = $window.scrollTop();
-
-        if (scroll <= 480) {
-          $this.css({
-              position: 'absolute',
-              top: -43
-          });
-        } else if (480 < scroll && scroll <= 815) {
-          $this.css({
-              position: 'fixed',
-              top: 70
-          });
-        } else if (scroll > 815){
-          $this.css({
-              position: 'absolute',
-              top: 280
-          });
-        }
-    });
-};
-
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
@@ -198,8 +169,8 @@ class BookingForm extends React.Component {
       this.showUserAlert();
       return;
 
-    } else if (!this.inputValid()) {
-      return;
+    // } else if (!this.inputValid()) {
+    //   return;
 
     } else {
 
@@ -458,3 +429,32 @@ class BookingForm extends React.Component {
 }
 
 export default BookingForm;
+
+$.fn.bookingFormFollow = function () {
+    let $this = this,
+        $window = $(window);
+
+    // listen for scroll
+    $window.scroll(function (e) {
+
+        // grabs window's scroll position
+        let scroll = $window.scrollTop();
+
+        if (scroll <= 480) {
+          $this.css({
+              position: 'absolute',
+              top: -43
+          });
+        } else if (480 < scroll && scroll <= 815) {
+          $this.css({
+              position: 'fixed',
+              top: 70
+          });
+        } else if (scroll > 815){
+          $this.css({
+              position: 'absolute',
+              top: 280
+          });
+        }
+    });
+};
