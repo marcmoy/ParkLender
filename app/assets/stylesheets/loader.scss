@@ -21,6 +21,11 @@
   transform: translateZ(0);
 }
 
+.img-preview {
+  position: relative;
+  width: 420px;
+}
+
 @-webkit-keyframes load4 {
   0%,
   100% {

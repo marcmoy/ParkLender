@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { priceOptions, widthOptions, lengthOptions } from './listing_options';
 import { scroller } from 'react-scroll';
 import { withRouter } from 'react-router';
+import { addSpinner, removeSpinner } from '../../util/loader';
 
 // if anyone is reading this, I know this code is not DRY.
 
@@ -63,7 +64,7 @@ export class Location extends React.Component {
 
     return(
       <div>
-        <h3>Enter your location</h3>
+        <h3>Enter your street address</h3>
         <form onSubmit={this.props.scrollNext}>
           <input type="text"
             className='form-input-element'
@@ -210,8 +211,17 @@ export class Photo extends React.Component {
       if(!error){
         if (results[0].resource_type === 'image') {
           let listing = this.props.listing;
-          listing.image_url = results[0].url;
-          this.props.updateListing(listing);
+
+          // this.props.updateListing(listing);
+          let image = new Image();
+          image.onload = () => {
+            listing.image_url = results[0].url;
+            this.props.updateListing(listing);
+            removeSpinner();
+          };
+
+          image.src = results[0].url;
+          addSpinner();
         }
       }
     });
@@ -235,6 +245,7 @@ export class Photo extends React.Component {
           Continue
         </button>
         <div className='img-preview'>
+          <div className="load-message" />
           <img src={imageUrl} />
         </div>
       </div>
@@ -265,7 +276,7 @@ class Confirm extends React.Component {
       let redirect = spot => {
         this.props.router.replace(`/spots/${spot.id}`);
       };
-      
+
       this.props.createSpot(listing, redirect);
     }
   }

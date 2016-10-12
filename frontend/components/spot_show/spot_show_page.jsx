@@ -48,9 +48,6 @@ class SpotShowPage extends React.Component {
         <div className="spot-image-container">
           <div className="spot-show-image-overflow">
             <img src={spotObj.photoUrl} className="spot-image"/>
-            <button className="view-photo" onClick={this.openModal}>
-              View Photo
-            </button>
             <Modal isOpen={this.state.modalOpen}
               onRequestClose={this.closeModal} style={SpotShowModalStyle}>
               <img src={spotObj.photoUrl} className="spot-image"/>
@@ -58,6 +55,9 @@ class SpotShowPage extends React.Component {
           </div>
         </div>
         <div className="spot-host-details clearfix">
+          <button className="view-photo" onClick={this.openModal}>
+            View Photo
+          </button>
           <SpotHostDetails spot={spotObj} />
           <BookingFormContainer spot={spotObj}/>
         </div>
