@@ -5,7 +5,7 @@ const mapDefault = {
   center: {
     lat: 37.75243528806485,
     lng: -122.45554447174072 }, // center of SF
-  zoom: 13,
+  zoom: 12,
   clickableIcons: false
 };
 

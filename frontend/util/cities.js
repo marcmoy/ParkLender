@@ -1,7 +1,7 @@
 const CITIES = {
   'San Francisco': {
     url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554446/featured_cities/sf.jpg',
-    zoom: 13,
+    zoom: 12,
     center: {
       lat: 37.75243528806485,
       lng: -122.45554447174072

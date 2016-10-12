@@ -18,8 +18,8 @@ class SpotIndexItem extends React.Component {
 
   render() {
     return(
-      <div
-        className='spot-index-item clearfix col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+      <div className='spot-index-item clearfix col-lg-6 col-md-6 col-sm-6 col-xs-12'
+        id={`spot${this.props.spot.id}`}>
         <a onClick={this.openShowPage} className='listing-photo-container'>
           <SpotPhoto spot={this.props.spot} />
           <HostPhoto host={this.props.spot.host} />

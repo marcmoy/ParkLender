@@ -1,33 +1,33 @@
+import $ from 'jquery';
+
 export default class MarkerManager {
   constructor(map) {
     this.map = map;
-    this.markers = []; // marker objects
+    this.markers = {};  // marker objects
     this._createMarkerFromSpot = this._createMarkerFromSpot.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
   }
 
-  updateMarkers(newSpots = []) {
-    this.newSpots = newSpots;
-    this.spotsToAdd().forEach(this._createMarkerFromSpot);
-    this._markersToRemove().forEach(this._removeMarker);
+  updateMarkers(newSpots = {}) {
+    this.addNewMarkers(newSpots);
+    this.removeOldMarkers(newSpots);
   }
 
-  spotsToAdd() {
-    const currentSpotIds = this.markers.map( marker => marker.spotId );
-    const newSpots = this.newSpots;
-    const newSpotIds = Object.keys(newSpots);
-
-    return newSpotIds.reduce( (collection, spotId) => {
-      if (!currentSpotIds.includes(spotId)) {
-        return ( collection.concat( [newSpots[spotId]] ));
+  addNewMarkers(newSpots) {
+    for (let id in newSpots) {
+      if (!this.markers[id]) { // if the our markers don't include this spot
+        this._createMarkerFromSpot(newSpots[id]); // add this spot to markers
       }
-    }, [] );
+    }
   }
 
-  _markersToRemove() {
-    return this.markers.filter( marker => {
-      return !this.newSpots.hasOwnProperty(marker.spotId);
-    });
+  removeOldMarkers(newSpots) {
+    let oldMarkers = this.markers;
+    for (let id in oldMarkers) {
+      if (!newSpots[id]) { // if the marker is not included in the new spots
+        this._removeMarker(oldMarkers[id]); // remove that marker
+      }
+    }
   }
 
   _createMarkerFromSpot(spot) {
@@ -35,21 +35,62 @@ export default class MarkerManager {
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      spotId: spot.id
+      spotId: spot.id,
+      icon: greyIcon
     });
 
     // info window feature
     const infoWindow = this.createInfoWindow(spot);
-    marker.addListener('click', () => infoWindow.open(this.map, marker));
-    this.map.addListener('click', () => infoWindow.close());
+    google.maps.event.addListener(infoWindow, 'closeclick', () => {
+      marker.setIcon(greyIcon);
+    });
 
-    this.markers.push(marker);
+    marker.addListener('click', () => {
+      infoWindow.open(this.map, marker);
+      marker.setIcon(redIcon);
+    });
+    this.map.addListener('click', () => {
+      infoWindow.close();
+      marker.setIcon(greyIcon);
+    });
+
+    // create marker animations
+    let $spot = $(`#spot${spot.id}`);
+    $spot.hover(
+      () => {
+        // when spot is hovered, bounce dat marker
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        // change marker icon
+        marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png');
+        // if spot is hovered for more than 2 seconds, center dat map to marker
+        this.centerTimeout = setTimeout(() => {
+          // if marker is out of bounds
+          if (!this.map.getBounds().contains(marker.getPosition())) {
+            // recenter map AND open info window
+            let center = { lat: spot.lat, lng: spot.lng };
+            this.map.setCenter(center);
+            infoWindow.open(this.map, marker);
+          }
+        }, 1500);
+      },
+      () => {
+        // when spot is not hovered, calm dat marker
+        marker.setAnimation(null);
+        // change marker icon
+        marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_grey.png');
+        // add listener for info window close
+        infoWindow.close();
+        // when spot is not hovered, clear timeout
+        clearTimeout(this.timeout);
+      }
+    );
+
+    this.markers[`${spot.id}`] = marker;
   }
 
   _removeMarker(marker) {
-    const idx = this.markers.indexOf( marker );
-    this.markers[idx].setMap(null); // set map to null just in case
-    this.markers.splice(idx, 1);
+    marker.setMap(null); // set map to null just in case
+    delete this.markers[marker.spotId];
   }
 
   _stars(rating) {
@@ -95,3 +136,6 @@ export default class MarkerManager {
     return new google.maps.InfoWindow({ content: text });
   }
 }
+
+const redIcon = 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png';
+const greyIcon = 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_grey.png';

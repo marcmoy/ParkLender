@@ -1,17 +1,24 @@
 .featured-cities-container {
-  list-style: none;
   padding: 3em 2em;
   text-align: center;
+  display: table;
+  margin: 0 auto;
+  position: relative;
 
   ul {
     padding: 0;
     margin: auto;
+    max-width: 1500px;
+    display: inline-block;
+    list-style: none;
+    position: relative;
 
     li {
       display: inline;
       float: left;
       padding: 2em;
       width: 50%;
+      max-width: 1000px;
 
       div.overflow {
         height: 22em;
@@ -21,7 +28,21 @@
         position: relative;
         cursor: pointer;
 
-        img { width: 100%; }
+        img {
+          width: 100%;
+          position: relative;
+         }
+
+         @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 3000px)
+          and (-webkit-min-device-pixel-ratio: 2)
+          and (min-resolution: 192dpi) {
+            img {
+              top: -25%;
+            }
+        }
+
 
         label {
           position: absolute;
