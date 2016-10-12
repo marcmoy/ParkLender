@@ -6,7 +6,9 @@ const mapDefault = {
     lat: 37.75243528806485,
     lng: -122.45554447174072 }, // center of SF
   zoom: 12,
-  clickableIcons: false
+  clickableIcons: false,
+  disableDefaultUI: true, // a way to quickly hide all controls
+  mapTypeControl: false
 };
 
 const MapReducer = function(state = mapDefault, action){

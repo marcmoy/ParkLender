@@ -14,6 +14,12 @@ class SpotMap extends React.Component{
     this.map = new google.maps.Map(map, this.props.mapOpts);
     this.markerManager = new MarkerManager(this.map);
     this._bindBoundsListener();
+    setTimeout(() => {
+      $('.gmnoprint').css({ display: 'none'});
+      $('.gm-style-cc').css({ display: 'none'});
+      let $google = $('.gm-style').find('div').find('a').find('div').find('img');
+      $google.attr('src', 'https://maps.gstatic.com/mapfiles/api-3/images/google_white5_hdpi.png');
+    }, 2000);
   }
 
   componentDidUpdate(){
