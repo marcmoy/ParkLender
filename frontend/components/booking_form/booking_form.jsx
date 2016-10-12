@@ -59,8 +59,10 @@ class BookingForm extends React.Component {
       seconds: 900,
       startDate: initialStartDate.toISOString(),
       endDate: initialEndDate.toISOString(),
-      startTime: initialStartTime,
-      endTime: initialEndTime,
+      // startTime: initialStartTime,   // bug
+      // endTime: initialEndTime,       // bug
+      startTime: 420,
+      endTime: 1020,
       bookingSuccess: existingBooking,
       pendingRequest: false,
       disableClock: existingBooking

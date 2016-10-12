@@ -5,7 +5,17 @@
   height: calc(100% - 180px);
   width: 60%;
   border-bottom: 1px solid #dce0e0;
-  opacity: 0.3;
+}
+
+#spot-modal {
+  display: none;
+  position: fixed;
+  background-color: rgba(0,0,0,0.1);
+  left: 0;
+  right: 0;
+  top: 160px;
+  bottom: 0;
+  z-index: 10;
 }
 
 .spot-index-item {

@@ -37,6 +37,7 @@ class SpotIndex extends React.Component {
 
     return (
       <div className='spot-index-container'>
+        <div id='spot-modal'></div>
         <div className='listings container-fluid'>
           <div className="row text-center">
             {spotItems}<div className="empty-message" />
