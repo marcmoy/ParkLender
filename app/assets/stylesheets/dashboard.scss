@@ -1,0 +1,32 @@
+.dashboard-container {
+  position: relative;
+  margin: 50px 100px;
+}
+
+.tabs-container {
+  width: 20%;
+  float: left;
+  border: 1px solid gray;
+
+  div {
+    text-align: center;
+    outline: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  div:hover {
+    background-color: #eee;
+  }
+
+  div.active {
+    background-color: #ccc;
+  }
+}
+
+.dashboard {
+  width: 80%;
+  float: left;
+  text-align: center;
+}

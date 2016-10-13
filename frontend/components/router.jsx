@@ -6,7 +6,11 @@ import App from './App';
 import HomePageContainer from './home/home_page_container';
 import SearchPageContainer from './search/search_page_container';
 import SpotShowPageContainer from './spot_show/spot_show_page_container';
+import UserShowPageContainer from './user_show/user_show_page_container';
 import ListingContainer from './listing/listing_container';
+import SettingsContainer from './dashboard/settings_container';
+import ListingsContainer from './dashboard/listings_container';
+import BookingsContainer from './dashboard/bookings_container';
 //Actions
 import { openWhereTo, closeWhereTo } from '../actions/whereto_actions';
 import { splashOn, splashOff } from '../actions/splash_actions';
@@ -94,6 +98,13 @@ class AppRouter extends React.Component{
             onLeave={ this._turnOffWhereTo }/>
           <Route path="/spots/:spotId" component={SpotShowPageContainer}
             onEnter={ this._requestSpotShowInfo }/>
+          <Route path="/users/:userId" component={UserShowPageContainer} />
+          <Route path="/settings" component={SettingsContainer}
+            onEnter={ this._ensureLoggedIn } />
+          <Route path="/listings" component={ListingsContainer}
+            onEnter={ this._ensureLoggedIn } />
+          <Route path="/bookings" component={BookingsContainer}
+            onEnter={ this._ensureLoggedIn } />
           <Route path="/listings/new" component={ListingContainer}
             onEnter={ this._ensureLoggedIn }
             onLeave={ this._clearListing }/>

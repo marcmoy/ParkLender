@@ -149,6 +149,12 @@ class NavBar extends React.Component {
             </a>
 
             <ul className="dropdown-menu">
+              <li><a href="#/bookings">Your Bookings</a></li>
+              <li role="separator" className="divider"></li>
+              <li><a href="#/listings">Your Listings</a></li>
+              <li role="separator" className="divider"></li>
+              <li><a href="#/settings">Account Settings</a></li>
+              <li role="separator" className="divider"></li>
               <li><a onClick={this.logout}>Logout</a></li>
             </ul>
           </li>
@@ -215,6 +221,3 @@ $.fn.splashHeaderFollow = function () {
         }
     });
 };
-
-// <li><a href="#">Account Settings</a></li>
-// <li role="separator" className="divider"></li>
