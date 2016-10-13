@@ -7,7 +7,7 @@ class Api::BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.start_date  = Date.parse(params[:booking][:start_date])
+    @booking.start_date = Date.parse(params[:booking][:start_date])
     @booking.end_date = Date.parse(params[:booking][:end_date])
     @booking.start_time  = parse_time(params[:booking][:start_time])
     @booking.end_time = parse_time(params[:booking][:end_time])

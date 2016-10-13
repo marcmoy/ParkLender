@@ -16,7 +16,7 @@ const CITIES = {
     }
   },
   'Seattle': {
-    url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_600/v1475554436/featured_cities/seattle.jpg',
+    url: 'http://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2200/v1475554436/featured_cities/seattle.jpg',
     zoom: 14,
     center: {
       lat: 47.61267923212693,

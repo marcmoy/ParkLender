@@ -1,21 +1,23 @@
+require_relative '../../../db/users'
+
 class Api::UsersController < ApplicationController
 
-	def create
-		# debugger
-		@user = User.new(user_params)
+  def create
+    @user = User.new(user_params)
 
-		if @user.save
-			login(@user)
-			render "api/users/show"
-		else
-			render json: @user.errors.full_messages, status: 422
-		end
-	end
+    if @user.save
+      login(@user)
+      Photo.create!(user_id: @user.id, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
+      render "api/users/show"
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
 
-	private
+  private
 
-	def user_params
-		params.require(:user).permit(:username, :password)
-	end
-  
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
+
 end

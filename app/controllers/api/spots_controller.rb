@@ -1,5 +1,7 @@
 class Api::SpotsController < ApplicationController
-  # before_action :require_logged_in, only: [:create]
+
+  before_action :require_logged_in, only: [:create]
+
   def index
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
     min = 0
@@ -54,9 +56,9 @@ class Api::SpotsController < ApplicationController
     params[:prices]
   end
 
-  def apply_price_filters(spots, price_types, min, max)
+  def apply_price_filters(spots, price_types, min = 0, max = 100)
     price_types = %w(hourly_rate daily_rate monthly_rate) if price_types.empty?
-    query = [];
+    query = []
     price_types.each do |price|
       query << "#{price} BETWEEN #{min} AND #{max}"
     end

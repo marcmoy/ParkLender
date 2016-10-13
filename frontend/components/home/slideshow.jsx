@@ -2,13 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import Slider from 'react-slick';
 import HomeWhereTo from '../where_to/home_where_to';
+import IMAGES from '../../util/images';
 
-const imagesUrls = [
-  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473026130/slideshow/car-dog.jpg",
-  "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026223/slideshow/ny.jpg",
-  "https://res.cloudinary.com/dsvkuc936/image/upload/v1473026322/slideshow/ladies.jpg",
-  "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026261/slideshow/market.jpg",
-];
+const imagesUrls = [ IMAGES.carDog, IMAGES.nY, IMAGES.ladies, IMAGES.market ];
 
 const settings = {
   infinite: true,
@@ -55,7 +51,8 @@ class Slideshow extends React.Component {
           <header>
             PARK THERE
           </header>
-            Book parkings spots from local hosts in your neighborhood and experience a driveway like you own it.<br />
+            Book parkings spots from local hosts in your neighborhood
+            and experience a driveway like you own it.<br />
           <div className="home-where-to">
             <section>
               <input type="text" id="home-autocomplete-search-field"

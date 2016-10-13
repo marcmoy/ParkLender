@@ -26,25 +26,26 @@
 #
 
 class Spot < ApplicationRecord
-  validates( :host_id, :title, :description, :lat, :lng,
-    :hourly_rate, :daily_rate, :monthly_rate,
-    :address, :city, :state, :country, :width, :length,
-    presence: true )
+  validates   :host_id, :title, :description,
+              :lat, :lng,
+              :hourly_rate, :daily_rate, :monthly_rate,
+              :address, :city, :state, :country,
+              :width, :length,
+              presence: true
 
-  attr_reader :prices, :allowedVehicles,
-    :location, :size, :rating
+  attr_reader :prices, :allowed_vehicles, :location, :size, :rating
 
-  has_one :photo
-  has_many :reviews
-  has_many :booking_requests,
-    primary_key: :id,
-    foreign_key: :spot_id,
-    class_name: :Booking
+  has_one     :photo
+  has_many    :reviews
+  has_many    :booking_requests,
+              primary_key: :id,
+              foreign_key: :spot_id,
+              class_name: :Booking
 
-  belongs_to :host,
-    primary_key: :id,
-    foreign_key: :host_id,
-    class_name: :User
+  belongs_to  :host,
+              primary_key: :id,
+              foreign_key: :host_id,
+              class_name: :User
 
   has_many :date_ranges
 
@@ -77,22 +78,19 @@ class Spot < ApplicationRecord
     @rating ||= calc_rating
   end
 
-  def numReviews
-    @numReviews ||= reviews.count
+  def num_reviews
+    @num_reviews ||= reviews.count
   end
 
   def calc_rating
     return 0 if self.reviews.empty?
-    sum = self.reviews.reduce(0){|sum,review| sum += review.rating}
+    sum = self.reviews.reduce(0) { |count,review| count + review.rating }
     avg = sum / self.reviews.count.to_f
     (avg * 2).round / 2.0 # rounds to nearest 0.5 decimal
   end
 
-  def allowedVehicles
-    @allowedVehicles ||= allowed_vehicles
-  end
-
   def allowed_vehicles
+    return @allowed_vehicles if @allowed_vehicles
     vehicles = []
     vehicles << "car" if car
     vehicles << "motorcycle" if motorcycle
@@ -115,7 +113,7 @@ class Spot < ApplicationRecord
   end
 
   def date_overlaps_availability?(dates)
-    date_ranges.any?{|date_range| date_range.overlaps?(dates)}
+    date_ranges.any? { |date_range| date_range.overlaps?(dates) }
   end
 
 end

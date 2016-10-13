@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rating } from '../spot/spot_index_item_details';
-const Pin = "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png";
+import IMAGES from '../../util/images';
 
 const SpotHostDetails = ({ spot }) => (
   <div>
@@ -8,8 +8,10 @@ const SpotHostDetails = ({ spot }) => (
       <img src={spot.host.thumbnail} />
       <span>{spot.host.name}</span>
     </aside>
-    <img src={Pin} className="pin"/><h3>{spot.city}, {spot.state}</h3><br/>
-    <span className="italicize-text">member since Sept 2016</span><br/>
+    <img src={IMAGES.pin} className="pin"/><h3>{spot.city}, {spot.state}</h3>
+    <br/>
+    <span className="italicize-text">member since {spot.host.memberSince}</span>
+    <br/>
     <span className="italicize-text pull-left host-num-reviews">
       {spot.numReviews} Reviews</span>
     <Rating spot={spot} rating={spot.rating} /><br/>

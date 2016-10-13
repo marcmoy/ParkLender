@@ -12,50 +12,44 @@
 
 class User < ApplicationRecord
 
-	attr_reader :password, :coverPhotoUrl, :coverPhotoThumbnail
+	 attr_reader :password, :coverPhotoUrl, :coverPhotoThumbnail
 
-	validates :username, :password_digest, :session_token, presence: true
-	validates :username, uniqueness: true
-	validates :password, length: {minimum: 6}, allow_nil: :true
+	 validates :username, :password_digest, :session_token, presence: true
+	 validates :username, uniqueness: true
+	 validates :password, length: {minimum: 6}, allow_nil: :true
 
-	after_initialize :ensure_session_token
-	before_validation :ensure_session_token_uniqueness
+	 after_initialize :ensure_session_token
+	 before_validation :ensure_session_token_uniqueness
 
-	has_one :photo
-	has_many :reviews
-	has_many :bookings
+	 has_one :photo
+	 has_many :reviews
+	 has_many :bookings
 
-	has_one :spot,
-		primary_key: :id,
-		foreign_key: :host_id,
-		class_name: :Spot
+	 has_one 	:spot, primary_key:  :id, foreign_key:  :host_id, class_name:   :Spot
 
-	has_many :authored_reviews,
-		primary_key: :id,
-		foreign_key: :author_id,
-		class_name: :Review
+	 has_many :authored_reviews, primary_key: :id, foreign_key: :author_id, class_name: :Review
 
-	def password= password
-		self.password_digest = BCrypt::Password.create(password)
-		@password = password
-	end
+   def password=(password)
+     self.password_digest = BCrypt::Password.create(password)
+		 @password = password
+	 end
 
-	def self.find_by_credentials username, password
-		user = User.find_by(username: username)
-		return nil unless user
-		user.password_is?(password) ? user : nil
-	end
+	 def self.find_by_credentials username, password
+		 user = User.find_by(username: username)
+		 return nil unless user
+		 user.password_is?(password) ? user : nil
+	 end
 
-	def password_is? password
-		BCrypt::Password.new(self.password_digest).is_password?(password)
-	end
+	 def password_is? password
+		  BCrypt::Password.new(self.password_digest).is_password?(password)
+	 end
 
-	def reset_session_token!
-		self.session_token = new_session_token
-		ensure_session_token_uniqueness
-		self.save
-		self.session_token
-	end
+	 def reset_session_token!
+	   self.session_token = new_session_token
+		 ensure_session_token_uniqueness
+		 self.save
+		 self.session_token
+	 end
 
 	def spotReviews
 		self.authored_reviews.where.not(spot_id: nil)
@@ -67,6 +61,12 @@ class User < ApplicationRecord
 
 	def otherUserReviews
 		self.authored_reviews.where.not(user_id: nil)
+	end
+
+	def member_since
+		month = created_at.strftime('%B')
+		year = created_at.strftime('%Y')
+		"#{month} #{year}"
 	end
 
 	private
@@ -84,5 +84,4 @@ class User < ApplicationRecord
 			self.session_token = new_session_token
 		end
 	end
-
 end

@@ -212,7 +212,6 @@ export class Photo extends React.Component {
         if (results[0].resource_type === 'image') {
           let listing = this.props.listing;
 
-          // this.props.updateListing(listing);
           let image = new Image();
           image.onload = () => {
             listing.image_url = results[0].url;

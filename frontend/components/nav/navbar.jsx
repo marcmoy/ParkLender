@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, hashHistory } from 'react-router';
 import SessionFormContainer from '../session_form/session_form_container';
+import IMAGES from '../../util/images';
 import $ from 'jquery';
 
 class NavBar extends React.Component {
@@ -91,12 +92,12 @@ class NavBar extends React.Component {
   splashLogo() {
     if (this.props.splash === true) {
       return (
-        <img src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473015421/parklender_assets/white-logo-transparent.png"
+        <img src={IMAGES.whiteLogo}
           className="logo" />
       );
     } else {
       return (
-        <img src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473014664/parklender_assets/color-logo.png"
+        <img src={IMAGES.colorLogo}
           className="logo" />
       );
     }
@@ -108,7 +109,7 @@ class NavBar extends React.Component {
         <ul className="nav navbar-nav" id={this.splash()}>
           <li>
             <img className="nav-looking-glass"
-              src="https://res.cloudinary.com/dsvkuc936/image/upload/v1473034351/parklender_assets/looking-glass.png" />
+              src={IMAGES.lookingGlass} />
           </li>
           <li>
             <input type="text"
@@ -126,7 +127,7 @@ class NavBar extends React.Component {
     if (this.props.currentUser.photo) {
       return this.props.currentUser.photo.thumbnail;
     }
-    return "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,w_47/v1473185243/parklender_assets/default-pic.png";
+    return IMAGES.defaultUserPhoto;
   }
 
   sessionLinks() {
@@ -157,8 +158,11 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul className="nav navbar-nav navbar-right">
-            <li><a onClick={this.setLogin} className="text-center" id={this.splash()}>Log In</a></li>
-            <li><a onClick={this.setSignup} className="text-center" id={this.splash()}>Sign Up</a></li>
+            <li><a
+              onClick={this.setLogin} className="text-center"
+              id={this.splash()}>Log In</a></li>
+            <li><a onClick={this.setSignup} className="text-center"
+              id={this.splash()}>Sign Up</a></li>
           </ul>
 
           <div id="session-form">
@@ -174,7 +178,8 @@ class NavBar extends React.Component {
   render() {
 
     return (
-      <nav className="navbar navbar-default navbar-fixed-top" id={this.splash()}>
+      <nav className="navbar navbar-default navbar-fixed-top"
+        id={this.splash()}>
         <div className="navbar-collapse collapse">
           <div className="navbar-header pull-left">
             <div className="navbar-brand">
