@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import IMAGES from './images';
 
 export const addSpinner = () => {
   removeEmptyMessage();
@@ -18,7 +19,7 @@ export const removeSpinner = () => {
 export const addEmptyMessage = () => {
   const loader = $(".empty-message")[0];
   const message = '<h2 class="sorry">Sorry, no spots were found here.</h2>';
-  const sadface = "<img src='https://res.cloudinary.com/dsvkuc936/image/upload/v1472793127/sad-face_vhh0oo.png'/>"
+  const sadface = `<img src='${IMAGES.sadface}'/>`;
   if (loader) loader.innerHTML = `${message}${sadface}`;
 };
 

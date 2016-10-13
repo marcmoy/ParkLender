@@ -10,7 +10,8 @@ const IMAGES = {
   ladies: 'https://res.cloudinary.com/dsvkuc936/image/upload/v1473026322/slideshow/ladies.jpg',
   market: 'https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_2752/v1473026261/slideshow/market.jpg',
   // photos
-  pin: "https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png"
+  pin: 'https://res.cloudinary.com/dsvkuc936/image/upload/c_scale,h_39/v1473101163/parklender_assets/pin.png',
+  sadface: 'https://res.cloudinary.com/dsvkuc936/image/upload/v1472793127/sad-face_vhh0oo.png'
 };
 
 export default IMAGES;
