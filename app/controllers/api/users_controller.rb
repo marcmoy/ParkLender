@@ -19,6 +19,17 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @user.update(user_params)
+    @user.confirm = params[:user][:confirm]
+    if @user.save
+      render "api/users/show"
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def user_params

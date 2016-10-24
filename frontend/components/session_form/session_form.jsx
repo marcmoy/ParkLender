@@ -74,7 +74,7 @@ class SessionForm extends React.Component {
 		this.props.update({ username: "", password: "", formType: "login" });
 		this.update = this.update.bind(this);
 
-		this.username = 'Demo-User'.split('');
+		this.username = 'demo-user'.split('');
 		this.password = 'go_fullstack_go'.split('');
 		this.currentUsername = "";
 		this.currentPass = "";
@@ -168,7 +168,7 @@ class SessionForm extends React.Component {
 				<input type="password"
 					id="confirm"
 					className="form-control"
-					placeholder="Confirm password"
+					placeholder="Confirm"
 					value={this.props.confirm}
 					onChange={this.update("confirm")}/>
 			);

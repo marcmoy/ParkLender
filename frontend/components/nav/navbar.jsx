@@ -53,7 +53,8 @@ class NavBar extends React.Component {
   openModal() {
     let $modal = $('#modal');
     let $sessionForm = $('#session-form');
-    this.setState({ username: "", password: "" });
+    this.setState({ username: "", password: "", confirm: "",
+      email: "", fname: "", lname: "" });
     $modal.click(() => {
       $modal.hide();
       $sessionForm.hide();
