@@ -15,7 +15,7 @@
     font-size: 1.2em;
     cursor: pointer;
   }
-  
+
   div:hover {
     background-color: #eee;
   }
@@ -29,4 +29,8 @@
   width: 80%;
   float: left;
   text-align: center;
+
+  .continue-button {
+    display: initial;
+  }
 }

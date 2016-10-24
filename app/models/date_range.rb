@@ -27,7 +27,6 @@ class DateRange < ApplicationRecord
   end
 
   def overlaps?(dates)
-    dates.any?{|date| in_range?(date)}
+    dates.any? { |date| in_range?(date) }
   end
-
 end

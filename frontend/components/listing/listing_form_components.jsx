@@ -4,6 +4,7 @@ import { priceOptions, widthOptions, lengthOptions } from './listing_options';
 import { scroller } from 'react-scroll';
 import { withRouter } from 'react-router';
 import { addSpinner, removeSpinner } from '../../util/loader';
+import IMAGES from '../../util/images';
 
 // if anyone is reading this, I know this code is not DRY.
 
@@ -301,7 +302,8 @@ class Confirm extends React.Component {
       address = location.street_number + ' ' + location.route;
     }
 
-    let image = listing.image_url !== defaultImage ? 'Uploaded' : missingField;
+    let image = listing.image_url !== IMAGES.defaultImage ?
+                                      'Uploaded' : missingField;
 
     return(
       <div>
@@ -351,5 +353,3 @@ class Confirm extends React.Component {
 }
 
 export default withRouter(Confirm);
-
-const defaultImage = 'http://res.cloudinary.com/dsvkuc936/image/upload/v1475974911/parklender_spot_uploads/default_spot.png';

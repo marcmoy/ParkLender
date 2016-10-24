@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
 		this.animate = this.animate.bind(this);
 		this.submitText = this.submitText.bind(this);
     this.formTitle = this.formTitle.bind(this);
+		this.signUpFields = this.signUpFields.bind(this);
 	}
 
 	errorMessages() {
@@ -40,10 +41,25 @@ class SessionForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault(e);
-		let user = {
-			username: this.props.username,
-			password: this.props.password
-		};
+		let user;
+
+		if (this.props.formType === "signup") {
+			user = {
+				username: this.props.username,
+				password: this.props.password,
+				confirm: this.props.confirm,
+				email: this.props.email,
+				fname: this.props.fname,
+				lname: this.props.lname
+			};
+
+		} else {
+			user = {
+				username: this.props.username,
+				password: this.props.password
+			};
+		}
+
 		this.setState({ loggingIn: true });
 
 		let callback = () => {
@@ -55,13 +71,15 @@ class SessionForm extends React.Component {
 
 	handleDemo(e) {
 		e.preventDefault();
-		this.props.update({ username: "", password: "" });
+		this.props.update({ username: "", password: "", formType: "login" });
 		this.update = this.update.bind(this);
-		this.username = ['D','e','m','o','-','U','s','e','r'];
-		this.password = ['p','a','s','s','w','o','r','d'];
+
+		this.username = 'Demo-User'.split('');
+		this.password = 'go_fullstack_go'.split('');
 		this.currentUsername = "";
 		this.currentPass = "";
-		this.interval = window.setInterval(this.animate, 50);
+
+		this.interval = window.setInterval(this.animate, 70);
 	}
 
 	animate() {
@@ -79,6 +97,7 @@ class SessionForm extends React.Component {
 				username: this.props.username,
 				password: this.props.password
 			};
+
 			this.setState({ loggingIn: true });
 
 			let success = () => {
@@ -100,9 +119,11 @@ class SessionForm extends React.Component {
 	submitText() {
 		let text;
 		if (this.props.formType === "signup") {
-			text = this.state.loggingIn ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT';
+			text = this.state.loggingIn ?
+			'CREATING ACCOUNT...' : 'CREATE ACCOUNT';
 		} else {
-			text = this.state.loggingIn ? 'LOGGING IN...' : 'LOGIN';
+			text = this.state.loggingIn ?
+			'LOGGING IN...' : 'LOGIN';
 		}
 		return text;
 	}
@@ -111,6 +132,48 @@ class SessionForm extends React.Component {
     if (this.props.formType === "signup") return "Sign Up";
 		return "Login";
   }
+
+	signUpFields() {
+		if (this.props.formType === "signup") {
+			return(
+				<div>
+					<input type="text"
+						id="email"
+						className="form-control"
+						placeholder="Email"
+						value={this.props.email}
+						onChange={this.update("email")}/>
+
+					<input type="text"
+						id="fname"
+						className="form-control"
+						placeholder="First name"
+						value={this.props.fname}
+						onChange={this.update("fname")}/>
+
+					<input type="text"
+						id="lname"
+						className="form-control"
+						placeholder="Last name"
+						value={this.props.lname}
+						onChange={this.update("lname")}/>
+				</div>
+			);
+		}
+	}
+
+	confirmPassword() {
+		if (this.props.formType === "signup") {
+			return(
+				<input type="password"
+					id="confirm"
+					className="form-control"
+					placeholder="Confirm password"
+					value={this.props.confirm}
+					onChange={this.update("confirm")}/>
+			);
+		}
+	}
 
 	render() {
 
@@ -125,12 +188,16 @@ class SessionForm extends React.Component {
 					value={this.props.username}
 					onChange={this.update("username")}/>
 
+				{this.signUpFields()}
+
 				<input type="password"
 					id="password"
 					className="form-control"
 					placeholder="Password"
 					value={this.props.password}
 					onChange={this.update("password")}/>
+
+				{this.confirmPassword()}
 
 				{this.errorMessages()}
 

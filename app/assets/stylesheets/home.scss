@@ -4,12 +4,14 @@
 .push-up {
   position: relative;
   top: -90px;
+  footer {
+    bottom: -90px;
+    position: relative;
+    background-color: #eee;
+  }
 }
 
 footer {
-  position: relative;
-  bottom: -90px;
-  background-color: #eee;
 
   div.container {
     display: flex;

@@ -7,7 +7,15 @@ import $ from 'jquery';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { formType: "", username: "", password: "" };
+    this.state = {
+      formType: "",
+      username: "",
+      password: "",
+      confirm: "",
+      email: "",
+      fname: "",
+      lname: ""
+    };
     this.update = this.update.bind(this);
     this.logout = this.logout.bind(this);
     this.goHome = this.goHome.bind(this);
@@ -52,9 +60,9 @@ class NavBar extends React.Component {
       this.props.emptyErrors();
     });
     $modal.show();
-    $sessionForm.removeClass('animated fadeInDown');
+    $sessionForm.removeClass('animated fadeIn');
     $sessionForm.show();
-    $sessionForm.addClass('animated fadeInDown');
+    $sessionForm.addClass('animated fadeIn');
   }
 
   logout() {
@@ -173,8 +181,14 @@ class NavBar extends React.Component {
 
           <div id="session-form">
             <SessionFormContainer formType={this.state.formType}
-              update={this.update} username={this.state.username}
-              password={this.state.password}/>
+              update={this.update}
+              username={this.state.username}
+              password={this.state.password}
+              confirm={this.state.confirm}
+              email={this.state.email}
+              fname={this.state.fname}
+              lname={this.state.lname}
+              />
           </div>
         </div>
       );

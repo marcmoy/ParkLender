@@ -1,13 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or create!d alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create!(name: 'Luke', movie: movies.first)
-
-# add transaction
-
 require_relative 'photos'
 require_relative 'users'
 require_relative 'reviews'
@@ -16,33 +6,44 @@ require_relative 'descriptions'
 require_relative 'new_spots'
 
 ActiveRecord::Base.transaction do
-  User.create!(username: 'marc', password: 'password')
+
+  User.create!(
+    username: 'marc', password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+    email: 'me@marcmoy.io', fname: 'marc', lname: 'moy'
+  )
   Photo.create!(user_id: 1, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
-  User.create!(username: 'Demo-User', password: 'password')
+
+  User.create!(
+    username: 'demo-user', password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+    email: 'demo-user@email.com', fname: 'demo', lname: 'user'
+  )
   Photo.create!(user_id: 2, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
 
   @usernames = {}
 
   58.times do |i|
-    user = User.create!(username: USERNAMES[i], password: 'go_fullstack_go')
+    user = User.create!(
+      username: USERNAMES[i].downcase, password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+      email: "#{USERNAMES[i].downcase}@email.com", fname: USERNAMES[i], lname: Faker::Name.last_name
+    )
     @usernames[USERNAMES[i]] = true
     Photo.create!(
-        user_id: user.id,
-        url: USERSPHOTOS[i],
-        thumbnail: USERSPHOTOS[i]
-      )
+      user_id: user.id,
+      url: USERSPHOTOS[i],
+      thumbnail: USERSPHOTOS[i]
+    )
   end
 
-  widths = (6..20).select{|num| num.even?}
-  lengths = (12..30).select{|num| num.even?}
+  widths = (6..20).select { |num| num.even? }
+  lengths = (12..30).select { |num| num.even? }
 
-  def randomCoord (min, max)
-      rand * (max-min) + min
+  def random_cord(min, max)
+    rand * (max-min) + min
   end
 
-  hourly_prices = (5..20).select{|num| num % 5 == 0}
-  daily_prices = (30..60).select{|num| num % 5 == 0}
-  monthly_prices = (80..120).select{|num| num % 5 == 0}
+  hourly_prices = (5..20).select { |num| num % 5 == 0 }
+  daily_prices = (30..60).select { |num| num % 5 == 0 }
+  monthly_prices = (80..120).select { |num| num % 5 == 0 }
 
 
   max_lat = 37.779021218924235
@@ -58,8 +59,8 @@ ActiveRecord::Base.transaction do
       host_id: i + 3,
       title: TITLES[i],
       description: DESCRIPTION[i],
-      lat: randomCoord(min_lat, max_lat),
-      lng: randomCoord(min_lng, max_lng),
+      lat: random_cord(min_lat, max_lat),
+      lng: random_cord(min_lng, max_lng),
       hourly_rate: hourly_prices.sample,
       daily_rate: (rand(1..4) != 2 ? daily_prices.sample : 0),
       monthly_rate: (rand(1..3) != 2 ? monthly_prices.sample : 0),
@@ -81,8 +82,8 @@ ActiveRecord::Base.transaction do
       thumbnail: Faker::Placeholdit.image("50x50")
     )
 
-    rand(1..3).times do |i|
-      start_date = Time.now + (i * 4).months
+    rand(1..3).times do |n|
+      start_date = Time.now + (n * 4).months
       end_date = start_date + rand(1..3).weeks
       DateRange.create!(
         spot_id: spot.id,
@@ -157,23 +158,26 @@ ActiveRecord::Base.transaction do
       until user_photo != "https://s3.amazonaws.com/uifaces/faces/twitter/chloepark/128.jpg"
         user_photo = i.odd? ? UiFaces.man : UiFaces.woman
       end
-      
+
       @user_photos[user_photo] = true
 
-      user = User.create!(username: name, password: 'go_fullstack_go')
-      user_photo =
+      user = User.create!(
+        username: name.downcase, password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+        email: "#{name}@gmail.com", fname: name, lname: Faker::Name.last_name
+      )
+
       Photo.create!(
-          user_id: user.id,
-          url: user_photo,
-          thumbnail: user_photo
-        )
+        user_id: user.id,
+        url: user_photo,
+        thumbnail: user_photo
+      )
 
       spot = Spot.create!(
         host_id: user.id,
         title: TITLES.sample,
         description: DESCRIPTION.sample,
-        lat: randomCoord(min_lat, max_lat),
-        lng: randomCoord(min_lng, max_lng),
+        lat: random_cord(min_lat, max_lat),
+        lng: random_cord(min_lng, max_lng),
         hourly_rate: hourly_prices.sample,
         daily_rate: (rand(1..4) != 2 ? daily_prices.sample : 0),
         monthly_rate: (rand(1..3) != 2 ? monthly_prices.sample : 0),
@@ -197,8 +201,8 @@ ActiveRecord::Base.transaction do
         thumbnail: Faker::Placeholdit.image("50x50")
       )
 
-      rand(1..3).times do |i|
-        start_date = Time.now + (i * 4).months
+      rand(1..3).times do |x|
+        start_date = Time.now + (x * 4).months
         end_date = start_date + rand(1..3).weeks
         DateRange.create!(
           spot_id: spot.id,

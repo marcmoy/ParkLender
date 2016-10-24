@@ -4,6 +4,11 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.username.downcase!
+    @user.fname.downcase!
+    @user.lname.downcase!
+    @user.email.downcase!
+    @user.confirm = params[:user][:confirm]
 
     if @user.save
       login(@user)
@@ -17,7 +22,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :confirm, :email, :fname, :lname)
   end
 
 end
