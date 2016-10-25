@@ -19,19 +19,19 @@
 
 class Booking < ApplicationRecord
   validates :spot_id, :user_id, :host_id, :price_type, :price,
-  :start_time, :end_time, :start_date, :end_date, :status, presence: true
-  validates_uniqueness_of :user_id, :scope => [:spot_id] # users can only make a single booking per spot
+            :start_time, :end_time, :start_date, :end_date, :status, presence: true
+  validates_uniqueness_of :user_id, :scope => [:spot_id]
 
   validates :status, inclusion: { in: %w(PENDING APPROVED DENIED) }
   validates :price_type, inclusion: { in: %w(monthly_rate hourly_rate daily_rate) }
 
   validate :no_self_booking
 
-  belongs_to :user
-  belongs_to :host,
-    primary_key: :id,
-    foreign_key: :host_id,
-    class_name: :User
+  belongs_to  :user
+  belongs_to  :host,
+              primary_key: :id,
+              foreign_key: :host_id,
+              class_name: :User
 
   belongs_to :spot
 
@@ -45,13 +45,13 @@ class Booking < ApplicationRecord
     hours = start_time.hour - 7
     hours += 24 if hours < 0
     hours *= 60
-    return hours + start_time.min
+    hours + start_time.min
   end
 
   def end_time_minutes
     hours = end_time.hour - 7
     hours += 24 if hours < 0
     hours *= 60
-    return hours + end_time.min
+    hours + end_time.min
   end
 end

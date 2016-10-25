@@ -1,10 +1,10 @@
 json.extract! review,
-              :id,
-              :author_id,
-              :spot_id,
-              :user_id,
-              :rating,
-              :content
+  :id,
+  :author_id,
+  :spot_id,
+  :user_id,
+  :rating,
+  :content
 
 json.date review.date
 

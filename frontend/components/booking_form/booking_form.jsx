@@ -171,8 +171,8 @@ class BookingForm extends React.Component {
       this.showUserAlert();
       return;
 
-    // } else if (!this.inputValid()) {
-    //   return;
+    } else if (!this.inputValid()) {
+      return;
 
     } else {
 

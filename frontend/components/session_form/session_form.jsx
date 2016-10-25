@@ -79,7 +79,7 @@ class SessionForm extends React.Component {
 		this.currentUsername = "";
 		this.currentPass = "";
 
-		this.interval = window.setInterval(this.animate, 70);
+		this.interval = window.setInterval(this.animate, 50);
 	}
 
 	animate() {
