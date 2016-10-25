@@ -11,6 +11,7 @@ json.photoUrl spot.photo.url
 
 json.host do
   json.id spot.host.id
+  json.url spot.host.photo.url
   json.thumbnail spot.host.photo.thumbnail
   json.name spot.host.username
   json.memberSince spot.host.member_since

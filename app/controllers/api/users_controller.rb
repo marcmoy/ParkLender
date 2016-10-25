@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update!(user_params)
+    if @user.update(user_params)
       photo = Photo.find_by_user_id(@user.id)
       photo.update!(
         url: params[:user][:imageUrl],

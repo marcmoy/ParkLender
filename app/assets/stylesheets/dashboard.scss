@@ -29,8 +29,37 @@
   width: 80%;
   float: left;
   text-align: center;
+  h1 { margin: 0; margin-bottom: 1em; }
 
+  .row {
+    h1 { margin: 0; margin-bottom: 1em; }
+  }
   .continue-button {
     display: initial;
   }
+}
+
+div.img-preview.profile-view {
+  border: 1px solid;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  margin: 10px auto;
+  margin-top: 0;
+  display: flex;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+ul.notices {
+  list-style: none;
+  padding: 0;
+  li { padding: 10px }
+  li.success { background: #bde6bd; }
+  li.error { background: pink; }
+  li > a { text-decoration: none; }
 }

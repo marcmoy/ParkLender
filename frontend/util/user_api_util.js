@@ -1,5 +1,4 @@
-export const updateUser = (userData, success) => {
-  const error = result => console.log(result);
+export const updateUser = (userData, success, error) => {
   let data = {user: userData};
   $.ajax({
     method: 'PATCH',
