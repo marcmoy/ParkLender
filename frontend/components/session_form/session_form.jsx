@@ -162,18 +162,20 @@ class SessionForm extends React.Component {
 		}
 	}
 
-	confirmPassword() {
-		if (this.props.formType === "signup") {
-			return(
-				<input type="password"
-					id="confirm"
-					className="form-control"
-					placeholder="Confirm"
-					value={this.props.confirm}
-					onChange={this.update("confirm")}/>
-			);
-		}
-	}
+	// FUTURE FEATURE
+
+	// confirmPassword() {
+	// 	if (this.props.formType === "signup") {
+	// 		return(
+	// 			<input type="password"
+	// 				id="confirm"
+	// 				className="form-control"
+	// 				placeholder="Confirm"
+	// 				value={this.props.confirm}
+	// 				onChange={this.update("confirm")}/>
+	// 		);
+	// 	}
+	// }
 
 	render() {
 
@@ -196,8 +198,6 @@ class SessionForm extends React.Component {
 					placeholder="Password"
 					value={this.props.password}
 					onChange={this.update("password")}/>
-
-				{this.confirmPassword()}
 
 				{this.errorMessages()}
 

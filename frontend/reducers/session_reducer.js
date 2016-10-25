@@ -16,6 +16,9 @@ const SessionReducer = function(state = _nullUser, action){
       $('#session-form').hide();
       $('#modal').hide();
       return merge({}, _nullUser, {currentUser});
+    case SessionConstants.RECEIVE_UPDATED_USER:
+      const updatedUser = action.user;
+      return merge({}, _nullUser, {currentUser: updatedUser});
     case SessionConstants.LOGOUT:
       return merge({}, _nullUser);
     case SessionConstants.RECEIVE_ERRORS:

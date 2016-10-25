@@ -5,7 +5,7 @@ import IMAGES from '../../util/images';
 const SpotHostDetails = ({ spot }) => (
   <div>
     <aside className="host-photo-container">
-      <img src={spot.host.thumbnail} />
+      <img src={spot.host.url} />
       <span>{spot.host.name}</span>
     </aside>
     <img src={IMAGES.pin} className="pin"/><h3>{spot.city}, {spot.state}</h3>

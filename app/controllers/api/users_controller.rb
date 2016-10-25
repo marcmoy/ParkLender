@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
     @user.fname.downcase!
     @user.lname.downcase!
     @user.email.downcase!
-    @user.confirm = params[:user][:confirm]
+    # @user.confirm = params[:user][:confirm]
 
     if @user.save
       login(@user)
@@ -21,9 +21,13 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    @user.confirm = params[:user][:confirm]
-    if @user.save
+    if @user.update!(user_params)
+      photo = Photo.find_by_user_id(@user.id)
+      photo.update!(
+        url: params[:user][:imageUrl],
+        thumbnail: params[:user][:thumbnail]
+      )
+      login(@user)
       render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
@@ -33,7 +37,14 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :confirm, :email, :fname, :lname)
+    params.require(:user).permit(
+      :username,
+      :password,
+      # :confirm,
+      :email,
+      :fname,
+      :lname
+    )
   end
 
 end

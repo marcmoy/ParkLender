@@ -22,7 +22,7 @@ export const signup = function(user, success, error) {
 
 export const logout = function(success){
 	$.ajax({
-		method: 'delete',
+		method: 'DELETE',
 		url: '/api/session',
 		success,
 		error: () => {

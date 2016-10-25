@@ -21,7 +21,6 @@ class Bookings extends React.Component {
             <h2>In construction</h2>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

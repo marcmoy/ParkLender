@@ -8,13 +8,13 @@ require_relative 'new_spots'
 ActiveRecord::Base.transaction do
 
   User.create!(
-    username: 'marc', password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+    username: 'marc', password: 'go_fullstack_go',
     email: 'me@marcmoy.io', fname: 'marc', lname: 'moy'
   )
   Photo.create!(user_id: 1, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
 
   User.create!(
-    username: 'demo-user', password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+    username: 'demo-user', password: 'go_fullstack_go',
     email: 'demo-user@email.com', fname: 'demo', lname: 'user'
   )
   Photo.create!(user_id: 2, url: DEFAULT_PIC, thumbnail: DEFAULT_PIC)
@@ -23,7 +23,7 @@ ActiveRecord::Base.transaction do
 
   58.times do |i|
     user = User.create!(
-      username: USERNAMES[i].downcase, password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+      username: USERNAMES[i].downcase, password: 'go_fullstack_go',
       email: "#{USERNAMES[i].downcase}@email.com", fname: USERNAMES[i], lname: Faker::Name.last_name
     )
     @usernames[USERNAMES[i]] = true
@@ -162,7 +162,7 @@ ActiveRecord::Base.transaction do
       @user_photos[user_photo] = true
 
       user = User.create!(
-        username: name.downcase, password: 'go_fullstack_go', confirm: 'go_fullstack_go',
+        username: name.downcase, password: 'go_fullstack_go',
         email: "#{name}@gmail.com", fname: name, lname: Faker::Name.last_name
       )
 

@@ -3,6 +3,7 @@ export const SessionConstants = {
   LOGOUT: "LOGOUT",
   SIGNUP: "SIGNUP",
   RECEIVE_CURRENT_USER: "RECEIVE_CURRENT_USER",
+  RECEIVE_UPDATED_USER: "RECEIVE_UPDATED_USER",
   RECEIVE_ERRORS: "RECEIVE_ERRORS",
   EMPTY_ERRORS: "EMPTY_ERRORS"
 };
@@ -37,4 +38,9 @@ export const receiveErrors = (errors, callback) => ({
 
 export const emptyErrors = () => ({
   type: SessionConstants.EMPTY_ERRORS
+});
+
+export const receiveUpdatedUser = (user) => ({
+  type: SessionConstants.RECEIVE_UPDATED_USER,
+  user
 });

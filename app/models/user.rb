@@ -21,7 +21,7 @@ class User < ApplicationRecord
 	 validates :username, :email, uniqueness: true
 	 validates :password, length: { minimum: 6 }, allow_nil: :true
 
-	 validate :confirm_password
+	 #  validate :confirm_password
 
 	 after_initialize :ensure_session_token
 	 before_validation :ensure_session_token_uniqueness
@@ -39,9 +39,9 @@ class User < ApplicationRecord
 		  @password = password
 	 end
 
-	 def confirm=(confirm)
-		 	@confirm = confirm
-	 end
+	 #  def confirm=(confirm)
+	 # 	 	@confirm = confirm
+	 #  end
 
 	 def self.find_by_credentials(username, password)
 		  user = User.find_by(username: username)
@@ -90,8 +90,8 @@ class User < ApplicationRecord
 		  end
 	 end
 
-	 def confirm_password
-		  return if BCrypt::Password.new(self.password_digest).is_password?(confirm)
-		  errors[:Confirm] << "password does not match"
-	 end
+	 #  def confirm_password
+	 # 	  return if BCrypt::Password.new(self.password_digest).is_password?(confirm)
+	 # 	  errors[:Confirm] << "password does not match"
+	 #  end
 end
