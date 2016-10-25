@@ -17,22 +17,22 @@ class BookingForm extends React.Component {
     let initialStartDate = new Date();
     let initialEndDate = new Date();
 
-    if (initialPrice === "hourly_rate") {
-      initialEndDate = new Date();
-
-    } else if (initialPrice === "daily_rate") {
-      initialEndDate = new Date(initialStartDate, + 1);
-
-    } else if (initialPrice === "monthly_rate") {
-      let month = initialStartDate.getMonth() + 1;
-      let nextDate = new Date(initialStartDate).setMonth(month);
-
-      initialEndDate = new Date(nextDate);
-    }
-
-    let initialStartTime = 420;
-    let initialEndTime = 1020;
-
+    // if (initialPrice === "hourly_rate") {
+    //   initialEndDate = new Date();
+    //
+    // } else if (initialPrice === "daily_rate") {
+    //   initialEndDate = new Date(initialStartDate, + 1);
+    //
+    // } else if (initialPrice === "monthly_rate") {
+    //   let month = initialStartDate.getMonth() + 1;
+    //   let nextDate = new Date(initialStartDate).setMonth(month);
+    //
+    //   initialEndDate = new Date(nextDate);
+    // }
+    //
+    // let initialStartTime = 420;
+    // let initialEndTime = 1020;
+    //
     let existingBooking = false;
     if (this.props.currentUser && this.props.bookings && this.props.spot.id) {
       let currentUserId = this.props.currentUser.id;
@@ -43,11 +43,11 @@ class BookingForm extends React.Component {
         if (id) {
           let booking = bookings[id];
           if (booking.user_id === currentUserId && booking.spot_id === spotId) {
-            initialStartDate = new Date(booking.start_date);
-            initialEndDate = new Date(booking.end_date);
-            initialStartTime = booking.start_time_minutes;
-            initialEndTime = booking.end_time_minutes;
-            initialPrice = booking.price_type;
+            // initialStartDate = new Date(booking.start_date);
+            // initialEndDate = new Date(booking.end_date);
+            // initialStartTime = booking.start_time_minutes;
+            // initialEndTime = booking.end_time_minutes;
+            // initialPrice = booking.price_type;
             existingBooking = true;
           }
         }
