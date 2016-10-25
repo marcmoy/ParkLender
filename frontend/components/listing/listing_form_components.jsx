@@ -67,7 +67,7 @@ export class Location extends React.Component {
       <div>
         <h3>Enter your street address</h3>
         <form onSubmit={this.props.scrollNext}>
-          <input type="text"
+          <input type="text" spellcheck="false"
             className='form-input-element'
             id="autocomplete-location"
             placeholder="Where is your spot located?" />
@@ -183,7 +183,7 @@ export const Description = ({ listing, updateListing, scrollNext }) => {
   return(
     <div>
       <h3>Name your spot</h3>
-      <input type="text" className='form-input-element'
+      <input type="text" spellcheck="false" className='form-input-element'
         placeholder="Give a cool name for your spot"
         onChange={updateWords('title')} value={listing.title}/>
 

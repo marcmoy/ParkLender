@@ -137,21 +137,21 @@ class SessionForm extends React.Component {
 		if (this.props.formType === "signup") {
 			return(
 				<div>
-					<input type="text"
+					<input type="text" spellcheck="false"
 						id="email"
 						className="form-control"
 						placeholder="Email"
 						value={this.props.email}
 						onChange={this.update("email")}/>
 
-					<input type="text"
+					<input type="text" spellcheck="false"
 						id="fname"
 						className="form-control"
 						placeholder="First name"
 						value={this.props.fname}
 						onChange={this.update("fname")}/>
 
-					<input type="text"
+					<input type="text" spellcheck="false"
 						id="lname"
 						className="form-control"
 						placeholder="Last name"
@@ -183,7 +183,7 @@ class SessionForm extends React.Component {
 			<form className='session-form' onSubmit={this.handleSubmit}>
         <h3 className="session-form-title">{this.formTitle()}</h3>
 
-				<input type="text"
+				<input type="text" spellcheck="false"
 					id="username"
 					className="form-control"
 					placeholder="Username"

@@ -23,6 +23,8 @@ class User < ApplicationRecord
 
 	 #  validate :confirm_password
 
+	 validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
 	 after_initialize :ensure_session_token
 	 before_validation :ensure_session_token_uniqueness
 

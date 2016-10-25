@@ -121,7 +121,7 @@ class NavBar extends React.Component {
               src={IMAGES.lookingGlass} />
           </li>
           <li>
-            <input type="text"
+            <input type="text" spellcheck="false"
               id="autocomplete-search-field"
               className="nav-where-to-input"
               placeholder="Where to?"

@@ -150,7 +150,7 @@ class Settings extends React.Component {
                   <div className='form-group'>
                     <label className='col-lg-2 control-label'>Username</label>
                     <div className='col-lg-10'>
-                    <input type="text"
+                    <input type="text" spellcheck="false"
                       className='form-control'
           						id="username"
           						value={this.state.username}
@@ -161,7 +161,7 @@ class Settings extends React.Component {
                   <div className='form-group'>
                     <label className='col-lg-2 control-label'>First Name</label>
                     <div className='col-lg-10'>
-                    <input type="text"
+                    <input type="text" spellcheck="false"
                       className='form-control'
                       id="fname"
                       value={this.state.fname}
@@ -172,7 +172,7 @@ class Settings extends React.Component {
                   <div className='form-group'>
                     <label className='col-lg-2 control-label'>Last Name</label>
                     <div className='col-lg-10'>
-                    <input type="text"
+                    <input type="text" spellcheck="false"
                       className='form-control'
                       id="lname"
                       value={this.state.lname}
@@ -183,7 +183,7 @@ class Settings extends React.Component {
                   <div className='form-group'>
                     <label className='col-lg-2 control-label'>Email</label>
                     <div className='col-lg-10'>
-                    <input type="text"
+                    <input type="text" spellcheck="false"
                       className='form-control'
                       id="email"
                       value={this.state.email}

@@ -55,7 +55,7 @@ class Slideshow extends React.Component {
             and experience a driveway like you own it.<br />
           <div className="home-where-to">
             <section>
-              <input type="text" id="home-autocomplete-search-field"
+              <input type="text" spellcheck="false" id="home-autocomplete-search-field"
                 className="home-where-to-input"
                 placeholder="Where to?" />
               <HomeWhereTo sendMap={this.sendMap} />
