@@ -36,3 +36,40 @@ const marker = new google.maps.Marker({
 });
 ```
 ![map](./docs/map.png)
+
+#### Autocomplete Place Input Field
+
+A core feature in ParkLender's search optimization for spots is google's `autocomplete` API.
+
+ ```javascript
+ const autocomplete = new google.maps.places.Autocomplete(
+   document.getElementById('autocomplete-search-field'),
+   { types: ['geocode'] }
+ );
+ ```
+
+ ![autocomplete](./docs/autocomplete.png)
+
+ Google maps API provides a `place_changed` event listener for whenever the place in an autocomplete field is changed. Using this event and `getPlace`, a `place` object is retrieved with useful information such as address and coordinates to update the the `center` and `zoom` attributes of the map.
+
+ In order to provide a sensible user search experience, the `zoom` attribute between `13` and `16` will vary depending if the user inputs a city or an exact street address.
+
+```javascript
+autocomplete.addListener('place_changed', () => {
+  let place = autocomplete.getPlace();
+  let zoom;
+  if (place.adr_address.includes("address")) {
+    zoom = 16;
+  } else {
+    zoom = 13;
+  }
+
+  let center = {
+    lat: place.geometry.location.lat(),
+    lng: place.geometry.location.lng()
+  };
+
+  this.props.map.setCenter(center);
+  this.props.map.setZoom(zoom);
+});
+```
