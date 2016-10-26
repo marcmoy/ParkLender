@@ -122,3 +122,10 @@ export const Price = ({ prices }) => {
   );
 };
 ```
+
+## Future Direction and Implementation
+
+- [ ] Responsiveness to Mobile Browsers
+- [ ] Create user profiles
+- [ ] Complete booking and listing CRUD
+- [ ] User-host messaging
