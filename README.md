@@ -2,7 +2,7 @@
 
 ParkLender is a parking space sharing app inspired by AirBnB. It utilizes Ruby on Rails and a PostgreSQL database for the back-end and React/Redux for the front-end.
 
-Check it out live at: [https://www.parklender.com/](https://www.parklender.com/)
+Check it out live at: [http://www.parklender.com/](http://www.parklender.com/)
 
 ## Features and Implementation
 
