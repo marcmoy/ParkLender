@@ -123,10 +123,6 @@ class Settings extends React.Component {
     return(
       <div>
         <div className='dashboard-container'>
-          <Tabs
-              router={this.props.router}
-              pathname={this.props.location.pathname}
-            />
           <div className='dashboard container'>
             <div className='row'>
               <h1>Account Settings</h1>

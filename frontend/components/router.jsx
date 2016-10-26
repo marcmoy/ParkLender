@@ -101,10 +101,6 @@ class AppRouter extends React.Component{
           <Route path="/users/:userId" component={UserShowPageContainer} />
           <Route path="/settings" component={SettingsContainer}
             onEnter={ this._ensureLoggedIn } />
-          <Route path="/listings" component={ListingsContainer}
-            onEnter={ this._ensureLoggedIn } />
-          <Route path="/bookings" component={BookingsContainer}
-            onEnter={ this._ensureLoggedIn } />
           <Route path="/listings/new" component={ListingContainer}
             onEnter={ this._ensureLoggedIn }
             onLeave={ this._clearListing }/>

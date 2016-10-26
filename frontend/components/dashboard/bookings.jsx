@@ -1,11 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import Tabs from './tabs';
-import Footer from '../footer/footer';
+import BookingItem from './booking_item';
 
 class Bookings extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  renderBookings() {
+
   }
 
   render() {
@@ -18,7 +22,7 @@ class Bookings extends React.Component {
           />
           <div className='dashboard'>
             <h1>Your Bookings</h1>
-            <h2>In construction</h2>
+            <h2>{this.renderBookings()}</h2>
           </div>
         </div>
       </div>
