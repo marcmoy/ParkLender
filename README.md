@@ -73,3 +73,52 @@ autocomplete.addListener('place_changed', () => {
   this.props.map.setZoom(zoom);
 });
 ```
+
+### Spot SQL Queries & Price Filtering
+
+![filter](./docs/filter.png)
+
+The price range and filter was developed to provide users an alternative way to find a parking spot. For this application, parking spaces are allowed an `hourly_rate`, `daily_rate`, or `monthly_rate`. In order to design a price type and price range filter, a custom SQL query was created to fit `min` and `max` conditions for the backend spots controller.
+
+```ruby
+# app/controllers/api/spots_controller.rb
+def apply_price_filters(spots, price_types, min = 0, max = 100)
+  price_types = %w(hourly_rate daily_rate monthly_rate) if price_types.empty?
+  query = []
+  price_types.each do |price|
+    query << "#{price} BETWEEN #{min} AND #{max}"
+  end
+  spots.where(query.join(" OR "))
+end
+```
+
+As a result, this query would include `zero` prices as well. Therefore, the `Price` presentational component filter out the `zero` prices at the frontend stage.
+
+```javascript
+export const Price = ({ prices }) => {
+
+  const priceBlocks = [];
+
+  for (let price in prices) {
+    if (prices[price] > 0) {
+
+      let cost = prices[price];
+      let text = `$${cost} / ${priceKey[price]}`;
+      let className = `price ${price}`;
+
+      let priceBlock =
+      <li className={className} key={price}>
+        <span className='price-tag'>{text}</span>
+      </li>;
+
+      priceBlocks.push(priceBlock);
+    }
+  }
+
+  return(
+    <ul className='spot-prices'>
+      {priceBlocks}
+    </ul>
+  );
+};
+```
