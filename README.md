@@ -1,49 +1,14 @@
 
 ![logo](./docs/color-logo.png)
 
-ParkLender is a parking space sharing app inspired by AirBnB.
+ParkLender is a parking space sharing app inspired by AirBnB. It utilizes Ruby on Rails and a PostgreSQL database for the back-end and React/Redux for the front-end.
 
-Check it out live at: [https://parklender.herokuapp.com/](https://parklender.herokuapp.com/)
+Check it out live at: [https://www.parklender.com/](https://www.parklender.com/)
 
-![splash](./docs/splash-page.png)
+## Features and Implementation
 
-**Key Feature Set:**
-- Users can search for parking spots.
-- Users can request to book a parking spot.
-- Parking spot searches can be filtered by price type rates.
-- Users can post reviews on each parkings spot.
+### Google Maps API Integration
 
-###Try out a demo account!###
+ParkLender makes it easy to search for available parking spaces by customizing a Google Maps component where each spot is bound to a marker with custom hover events, animations, and info windows.
 
-
-![demo](./docs/demo-login.png)
-
-
-###Check out parking spots###
-
-
-![search](./docs/search.png)
-
-
-###Filter by price types###
-
-
-![filter](./docs/filter.png)
-
-
-###Search by location###
-
-
-![search-bar](./docs/search-bar.png)
-
-
-###Send a booking request###
-
-
-![booking](./docs/booking.png)
-
-
-###Write a review###
-
-
-![review](./docs/review.png)
+![map](./docs/map.png)
