@@ -14,7 +14,9 @@ class NavBar extends React.Component {
       confirm: "",
       email: "",
       fname: "",
-      lname: ""
+      lname: "",
+      center: {},
+      zoom: 13
     };
     this.update = this.update.bind(this);
     this.logout = this.logout.bind(this);
@@ -27,6 +29,7 @@ class NavBar extends React.Component {
     this.splash = this.splash.bind(this);
     this.userThumbnail = this.userThumbnail.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.sendMap = this.sendMap.bind(this);
   }
 
   componentDidMount() {
@@ -79,6 +82,12 @@ class NavBar extends React.Component {
     this.props.router.push("/search");
   }
 
+  sendMap(center, zoom) {
+    this.setState({ center: center, zoom: zoom });
+    this.props.updateMap(this.state.center, this.state.zoom);
+    this.props.router.push("/search");
+  }
+
   goListing() {
     this.props.router.push("/listings/new");
   }
@@ -113,7 +122,7 @@ class NavBar extends React.Component {
   }
 
   whereToSearch() {
-    if (this.props.whereTo === true) {
+    if (this.props.whereTo) {
       return (
         <ul className="nav navbar-nav" id={this.splash()}>
           <li>
@@ -126,6 +135,14 @@ class NavBar extends React.Component {
               className="nav-where-to-input"
               placeholder="Where to?"
               onSubmit={ this.goSearch } />
+          </li>
+        </ul>
+      );
+    } else {
+      return(
+        <ul className="nav navbar-nav" id={this.splash()}>
+          <li className="host-link">
+            <a id={this.splash()} onClick={this.goSearch}>Search</a>
           </li>
         </ul>
       );
@@ -181,7 +198,8 @@ class NavBar extends React.Component {
           </ul>
 
           <div id="session-form">
-            <SessionFormContainer formType={this.state.formType}
+            <SessionFormContainer
+              formType={this.state.formType}
               update={this.update}
               username={this.state.username}
               password={this.state.password}

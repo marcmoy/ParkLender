@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout, emptyErrors } from '../../actions/session_actions';
+import { updateMap } from '../../actions/map_actions';
 import NavBar from './navbar';
 
 const mapStateToProps = state => ({
@@ -10,7 +11,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  emptyErrors: () => dispatch(emptyErrors())
+  emptyErrors: () => dispatch(emptyErrors()),
+  updateMap: (center, zoom) => dispatch(updateMap(center,zoom))
 });
 
 export default connect(

@@ -54,11 +54,13 @@ input.nav-where-to-input {
   height: 30px;
 }
 
-#autocomplete-search-field {
+#autocomplete-search-field,
+#nav-autocomplete-search-field {
   padding-left: 10px;
   border: 1px solid white;
 }
 
+#nav-autocomplete-search-field,
 #autocomplete-search-field:focus {
   outline: none;
 }
@@ -113,4 +115,10 @@ li.dropdown.open {
   overflow: hidden;
   border-color: 2px solid gray;
   background-color: #eee;
+}
+
+// fixes autocomplete hidden under nav bar
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  z-index: 999;
 }

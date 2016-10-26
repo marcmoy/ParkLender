@@ -70,7 +70,7 @@ export class Location extends React.Component {
           <input type="text" spellcheck="false"
             className='form-input-element'
             id="autocomplete-location"
-            placeholder="Where is your spot located?" />
+            placeholder="i.e. 160 Spear St #14, San Francisco, CA 94105" />
           <button className='continue-button' onClick={preventDefault}>
             Continue
           </button>
