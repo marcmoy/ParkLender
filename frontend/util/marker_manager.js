@@ -41,6 +41,7 @@ export default class MarkerManager {
 
     // info window feature
     const infoWindow = this.createInfoWindow(spot);
+
     google.maps.event.addListener(infoWindow, 'closeclick', () => {
       marker.setIcon(greyIcon);
     });
@@ -49,6 +50,7 @@ export default class MarkerManager {
       infoWindow.open(this.map, marker);
       marker.setIcon(redIcon);
     });
+
     this.map.addListener('click', () => {
       infoWindow.close();
       marker.setIcon(greyIcon);
@@ -58,7 +60,7 @@ export default class MarkerManager {
     let $spot = $(`#spot${spot.id}`);
     $spot.hover(
       () => {
-        // when spot is hovered, bounce dat marker
+        // when spot is hovered, bounce marker
         marker.setAnimation(google.maps.Animation.BOUNCE);
         // change marker icon
         marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png');
