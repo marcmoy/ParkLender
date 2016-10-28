@@ -65,15 +65,15 @@ export default class MarkerManager {
         // change marker icon
         marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png');
         // if spot is hovered for more than 2 seconds, center dat map to marker
-        this.centerTimeout = setTimeout(() => {
-          // if marker is out of bounds
-          if (!this.map.getBounds().contains(marker.getPosition())) {
-            // recenter map AND open info window
-            let center = { lat: spot.lat, lng: spot.lng };
-            this.map.setCenter(center);
-            infoWindow.open(this.map, marker);
-          }
-        }, 1500);
+        // this.centerTimeout = setTimeout(() => {
+        //   // if marker is out of bounds
+        //   if (!this.map.getBounds().contains(marker.getPosition())) {
+        //     // recenter map AND open info window
+        //     let center = { lat: spot.lat, lng: spot.lng };
+        //     this.map.setCenter(center);
+        //     infoWindow.open(this.map, marker);
+        //   }
+        // }, 1500);
       },
       () => {
         // when spot is not hovered, calm dat marker
@@ -83,7 +83,7 @@ export default class MarkerManager {
         // add listener for info window close
         infoWindow.close();
         // when spot is not hovered, clear timeout
-        clearTimeout(this.timeout);
+        // clearTimeout(this.timeout);
       }
     );
 
