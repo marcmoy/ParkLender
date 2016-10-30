@@ -18,9 +18,13 @@ export const removeSpinner = () => {
 
 export const addEmptyMessage = () => {
   const loader = $(".empty-message")[0];
-  const message = '<h2 class="sorry">Sorry, no spots were found here.</h2>';
-  const sadface = `<img src='${IMAGES.sadface}'/>`;
-  if (loader) loader.innerHTML = `${message}${sadface}`;
+  const header = '<h1>No results</h1>'
+  const message = '<h2 class="sorry">Try adjusting your search. Here are some ideas:</h2>';
+  const tip1 = '<li>Change your price type or price range.</li>';
+  const tip2 = '<li>Zoom out on the map.</li>';
+  const tip3 = '<li>Search for a specific city, address, or landmark.</li>';
+  const suggestions = `<ul>${tip1}${tip2}${tip3}</ul>`;
+  if (loader) loader.innerHTML = `${header}${message}${suggestions}`;
 };
 
 export const removeEmptyMessage = () => {

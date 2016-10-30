@@ -15,6 +15,12 @@
   height: calc(100% - 50px);
 }
 
+.empty-message {
+  text-align: left;
+  margin: auto;
+  padding: 0 50px;
+}
+
 @import "filter_form";
 @import "rheostat";
 @import "spots_index";
