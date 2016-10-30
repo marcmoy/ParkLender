@@ -1,0 +1,44 @@
+h1.park-there-new {
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: 400;
+}
+
+.home-page-new {
+  position: fixed;
+  z-index: -1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(-120deg, rgba(0,0,0,0.2) 5%,
+    rgba(0,0,0,0.0)),
+    url(http://res.cloudinary.com/dsvkuc936/image/upload/v1477863151/parklender_assets/car-dog.jpg);
+  background-size: cover;
+}
+
+.welcome-section {
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+
+.card {
+  margin-top: 100px;
+  margin-left: 180px;
+  max-width: 600px;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  height: 180px;
+  padding: 10px 20px;
+  box-shadow: 3px 3px 5px 6px #252424;
+}
+
+
+.home-where-to-new {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}

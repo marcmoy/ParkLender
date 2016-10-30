@@ -88,7 +88,7 @@ class AppRouter extends React.Component{
 
   render(){
     return(
-      <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 50)}>
+      <Router history={ hashHistory } onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" component={ App } onEnter={ this._requestSpots }>
           <IndexRoute component={HomePageContainer}
             onEnter={ this._activateSplash }

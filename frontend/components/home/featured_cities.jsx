@@ -10,28 +10,28 @@ class FeaturedCities extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    let pics = $('div.city-pic');
-    for (let i = 0; i < pics.length; i++) {
-      let $pic = $(pics[i]);
-      let city = $pic.attr('id').split(' ').join('');
-      let $label = $(`label.${city}`);
-      $pic.hover(
-        () => $label.animate(
-          { height: '3em'},
-          { duration: 100,
-            complete: () => $label.css({ height: '3em'})
-          }
-        ),
-        () => $label.animate(
-          { height: '0'},
-          { duration: 100,
-            complete: () => $label.css({ height: '0'})
-          }
-        )
-      );
-    }
-  }
+  // componentDidMount() {
+  //   let pics = $('div.city-pic');
+  //   for (let i = 0; i < pics.length; i++) {
+  //     let $pic = $(pics[i]);
+  //     let city = $pic.attr('id').split(' ').join('');
+  //     let $label = $(`label.${city}`);
+  //     $pic.hover(
+  //       () => $label.animate(
+  //         { height: '3em'},
+  //         { duration: 100,
+  //           complete: () => $label.css({ height: '3em'})
+  //         }
+  //       ),
+  //       () => $label.animate(
+  //         { height: '0'},
+  //         { duration: 100,
+  //           complete: () => $label.css({ height: '0'})
+  //         }
+  //       )
+  //     );
+  //   }
+  // }
 
   handleClick(e) {
     e.preventDefault();

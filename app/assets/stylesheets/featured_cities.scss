@@ -4,6 +4,7 @@
   display: table;
   margin: 0 auto;
   position: relative;
+  background-color: white;
 
   ul {
     padding: 0;
@@ -21,7 +22,7 @@
       max-width: 1000px;
 
       div.overflow {
-        height: 22em;
+        height: 20em;
         width: auto;
         overflow: hidden;
         float: left;
@@ -58,7 +59,7 @@
           bottom: 0;
           font-size: 2.5em;
           line-height: 3em;
-          height: 0;
+          height: 3em;
           cursor: pointer;
         }
       }

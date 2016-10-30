@@ -244,7 +244,7 @@ $.fn.splashHeaderFollow = function () {
 
         // grabs window's scroll position
         let scroll = $window.scrollTop();
-        if (scroll <= 400) {
+        if (scroll <= 600) {
           $this.removeClass('show');
         } else {
           $this.addClass('show');
