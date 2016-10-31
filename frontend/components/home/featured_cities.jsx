@@ -10,29 +10,6 @@ class FeaturedCities extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   let pics = $('div.city-pic');
-  //   for (let i = 0; i < pics.length; i++) {
-  //     let $pic = $(pics[i]);
-  //     let city = $pic.attr('id').split(' ').join('');
-  //     let $label = $(`label.${city}`);
-  //     $pic.hover(
-  //       () => $label.animate(
-  //         { height: '3em'},
-  //         { duration: 100,
-  //           complete: () => $label.css({ height: '3em'})
-  //         }
-  //       ),
-  //       () => $label.animate(
-  //         { height: '0'},
-  //         { duration: 100,
-  //           complete: () => $label.css({ height: '0'})
-  //         }
-  //       )
-  //     );
-  //   }
-  // }
-
   handleClick(e) {
     e.preventDefault();
     let name = e.target.attributes.id.value;
@@ -47,14 +24,13 @@ class FeaturedCities extends React.Component {
       if (city) {
         let name = city.split(' ').join('');
         cities.push(
-          <li key={name} id={city}>
-            <div className='overflow city-pic' id={city}>
-              <img src={CITIES[city].url} className='city-pic'
-                onClick={this.handleClick} id={city}/>
-              <label className={name} id={city}
-                onClick={this.handleClick}>{city}</label>
-            </div>
-          </li>
+          <div className='overflow city-pic col-xs-12 col-sm-6 col-md-4 col-lg-4'
+            id={city}>
+            <img src={CITIES[city].url} className='city-pic'
+              onClick={this.handleClick} id={city}/>
+            <label className={name} id={city}
+              onClick={this.handleClick}>{city}</label>
+          </div>
         );
       }
     }
@@ -62,12 +38,21 @@ class FeaturedCities extends React.Component {
   }
 
   render() {
+    let cities = this.renderCities();
+    // let topRow = [];
+    // let bottomRow = [];
+    // for (let i = 0; i < cities.length; i++) {
+    //   if (i < 3) {
+    //     topRow.push(cities[i]);
+    //   } else {
+    //     bottomRow.push(cities[i]);
+    //   }
+    // }
+
     return(
       <div className='featured-cities-container clearfix'>
         <h1>Featured Cities</h1>
-        <ul>
-          {this.renderCities()}
-        </ul>
+        <div className='row'>{cities}</div>
       </div>
     );
   }
