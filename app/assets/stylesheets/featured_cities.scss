@@ -5,9 +5,10 @@
   margin: 0 auto;
   position: relative;
   background-color: white;
-  height: 100vh;
+  width: 100vw;
 
   h1 { font-weight: 500 };
+  .row { max-width: 1400px; margin: 0 auto; }
 }
 
 div.overflow.city-pic {

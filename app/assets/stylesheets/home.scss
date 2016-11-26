@@ -13,6 +13,7 @@
 
 footer {
   background-color: #eee;
+  padding: 20px 0;
 
   div.container {
     display: flex;
@@ -23,12 +24,17 @@ footer {
      width: auto;
      float: left;
      list-style: none;
+     font-size: 16px;
      margin: 2em;
      padding: 0 3em;
 
      img { height: 40px; margin: auto 0; }
 
-     h5 { margin-bottom: 5px; font-weight: 600; }
+     h5 {
+       font-size: 20px;
+       margin-bottom: 5px;
+       font-weight: 600;
+     }
 
      li { line-height: 2em }
      li a { color: #4e4444; cursor: pointer; }
