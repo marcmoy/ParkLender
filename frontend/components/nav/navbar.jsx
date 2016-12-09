@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { withRouter, hashHistory } from 'react-router';
 import SessionFormContainer from '../session_form/session_form_container';
